@@ -1,5 +1,3 @@
-using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,6 +8,10 @@ namespace Root
     [RequireComponent(typeof(NavMeshAgent))]
     public class Agent : MonoBehaviour
     {
+        public bool IsLife { get; private set; }
+
+        public bool IsZombi {  get; private set; }
+
         public float Mana = 100;
 
         public float HeatPoint = 100;
@@ -26,6 +28,10 @@ namespace Root
 
         private void Awake()
         {
+            IsLife = true;
+
+            IsZombi = false;
+
             var agent = GetComponent<NavMeshAgent>();
 
             var animator = transform.GetChild(0).GetComponent<Animator>();
@@ -36,37 +42,19 @@ namespace Root
 
             Animator = new AgentAnimator(animator);
 
-            _brain = new Brain(this);
+            Eyes.SetTarget(EntitiesBroker.Player);
 
-            StartCoroutine(DecreaseMana());
-            StartCoroutine(DecreaseHeatPoint());
+            _brain = new Brain(this);
         }
 
         private void Update()
         {
             Motion.Update();
 
+            Eyes.Update();
+
             _brain.Update();
-        }
 
-        private IEnumerator DecreaseMana()
-        {
-            while(true)
-            {
-                Mana -= 0.1f;
-
-                yield return new WaitForSeconds(0.1f);
-            }
-        }
-
-        private IEnumerator DecreaseHeatPoint()
-        {
-            while (true)
-            {
-                HeatPoint -= 0.1f;
-
-                yield return new WaitForSeconds(0.25f);
-            }
         }
 
         private void OnGUI()

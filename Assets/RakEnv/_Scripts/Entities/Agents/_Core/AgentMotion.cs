@@ -22,7 +22,7 @@ namespace Root
         {
             IsArriveToTarget = false;
 
-            if (IsFreeze) return;
+            if (IsFreeze || _target == null) return;
 
             if (_target != null)
                 _agent.SetDestination(_target.position);

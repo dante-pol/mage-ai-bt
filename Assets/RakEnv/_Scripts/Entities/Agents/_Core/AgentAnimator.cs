@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Root.Core.BT;
+using UnityEngine;
 
 namespace Root
 {
@@ -10,6 +11,8 @@ namespace Root
 
         private readonly Animator _stateMachine;
         private Animator animator;
+
+        public bool IsAttacking => _stateMachine.GetBool(BaseAttackHash);
 
         public AgentAnimator(Animator animator) 
             => _stateMachine = animator;

@@ -1,126 +1,102 @@
-﻿using JetBrains.Annotations;
-using Root.Core.BT;
+﻿using Root.Core.BT;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Root
 {
     public class Brain
     {
         private Agent _agent;
+
         private SelectorNode _root;
 
         public Brain(Agent agent)
         {
             _agent = agent;
 
-            var checkIdle = new ConditionNode(CheckIdle);
-
-            var checkMana = new ConditionNode(CheckMana);
-
-            var heatPoint = new ConditionNode(CheckHeatPoint);
-
-            var checkStartPoint = new ConditionNode(CheckStartPoint);
-
-            var idleAction = new ActionNode(MakeIdle);
-
-            var heatPointAction = new ActionNode(GotToBoxHeatPoint);
-
-            var manaAction = new ActionNode(GoToBoxMana);
-
-            var startPointAction = new ActionNode(GoToStartPoint);
-
-            var manaScenario = new SequenceNode(new List<ABTNode>
-            {
-                checkMana,
-                manaAction
-            });
-
-            var heatPointScenario = new SequenceNode(new List<ABTNode>
-            {
-                heatPoint,
-                heatPointAction
-            });
-
-
-            var idleScenario = new SequenceNode(new List<ABTNode>
-            {
-                checkIdle,
-                idleAction
-            });
-
-            var startPointScenario = new SequenceNode(new List<ABTNode>
-            {
-                checkStartPoint,
-                startPointAction
-            });
+            var isZombiCondition = new ConditionNode(() => _agent.IsZombi);
 
 
             _root = new SelectorNode(new List<ABTNode>
             {
-                idleScenario,
-                startPointScenario,
-                manaScenario,
-                heatPointScenario
+                BuildLifeScenario()
             });
 
         }
 
-        public void Update() 
-            => _root.Tick();
-
-        public bool CheckIdle()
-            => _agent.Mana >= 70 &&  _agent.HeatPoint >=50 && Vector3.Distance(_agent.transform.position, _agent.EntitiesBroker.Player.position) < 1f ? true : false;
-
-        public bool CheckStartPoint()
-            => Vector3.Distance(_agent.transform.position, _agent.EntitiesBroker.Player.position) > 1f && _agent.Mana >= 70 &&  _agent.HeatPoint >=50 ? true : false;
-
-        public bool CheckMana()
-            => _agent.Mana < 70 ? true : false;
-
-        public bool CheckHeatPoint()
-            => _agent.HeatPoint < 20 ? true : false;
-
-        public NodeStatus MakeIdle()
+        public SequenceNode BuildLifeScenario()
         {
-            Debug.Log("Idle Tree");
+            var isNotDetectPlayerCondition = new ConditionNode(() => !_agent.Eyes.IsDetect);
 
+            var idleAction = new ActionNode(IdleAction);
+
+            var idleScenario = new SequenceNode(new List<ABTNode>
+            {
+                isNotDetectPlayerCondition,
+                idleAction
+            });
+
+            var isDetectPlayerCondition = new ConditionNode(() => _agent.Eyes.IsDetect && !_agent.Motion.IsArriveToTarget);
+
+            var goToPlayerAction = new ActionNode(GoToPlayer);
+
+            var goToPlayerScenario = new SequenceNode(new List<ABTNode>
+            {
+                isDetectPlayerCondition,
+                goToPlayerAction
+            });
+
+            var hasReachPlayerCondition = new ConditionNode(() => _agent.Motion.IsArriveToTarget);
+
+            var attackPlayerAction = new ActionNode(AttackToPlayer);
+
+            var attackToPlayerScenario = new SequenceNode(new List<ABTNode>
+            {
+                hasReachPlayerCondition,
+                attackPlayerAction
+            });
+
+            var liveScenario = new SelectorNode(new List<ABTNode>
+            {
+                idleScenario,
+                goToPlayerScenario,
+                attackToPlayerScenario
+            });
+
+            var isLifeCondition = new ConditionNode(() => _agent.IsLife);
+
+            var lifeScenario = new SequenceNode(new List<ABTNode>
+            {
+                isLifeCondition,
+                liveScenario
+            });
+
+            return lifeScenario;
+        }
+
+        private NodeStatus AttackToPlayer()
+        {
+            _agent.Animator.SetBaseAttack();
+
+            return _agent.Animator.IsAttacking ? NodeStatus.RUNNING : NodeStatus.SUCCESS; 
+        }
+
+        private NodeStatus GoToPlayer()
+        {
+            _agent.Motion.SendToTarget(_agent.EntitiesBroker.Player);
+
+            return _agent.Motion.IsArriveToTarget ? NodeStatus.SUCCESS : NodeStatus.RUNNING;
+        }
+
+        private NodeStatus IdleAction()
+        {
             _agent.Animator.SetIdle();
 
             return NodeStatus.SUCCESS;
         }
 
-        public NodeStatus GoToStartPoint()
-        {
-            Debug.Log("Start Point Tree");
+        public void Update() 
+            => _root.Tick();
 
-            _agent.Motion.SendToTarget(_agent.EntitiesBroker.Player);
-
-            _agent.Animator.SetWalk();
-
-            return !_agent.Motion.IsArriveToTarget ? NodeStatus.SUCCESS : NodeStatus.RUNNING;
-        }
-
-        public NodeStatus GoToBoxMana()
-        {
-            Debug.Log("Mana Box Tree");
-
-            _agent.Motion.SendToTarget(_agent.EntitiesBroker.ManaBox);
-
-            _agent.Animator.SetWalk();
-
-            return !_agent.Motion.IsArriveToTarget ? NodeStatus.SUCCESS : NodeStatus.RUNNING;
-        }
-
-        public NodeStatus GotToBoxHeatPoint()
-        {
-            Debug.Log("Heat Point Tree");
-
-            _agent.Motion.SendToTarget(_agent.EntitiesBroker.HeatPointBox);
-
-            _agent.Animator.SetRun();
-
-            return !_agent.Motion.IsArriveToTarget ? NodeStatus.SUCCESS : NodeStatus.RUNNING;
-         }
     }
 }

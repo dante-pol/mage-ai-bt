@@ -15,6 +15,10 @@ namespace Root
         public AgentEyes(Transform agent)
         {
             _agent = agent;
+
+            IsFreeze = false;
+
+            IsDetect = false;
         }
 
         public void Update()
@@ -25,16 +29,24 @@ namespace Root
         }
 
         public void SetTarget(Transform target)
-            => _agent = target;
+            => _targetDetect = target;
 
         private void Detecting()
         {
+            Debug.Log("Kara");
+
             IsDetect = false;
 
-            if (_targetDetect == null) return; 
+            if (_targetDetect == null) return;
 
-            if (Vector3.Distance(_agent.position, _targetDetect.position) < 0.05f) 
+            Debug.Log("Kara2");
+
+            Debug.DrawLine(_agent.position, (_targetDetect.position - _agent.position).normalized * 20, Color.red);
+
+            if (Vector3.Distance(_agent.position, _targetDetect.position) < 20)
+            {
                 IsDetect = true;
+            }
         }
     }
 }
