@@ -1,6 +1,5 @@
-using System;
 using System.Collections;
-using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,18 +18,27 @@ namespace Root
 
         public EntitiesBroker EntitiesBroker;
 
+        public AgentEyes Eyes;
+
         private Brain _brain;
+
+        public AgentAnimator Animator;
 
         private void Awake()
         {
             var agent = GetComponent<NavMeshAgent>();
 
+            var animator = transform.GetChild(0).GetComponent<Animator>();
+
             Motion = new AgentMotion(agent);
+
+            Eyes = new AgentEyes(transform);
+
+            Animator = new AgentAnimator(animator);
 
             _brain = new Brain(this);
 
             StartCoroutine(DecreaseMana());
-
             StartCoroutine(DecreaseHeatPoint());
         }
 
@@ -43,105 +51,70 @@ namespace Root
 
         private IEnumerator DecreaseMana()
         {
-            while (Mana > 0)
+            while(true)
             {
                 Mana -= 0.1f;
-                yield return new WaitForSeconds(0.100f);
-            }
 
-            Mana = 0;
+                yield return new WaitForSeconds(0.1f);
+            }
         }
 
         private IEnumerator DecreaseHeatPoint()
         {
-            while (HeatPoint > 0)
+            while (true)
             {
                 HeatPoint -= 0.1f;
-                yield return new WaitForSeconds(0.250f);
+
+                yield return new WaitForSeconds(0.25f);
+            }
+        }
+
+        private void OnGUI()
+        {
+            GUILayout.BeginVertical();
+
+
+            // Создаем и настраиваем стиль для меток
+            GUIStyle labelStyle = new GUIStyle(GUI.skin.label)
+            {
+                fontSize = 36 // Увеличенный размер шрифта
+            };
+            labelStyle.normal.textColor = Color.black;  // Изменяем цвет текста
+
+            // Применяем стиль при отрисовке меток
+            GUILayout.Label($"Heat Point: {HeatPoint}", labelStyle);
+            GUILayout.Label($"Mana: {Mana}", labelStyle);
+
+            if (GUILayout.Button("Up Heat Point"))
+            {
+                HeatPoint = 100;
             }
 
-            HeatPoint = 0;
-        }
-    }
+            if (GUILayout.Button("Low Heat Point"))
+            {
+                HeatPoint = 19;
+            }
 
-    public class AgentEyes
-    {
-        public bool IsFreeze { get; set; }
+            if (GUILayout.Button("UP Mana"))
+            {
+                Mana = 100;
+            }
 
-        public bool IsDetect { get; private set; }
+            if (GUILayout.Button("Low Mana"))
+            {
+                Mana = 69;
+            }
 
-        private Transform _agent;
+            if (GUILayout.Button("Spawn Agent"))
+            {
+                transform.position = Vector3.zero;
+            }
 
-        private Transform _targetDetect;
-
-        public void Update()
-        {
-            if (IsFreeze) return;
-
-            Detecting();
-        }
-
-        public void SetTarget(Transform target)
-            => _agent = target;
-
-        private void Detecting()
-        {
-            IsDetect = false;
-
-            if (_targetDetect == null) return; 
-
-            if (Vector3.Distance(_agent.position, _targetDetect.position) < 0.05f) 
-                IsDetect = true;
-        }
-    }
-
-    public class AgentMotion
-    {
-        public bool IsFreeze { get; set; }
-
-        public bool IsArriveToTarget { get; private set; }
-
-        private NavMeshAgent _agent;
-
-        private Transform _target;
-
-        public AgentMotion(NavMeshAgent agent)
-        {
-            _agent = agent;
-        }
-
-        public void Update()
-        {
-            IsArriveToTarget = false;
-
-            if (IsFreeze) return;
-
-            if (_target != null)
-                _agent.SetDestination(_target.position);
-
-            if (HasReachedDestination())
-                IsArriveToTarget = true;
-
-            Debug.Log($"IsArriveToTarget: {IsArriveToTarget}");
-        }
-
-        private bool HasReachedDestination()
-            => !_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance;
-
-        public void SendToTarget(Transform target) 
-            => _target = target;
-
-        public void Stop()
-        {
-
+            GUILayout.EndVertical();
         }
     }
 
     public class AgentAttacker
-    {
-
-    }
-    public class AgentAnimator
     {
 
     }
