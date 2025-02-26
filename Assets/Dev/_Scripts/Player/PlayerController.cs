@@ -21,9 +21,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        _inputHandler.HandleInput();
         _movementHandler.HandleMovement();
         _cameraRotationHandler.HandleCameraRotation();
-        _inputHandler.HandleInput();
         _animatorUpdater.UpdateAnimator();
     }
 }

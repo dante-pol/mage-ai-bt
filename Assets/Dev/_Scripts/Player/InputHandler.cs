@@ -44,10 +44,13 @@ public class InputHandler : IInputHandler
 
     private void Jump()
     {
-        _isJumping = true;
+        if (!_isJumping)
+        {
+            _isJumping = true;
+        }
     }
 
-    private void ResetJump()
+    public void ResetJump()
     {
         _isJumping = false;
     }

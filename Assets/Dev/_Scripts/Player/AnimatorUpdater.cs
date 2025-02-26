@@ -20,6 +20,7 @@ public class AnimatorUpdater : IAnimatorUpdater
             float speed = ((MovementHandler)_movementHandler).GetMoveDirection().magnitude;
             _animator.SetFloat("Speed", speed);
             _animator.SetBool("IsAttack", _inputHandler.IsAttacking);
+            _animator.SetBool("IsJump", _inputHandler.IsJumpPressed);
         }
     }
 }

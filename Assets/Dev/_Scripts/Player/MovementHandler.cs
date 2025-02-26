@@ -4,8 +4,9 @@ public class MovementHandler : IMovementHandler
 {
     private CharacterController _characterController;
     private float _moveSpeed = 5f;
-    private float _jumpForce = 7f;
-    private bool _isGrounded;
+    private float _jumpForce = 6f;
+    private float _gravity = -15f;
+    private float _verticalVelocity;
     private IInputHandler _inputHandler;
 
     public MovementHandler(CharacterController characterController, IInputHandler inputHandler)
@@ -16,38 +17,43 @@ public class MovementHandler : IMovementHandler
 
     public void HandleMovement()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput);
+        Vector3 moveDirection = GetMoveDirection();
         moveDirection = _characterController.transform.TransformDirection(moveDirection);
         moveDirection *= _moveSpeed;
 
-        HandleJump(ref moveDirection);
+        HandleJumpAndGravity(ref moveDirection);
 
         _characterController.Move(moveDirection * Time.deltaTime);
     }
 
-    private void HandleJump(ref Vector3 moveDirection)
+    private void HandleJumpAndGravity(ref Vector3 moveDirection)
     {
-        _isGrounded = _characterController.isGrounded;
-        Debug.Log(_isGrounded);
+        bool isGrounded = _characterController.isGrounded;
 
-        if (_isGrounded)
+        if (isGrounded)
         {
-            moveDirection.y = 0f;
-
+            _verticalVelocity = -1f;
+            
             if (_inputHandler.IsJumpPressed)
             {
-                Debug.Log("Клавиша прыжка нажата!");
-                moveDirection.y = _jumpForce;
+                _verticalVelocity = _jumpForce;
+                _inputHandler.ResetJump();
             }
         }
+        else
+        {
+            _verticalVelocity += _gravity * Time.deltaTime;
+        }
+
+        moveDirection.y = _verticalVelocity;
     }
 
     public Vector3 GetMoveDirection()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        return new Vector3(horizontalInput, 0, verticalInput);
+        return new Vector3(
+            Input.GetAxis("Horizontal"),
+            0,
+            Input.GetAxis("Vertical")
+        );
     }
 }
