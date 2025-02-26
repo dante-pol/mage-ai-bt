@@ -6,8 +6,10 @@ public class EventManager : MonoBehaviour
     public static EventManager Instance { get; private set; }
 
     public event Action OnToggleCamera;
-
     public event Action<Vector3, Vector3> OnAttack;
+    public event Action OnSuperAbilityUse;
+
+    public event Action OnEnemyHit;
 
     private void Awake()
     {
@@ -30,5 +32,16 @@ public class EventManager : MonoBehaviour
     public void TriggerAttack(Vector3 position, Vector3 direction)
     {
         OnAttack?.Invoke(position, direction);
+    }
+
+    public void UseSuperAbility()
+    {
+        Debug.Log("Сфывфывфывфыв");
+        OnSuperAbilityUse?.Invoke();
+    }
+
+    public void TriggerHitEnemy()
+    {
+        OnEnemyHit?.Invoke();
     }
 }

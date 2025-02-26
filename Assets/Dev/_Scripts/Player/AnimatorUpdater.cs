@@ -21,6 +21,7 @@ public class AnimatorUpdater : IAnimatorUpdater
             _animator.SetFloat("Speed", speed);
             _animator.SetBool("IsAttack", _inputHandler.IsAttacking);
             _animator.SetBool("IsJump", _inputHandler.IsJumpPressed);
+            _animator.SetBool("IsRun", _inputHandler.IsSprinting);
         }
     }
 }

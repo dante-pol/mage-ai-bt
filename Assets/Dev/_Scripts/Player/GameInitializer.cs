@@ -5,7 +5,26 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private int _poolSize = 20;
 
+    private int _hitCount = 0;
+    private bool _ultiIsAvailiable = false;
+
     private void Start()
+    {
+        InitializePlayer();
+        InitializeObjectPool();
+        SubscribeToEvents();
+    }
+
+    private void InitializeObjectPool()
+    {
+        GameObject poolObject = new GameObject("ObjectPool");
+        ObjectPool objectPool = poolObject.AddComponent<ObjectPool>();
+        objectPool.Initialize(_projectilePrefab, _poolSize);
+
+        EventManager.Instance.OnAttack += objectPool.ProvideProjectile;
+    }
+
+    private void InitializePlayer()
     {
         PlayerController playerController = FindObjectOfType<PlayerController>();
         Transform playerTransform = playerController.transform;
@@ -22,5 +41,33 @@ public class GameInitializer : MonoBehaviour
 
 
         playerController.Initialize(movementHandler, cameraRotationHandler, inputHandler, animatorUpdater);
+    }
+
+    private void SubscribeToEvents()
+    {
+        EventManager.Instance.OnEnemyHit += IncrementHitCount;
+        EventManager.Instance.OnSuperAbilityUse += UseSuperAbility;
+    }
+
+    private void IncrementHitCount()
+    {
+        _hitCount++;
+        Debug.Log($"Попаданий: {_hitCount}");
+
+        if (_hitCount >= 1)
+        {
+            _ultiIsAvailiable = true;
+            Debug.Log("Суперспособность доступна");
+        }
+    }
+
+    private void UseSuperAbility()
+    {
+        if (_ultiIsAvailiable)
+        {   
+            Debug.Log("Суперспособность активирована");
+            _ultiIsAvailiable = false;
+            _hitCount = 0;
+        }
     }
 }

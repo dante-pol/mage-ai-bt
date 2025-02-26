@@ -9,6 +9,7 @@ public class ProjectileBehaviour : MonoBehaviour
     private Vector3 startingPosition;
     private ObjectPool objectPool;
 
+
     public void SetObjectPool(ObjectPool pool)
     {
         objectPool = pool;
@@ -30,9 +31,21 @@ public class ProjectileBehaviour : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        ReturnToPool();
+        Debug.Log("Попал по врагу");
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Попал по врагу");
+            EventManager.Instance.TriggerHitEnemy();
+            ReturnToPool();
+        }
+    }
+
+    private void OnEnable()
+    {
+        traveledDistance = 0f;
+        startingPosition = transform.position;
     }
 
     private void ReturnToPool()

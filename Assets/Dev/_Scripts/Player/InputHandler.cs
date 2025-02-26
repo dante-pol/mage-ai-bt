@@ -38,12 +38,23 @@ public class InputHandler : IInputHandler
         {
             _isSprinting = false;
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log("Клавиша Q нажата");
+            EventManager.Instance.UseSuperAbility();
+        }
     }
 
     private void StartAttack()
     {
         _isAttacking = true;
-        EventManager.Instance.TriggerAttack(_animator.transform.position, _animator.transform.forward);
+
+        Camera mainCamera = Camera.main;
+
+        Vector3 position = mainCamera.transform.position + mainCamera.transform.forward + new Vector3(1.25f,0,0);
+        Vector3 direction = mainCamera.transform.forward;
+
+        EventManager.Instance.TriggerAttack(position, direction);
     }
 
     private void EndAttack()
