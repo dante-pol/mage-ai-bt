@@ -6,7 +6,7 @@ namespace Root.Tests
     public class PlayerControllerTests : MonoBehaviour
     {
         [Range(0, 20)]
-        public float SpeedMove = 2;
+        public float SpeedMove = 5;
 
         private CharacterController _controller;
 

@@ -1,18 +1,22 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Root
 {
 
-
     [RequireComponent(typeof(NavMeshAgent))]
     public class Agent : MonoBehaviour
     {
         public bool IsLife { get; private set; }
 
-        public bool IsZombi {  get; private set; }
+        public bool IsZombie { get; private set; }
 
         public float HeatPoint = 1;
+
+        public bool IsAlone => _commandCenter.IsOneAgent;
+
+        public AgentCommandCenter _commandCenter;
 
         public AgentMotion Motion;
 
@@ -20,15 +24,17 @@ namespace Root
 
         public AgentEyes Eyes;
 
-        private Brain _brain;
-
         public AgentAnimator Animator;
+
+        public AgentEscape Escape;
+
+        private Brain _brain;
 
         private void Awake()
         {
             IsLife = true;
 
-            IsZombi = false;
+            IsZombie = false;
 
             var agent = GetComponent<NavMeshAgent>();
 
@@ -40,7 +46,9 @@ namespace Root
 
             Animator = new AgentAnimator(animator);
 
-            Eyes.SetTarget(EntitiesBroker.Player);
+            Escape = new AgentEscape(Motion);
+
+            Eyes.SetSearchTarget(EntitiesBroker.Player);
 
             _brain = new Brain(this);
         }
@@ -54,43 +62,5 @@ namespace Root
             _brain.Update();
 
         }
-
-        private void OnGUI()
-        {
-            GUILayout.BeginVertical();
-
-
-            // Создаем и настраиваем стиль для меток
-            GUIStyle labelStyle = new GUIStyle(GUI.skin.label)
-            {
-                fontSize = 36 // Увеличенный размер шрифта
-            };
-            labelStyle.normal.textColor = Color.black;  // Изменяем цвет текста
-
-            // Применяем стиль при отрисовке меток
-            GUILayout.Label($"Heat Point: {HeatPoint}", labelStyle);
-
-            if (GUILayout.Button("Up Heat Point"))
-            {
-                HeatPoint = 100;
-            }
-
-            if (GUILayout.Button("Low Heat Point"))
-            {
-                HeatPoint = 19;
-            }
-
-            if (GUILayout.Button("Spawn Agent"))
-            {
-                transform.position = Vector3.zero;
-            }
-
-            GUILayout.EndVertical();
-        }
-    }
-
-    public class AgentAttacker
-    {
-
     }
 }

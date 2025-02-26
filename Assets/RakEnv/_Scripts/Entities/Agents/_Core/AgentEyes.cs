@@ -23,25 +23,27 @@ namespace Root
 
         public void Update()
         {
+            Reset();
+
             if (IsFreeze) return;
 
             Detecting();
         }
 
-        public void SetTarget(Transform target)
+        public void SetSearchTarget(Transform target)
             => _targetDetect = target;
+
+        public void ClearSearchTarget()
+            => _targetDetect = null;
+
+        private void Reset()
+            => IsDetect = false;
 
         private void Detecting()
         {
-            Debug.Log("Kara");
-
-            IsDetect = false;
-
             if (_targetDetect == null) return;
 
-            Debug.Log("Kara2");
-
-            Debug.DrawLine(_agent.position, (_targetDetect.position - _agent.position).normalized * 20, Color.red);
+            Debug.DrawRay(_agent.position, ((_targetDetect.position - _agent.position)).normalized * 20, Color.red);
 
             if (Vector3.Distance(_agent.position, _targetDetect.position) < 20)
             {

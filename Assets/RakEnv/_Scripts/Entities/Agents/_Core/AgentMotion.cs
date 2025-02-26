@@ -12,8 +12,12 @@ namespace Root
 
         private Transform _target;
 
-        public AgentMotion(NavMeshAgent agent) 
-            => _agent = agent;
+        public AgentMotion(NavMeshAgent agent)
+        {
+            _agent = agent;
+
+            _agent.stoppingDistance = 2.0f;
+        }
 
         public void Update()
         {
