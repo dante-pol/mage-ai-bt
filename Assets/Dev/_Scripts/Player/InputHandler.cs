@@ -5,6 +5,7 @@ public class InputHandler : IInputHandler
     private Animator _animator;
     private bool _isAttacking;
     private bool _isJumping;
+    private bool _isSprinting;
 
     public InputHandler(Animator animator)
     {
@@ -28,6 +29,14 @@ public class InputHandler : IInputHandler
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _isSprinting = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            _isSprinting = false;
         }
     }
 
@@ -57,5 +66,6 @@ public class InputHandler : IInputHandler
 
     public bool IsAttacking => _isAttacking;
     public bool IsJumpPressed => _isJumping;
+    public bool IsSprinting => _isSprinting;
 
 }

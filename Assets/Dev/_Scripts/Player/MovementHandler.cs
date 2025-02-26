@@ -4,6 +4,8 @@ public class MovementHandler : IMovementHandler
 {
     private CharacterController _characterController;
     private float _moveSpeed = 5f;
+    private float _runSpeed = 10f;
+    private float _currentSpeed;
     private float _jumpForce = 6f;
     private float _gravity = -15f;
     private float _verticalVelocity;
@@ -13,13 +15,16 @@ public class MovementHandler : IMovementHandler
     {
         _characterController = characterController;
         _inputHandler = inputHandler;
+        _currentSpeed = _moveSpeed;
     }
 
     public void HandleMovement()
     {
+        _currentSpeed = _inputHandler.IsSprinting ? _runSpeed : _moveSpeed;
+
         Vector3 moveDirection = GetMoveDirection();
         moveDirection = _characterController.transform.TransformDirection(moveDirection);
-        moveDirection *= _moveSpeed;
+        moveDirection *= _currentSpeed;
 
         HandleJumpAndGravity(ref moveDirection);
 
