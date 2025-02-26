@@ -1,5 +1,4 @@
 ﻿using Root.Core.BT;
-using System;
 using System.Collections.Generic;
 
 namespace Root
