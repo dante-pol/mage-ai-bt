@@ -1,8 +1,64 @@
-﻿using Root.Core.BT;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Root
 {
+
+    public class ZombieAnimatorStrategy : IAgentAnimatorStrategy
+    {
+        public void SetBaseAttack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetDeath()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetIdle()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetRun()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetWalk()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
+    public class BaseAnimatorStrategy : IAgentAnimatorStrategy
+    {
+        public void SetBaseAttack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetDeath()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetIdle()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetRun()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetWalk()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
     public class AgentAnimator
     {
         private readonly int SpeedHash = Animator.StringToHash("Speed");
@@ -14,10 +70,10 @@ namespace Root
 
         public bool IsAttacking => _stateMachine.GetBool(BaseAttackHash);
 
-        public AgentAnimator(Animator animator) 
+        public AgentAnimator(Animator animator)
             => _stateMachine = animator;
 
-        public void SetIdle() 
+        public void SetIdle()
             => _stateMachine.SetFloat(SpeedHash, 0.5f);
 
         public void SetWalk()

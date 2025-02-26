@@ -6,42 +6,44 @@ namespace Root
     public class AgentMotion
     {
         public bool IsFreeze { get; set; }
+        public bool HasReachedTarget { get; private set; }
 
-        public bool IsArriveToTarget { get; private set; }
-
-        private NavMeshAgent _agent;
+        private readonly NavMeshAgent _agent;
 
         private Transform _target;
 
-        public AgentMotion(NavMeshAgent agent)
-        {
-            _agent = agent;
-        }
+        public AgentMotion(NavMeshAgent agent) 
+            => _agent = agent;
 
         public void Update()
         {
-            IsArriveToTarget = false;
+            HasReachedTarget = false;
 
-            if (IsFreeze || _target == null) return;
+            if (IsFreeze) return;
 
-            if (_target != null)
-                _agent.SetDestination(_target.position);
+            if (_agent.isStopped) return;
+
+            if (_target == null) return;
+            
+            Move();
 
             if (HasReachedDestination())
-                IsArriveToTarget = true;
-
-            Debug.Log($"IsArriveToTarget: {IsArriveToTarget}");
+                HasReachedTarget = true;
         }
+
+        public void ClearTarget()
+            => _target = null;
+
+        public void SetTarget(Transform target)
+            => _target = target;
+
+        public void SetMotionLock(bool value)
+            => _agent.isStopped = value;
+
+        private void Move() 
+            => _agent.SetDestination(_target.position);
 
         private bool HasReachedDestination()
             => !_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance;
-
-        public void SendToTarget(Transform target) 
-            => _target = target;
-
-        public void Stop()
-        {
-
-        }
     }
 }

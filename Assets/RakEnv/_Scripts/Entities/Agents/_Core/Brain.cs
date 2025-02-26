@@ -35,7 +35,7 @@ namespace Root
                 idleAction
             });
 
-            var isDetectPlayerCondition = new ConditionNode(() => _agent.Eyes.IsDetect && !_agent.Motion.IsArriveToTarget);
+            var isDetectPlayerCondition = new ConditionNode(() => _agent.Eyes.IsDetect && !_agent.Motion.HasReachedTarget);
 
             var goToPlayerAction = new ActionNode(GoToPlayer);
 
@@ -45,7 +45,7 @@ namespace Root
                 goToPlayerAction
             });
 
-            var hasReachPlayerCondition = new ConditionNode(() => _agent.Motion.IsArriveToTarget);
+            var hasReachPlayerCondition = new ConditionNode(() => _agent.Motion.HasReachedTarget);
 
             var attackPlayerAction = new ActionNode(AttackToPlayer);
 
@@ -82,9 +82,9 @@ namespace Root
 
         private NodeStatus GoToPlayer()
         {
-            _agent.Motion.SendToTarget(_agent.EntitiesBroker.Player);
+            _agent.Motion.SetTarget(_agent.EntitiesBroker.Player);
 
-            return _agent.Motion.IsArriveToTarget ? NodeStatus.SUCCESS : NodeStatus.RUNNING;
+            return _agent.Motion.HasReachedTarget ? NodeStatus.SUCCESS : NodeStatus.RUNNING;
         }
 
         private NodeStatus IdleAction()

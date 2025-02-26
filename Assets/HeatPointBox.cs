@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Root
+namespace Root.Tests
 {
     public class HeatPointBox : MonoBehaviour
     {
