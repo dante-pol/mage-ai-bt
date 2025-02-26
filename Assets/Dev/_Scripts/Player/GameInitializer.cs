@@ -7,30 +7,19 @@ public class GameInitializer : MonoBehaviour
 
     private void Start()
     {
-
-        ObjectPool objectPool = new GameObject("ObjectPool").AddComponent<ObjectPool>();
-        objectPool.Initialize(_projectilePrefab, _poolSize);
-
         PlayerController playerController = FindObjectOfType<PlayerController>();
-        if (playerController == null)
-        {
-            Debug.LogError("PlayerController не найден!");
-            return;
-        }
+        Transform playerTransform = playerController.transform;
+        Transform cameraPivot = playerTransform.Find("Head");
 
         CharacterController characterController = playerController.GetComponent<CharacterController>();
         Animator animator = playerController.GetComponent<Animator>();
 
-        if (characterController == null || animator == null)
-        {
-            Debug.LogError("CharacterController или Animator не найдены!");
-            return;
-        }
 
-        IMovementHandler movementHandler = new MovementHandler(characterController);
-        ICameraRotationHandler cameraRotationHandler = new CameraRotationHandler(playerController.transform);
         IInputHandler inputHandler = new InputHandler(animator);
+        IMovementHandler movementHandler = new MovementHandler(characterController, inputHandler);
+        ICameraRotationHandler cameraRotationHandler = new CameraRotationHandler(playerTransform, cameraPivot);
         IAnimatorUpdater animatorUpdater = new AnimatorUpdater(animator, movementHandler, inputHandler);
+
 
         playerController.Initialize(movementHandler, cameraRotationHandler, inputHandler, animatorUpdater);
     }

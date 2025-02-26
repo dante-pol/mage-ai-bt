@@ -4,6 +4,7 @@ public class InputHandler : IInputHandler
 {
     private Animator _animator;
     private bool _isAttacking;
+    private bool _isJumping;
 
     public InputHandler(Animator animator)
     {
@@ -24,6 +25,10 @@ public class InputHandler : IInputHandler
         {
             EndAttack();
         }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
     }
 
     private void StartAttack()
@@ -37,5 +42,17 @@ public class InputHandler : IInputHandler
         _isAttacking = false;
     }
 
+    private void Jump()
+    {
+        _isJumping = true;
+    }
+
+    private void ResetJump()
+    {
+        _isJumping = false;
+    }
+
     public bool IsAttacking => _isAttacking;
+    public bool IsJumpPressed => _isJumping;
+
 }
