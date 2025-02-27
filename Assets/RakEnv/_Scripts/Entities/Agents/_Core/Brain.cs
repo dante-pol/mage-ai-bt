@@ -176,11 +176,14 @@ namespace Root
         {
             var hasReachPlayerCondition = new ConditionNode(() => _agent.Motion.HasReachedTarget);
 
+            var isNotPreviousAttackingCondition = new ConditionNode(() => !_agent.Animator.IsAttacking);
+
             var attackPlayerAction = new ActionNode(AttackToPlayer);
 
             var attackToPlayerScenario = new SequenceNode(new List<ABTNode>
             {
                 hasReachPlayerCondition,
+                isNotPreviousAttackingCondition,
                 attackPlayerAction
             });
 
@@ -210,6 +213,8 @@ namespace Root
         private NodeStatus AttackToPlayer()
         {
             _agent.Animator.SetBaseAttack();
+
+            _agent.Motion.SetMotionLock(true);
 
             return _agent.Animator.IsAttacking ? NodeStatus.RUNNING : NodeStatus.SUCCESS; 
         }

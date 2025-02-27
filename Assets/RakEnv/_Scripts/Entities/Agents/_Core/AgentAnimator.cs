@@ -66,9 +66,8 @@ namespace Root
         private readonly int BaseAttackHash = Animator.StringToHash("BaseAttack");
 
         private readonly Animator _stateMachine;
-        private Animator animator;
 
-        public bool IsAttacking => _stateMachine.GetBool(BaseAttackHash);
+        public bool IsAttacking { get; private set; } = false;
 
         public AgentAnimator(Animator animator)
             => _stateMachine = animator;
@@ -86,6 +85,13 @@ namespace Root
             => _stateMachine.SetTrigger(DeathHash);
 
         public void SetBaseAttack()
-            => _stateMachine.SetTrigger(BaseAttackHash);
+        {
+            IsAttacking = true;
+
+            _stateMachine.SetTrigger(BaseAttackHash);
+        }
+
+        public void EndAttack()
+            => IsAttacking = false;
     }
 }

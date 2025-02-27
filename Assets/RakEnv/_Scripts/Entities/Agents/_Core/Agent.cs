@@ -5,6 +5,7 @@ using UnityEngine.AI;
 namespace Root
 {
 
+
     [RequireComponent(typeof(NavMeshAgent))]
     public class Agent : MonoBehaviour
     {
@@ -60,6 +61,8 @@ namespace Root
             Eyes.Update();
 
             _brain.Update();
+
+            Debug.Log($"Animator.IsAttacking: {Animator.IsAttacking}");
 
         }
     }
