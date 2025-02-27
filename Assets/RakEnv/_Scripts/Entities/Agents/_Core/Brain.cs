@@ -1,4 +1,5 @@
 ﻿using Root.Core.BT;
+using System;
 using System.Collections.Generic;
 
 namespace Root
@@ -22,6 +23,10 @@ namespace Root
             });
 
         }
+
+        public void Update()
+            => _root.Tick();
+
 
         public SequenceNode BuildRetreatScenario()
         {
@@ -143,14 +148,25 @@ namespace Root
 
         public SequenceNode BuildGoToPlayerScenario()
         {
-            var isDetectPlayerCondition = new ConditionNode(() => _agent.Eyes.IsDetect && !_agent.Motion.HasReachedTarget);
+            var isDetectPlayerCondition = new ConditionNode(() => _agent.Eyes.IsDetect);
+
+            var hasReachedPlayerCondition = new ConditionNode(() => !_agent.Motion.HasReachedTarget);
+
+            var isNotAttackingCondition = new ConditionNode(() => !_agent.Animator.IsAttacking);
 
             var goToPlayerAction = new ActionNode(GoToPlayer);
+
+            var isPlayerBeatenCondition = new ConditionNode(() => _agent.HeatPoint <= 50);
+
+            var activeSuperMotionAction = new ActionNode(ActiveSuperMotion);
 
             var goToPlayerScenario = new SequenceNode(new List<ABTNode>
             {
                 isDetectPlayerCondition,
-                goToPlayerAction
+                hasReachedPlayerCondition,
+                isNotAttackingCondition,
+                goToPlayerAction,
+                isPlayerBeatenCondition
             });
             
             return goToPlayerScenario;
@@ -218,8 +234,9 @@ namespace Root
             return NodeStatus.SUCCESS;
         }
 
-        public void Update() 
-            => _root.Tick();
-
+        private NodeStatus ActiveSuperMotion()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

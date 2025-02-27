@@ -12,7 +12,7 @@ namespace Root
 
         public bool IsZombie { get; private set; }
 
-        public float HeatPoint = 1;
+        public float HeatPoint = 100;
 
         public bool IsAlone => _commandCenter.IsOneAgent;
 
