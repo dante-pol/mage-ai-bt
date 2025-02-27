@@ -1,13 +1,11 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Root
 {
 
-
     [RequireComponent(typeof(NavMeshAgent))]
-    public class Agent : MonoBehaviour
+    public class Agent : MonoBehaviour, IEntityAttacked
     {
         public bool IsLife { get; private set; }
 
@@ -65,5 +63,20 @@ namespace Root
             Debug.Log($"Animator.IsAttacking: {Animator.IsAttacking}");
 
         }
+
+        public void TakeAttack(IAttackProcess attackProcess)
+        {
+            if (attackProcess == null) return;
+
+            HeatPoint -= attackProcess.Damage;
+
+            if (HeatPoint <= 0)
+                HeatPoint = 0;
+
+            IsLife = false;
+        }
+
+        public void StartZombie()
+            => IsZombie = true;
     }
 }
