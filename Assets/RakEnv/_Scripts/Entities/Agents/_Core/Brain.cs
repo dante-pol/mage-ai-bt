@@ -127,11 +127,14 @@ namespace Root
         {
             var isNotDetectPlayerCondition = new ConditionNode(() => !_agent.Eyes.IsDetect);
 
+            var hasActieEyesCondition = new ConditionNode(() => !_agent.Eyes.IsFreeze);
+
             var idleAction = new ActionNode(IdleAction);
 
             var idleScenario = new SequenceNode(new List<ABTNode>
             {
                 isNotDetectPlayerCondition,
+                hasActieEyesCondition,
                 idleAction
             });
 
