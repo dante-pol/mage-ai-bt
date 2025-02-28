@@ -6,6 +6,8 @@ namespace Root
     {
         public bool IsSelect = false;
 
+        public bool HasEscape { get; set; }
+
         private AgentMotion _motion;
 
         public Transform[] _points;
@@ -24,6 +26,8 @@ namespace Root
             {
                 _points[i] = result[i].transform;
             }
+
+            HasEscape = false;
         }
 
         public void Run()
@@ -33,7 +37,7 @@ namespace Root
 
         public void ChooseEscapePoint()
         {
-            int indexRandom = UnityEngine.Random.Range(0, _points.Length-1);
+            int indexRandom = Random.Range(0, _points.Length-1);
 
             _escapePoint = _points[indexRandom];
 

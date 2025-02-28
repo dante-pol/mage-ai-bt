@@ -1,6 +1,8 @@
 ﻿using Root.Core.BT;
 using System;
 using System.Collections.Generic;
+using UnityEditorInternal;
+using UnityEngine;
 
 namespace Root
 {
@@ -36,6 +38,13 @@ namespace Root
             var zombieProcessAnimActive = new ActionNode(() =>
             {
                 _agent.Animator.SetTurnIntoZombie();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var unLockEyeAction = new ActionNode(() =>
+            {
+                _agent.Eyes.IsFreeze = false;
 
                 return NodeStatus.SUCCESS;
             });
@@ -130,6 +139,8 @@ namespace Root
                 {
                     _agent.Escape.ChooseEscapePoint();
 
+                    Debug.Log("Choose Escape Point");
+
                     return NodeStatus.SUCCESS;
                 })
             });
@@ -139,9 +150,15 @@ namespace Root
         {
             var isSelectEscapePoint = new ConditionNode(() => _agent.Escape.IsSelect);
 
+            var isNotAttackingCondition =  new ConditionNode(() => !_agent.Animator.IsAttacking);
+
+            var hasNotEscapeCondition = new ConditionNode(() => !_agent.Escape.HasEscape);
+
             var goToRescuePointAction = new ActionNode(() => 
             {
                 _agent.Escape.Run();
+
+                _agent.Motion.SetMotionLock(false);
 
                 _agent.Animator.SetRun();
 
@@ -152,6 +169,10 @@ namespace Root
 
             var stopNearRescuePointAction = new ActionNode(() =>
             {
+                _agent.Eyes.IsFreeze = true;
+
+                _agent.Escape.HasEscape = true;
+
                 _agent.Motion.SetMotionLock(true);
 
                 _agent.Animator.SetDeath();
@@ -161,7 +182,9 @@ namespace Root
 
             return new SequenceNode(new List<ABTNode>
             {
+                isNotAttackingCondition,
                 isSelectEscapePoint,
+                hasNotEscapeCondition,
                 goToRescuePointAction,
                 hasReachedRescuePointCondition,
                 stopNearRescuePointAction
