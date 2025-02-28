@@ -17,13 +17,37 @@ namespace Root
             _root = new SelectorNode(new List<ABTNode>
             {
                 BuildLifeScenario(),
-                BuildDeathScenario()
+                BuildDeathScenario(),
+                BuildZombieProcessScenario()
             });
 
         }
 
         public void Update()
             => _root.Tick();
+
+
+        private SequenceNode BuildZombieProcessScenario()
+        {
+            var hasTurningZombieCondition = new ConditionNode(() => _agent.ZombieMode.IsStartingProcessZombie);
+
+            var isNotActiveZombieProcessAnimCondition = new ConditionNode(() => !_agent.Animator.IsTurningZombie);
+
+            var zombieProcessAnimActive = new ActionNode(() =>
+            {
+                _agent.Animator.SetTurnIntoZombie();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            return new SequenceNode(new List<ABTNode>
+            {
+                hasTurningZombieCondition,
+                isNotActiveZombieProcessAnimCondition,
+                zombieProcessAnimActive
+            });
+        }
+
 
         private SequenceNode BuildDeathScenario()
         {
@@ -47,9 +71,18 @@ namespace Root
 
             var deathAnimationActiveAction = new ActionNode(() =>
             {
+                _agent.Animator.SetIdle();
+
                 _agent.Animator.SetDeath();
 
                 _agent.HasDeadYet = true;
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var tryBeZombieAction = new ActionNode(() =>
+            {
+                _agent.ZombieMode.TryBeZombie();
 
                 return NodeStatus.SUCCESS;
             });
@@ -60,7 +93,8 @@ namespace Root
                 hasNotDeadYet,
                 motionBlockAction,
                 visionBlockAction,
-                deathAnimationActiveAction
+                deathAnimationActiveAction,
+                tryBeZombieAction
             });
         }
 
