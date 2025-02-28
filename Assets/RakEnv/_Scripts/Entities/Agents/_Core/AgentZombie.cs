@@ -9,7 +9,7 @@ namespace Root
         public bool IsStartingProcessZombie { get; private set; }
 
         public readonly AgentAnimator _animator;
-
+        
         private readonly float _maxLimit;
 
         private readonly float _minLimit;

@@ -10,10 +10,16 @@ namespace Root
             => _agent = GetComponentInParent<Agent>();
 
         public void OnBaseAttackAnimationEvent()
-            => _agent.Animator.EndAttack();
+        {
+            Debug.Log("i am nooob2!");
+
+            _agent.Animator.EndAttack();
+        }
 
         public void OnRisingFromDead()
         {
+            Debug.Log("i am nooob!");
+
             _agent.Animator.EndTurningZombie();
 
             _agent.ZombieMode.HandlerEndTurningIntoZombie();

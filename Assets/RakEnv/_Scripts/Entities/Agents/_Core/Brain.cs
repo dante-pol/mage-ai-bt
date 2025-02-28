@@ -1,7 +1,6 @@
 ﻿using Root.Core.BT;
 using System;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace Root
@@ -53,7 +52,8 @@ namespace Root
             {
                 hasTurningZombieCondition,
                 isNotActiveZombieProcessAnimCondition,
-                zombieProcessAnimActive
+                zombieProcessAnimActive,
+                unLockEyeAction
             });
         }
 
@@ -84,13 +84,13 @@ namespace Root
 
                 _agent.Animator.SetDeath();
 
-                _agent.HasDeadYet = true;
-
                 return NodeStatus.SUCCESS;
             });
 
             var tryBeZombieAction = new ActionNode(() =>
             {
+                _agent.HasDeadYet = true;
+
                 _agent.ZombieMode.TryBeZombie();
 
                 return NodeStatus.SUCCESS;
@@ -198,6 +198,7 @@ namespace Root
                 BuildRetreatScenario(),
                 new SequenceNode(new List<ABTNode>
                 {
+                    new ActionNode(() => { Debug.Log("Life Selector"); return NodeStatus.SUCCESS; }),
                     new ConditionNode(() => !_agent.IsAlone),
                     BuildActiveLifeScenario(),
                 })
@@ -231,7 +232,8 @@ namespace Root
             {
                 isNotDetectPlayerCondition,
                 hasActieEyesCondition,
-                idleAction
+                idleAction,
+                new ActionNode(() => { Debug.Log("Idle Scenario"); return NodeStatus.SUCCESS; })
             });
 
             return idleScenario;
@@ -257,7 +259,8 @@ namespace Root
                 hasReachedPlayerCondition,
                 isNotAttackingCondition,
                 goToPlayerAction,
-                isPlayerBeatenCondition
+                isPlayerBeatenCondition,
+                new ActionNode(() => { Debug.Log("Go To Player Scenario"); return NodeStatus.SUCCESS; })
             });
             
             return goToPlayerScenario;
@@ -275,7 +278,8 @@ namespace Root
             {
                 hasReachPlayerCondition,
                 isNotPreviousAttackingCondition,
-                attackPlayerAction
+                attackPlayerAction,
+                new ActionNode(() => { Debug.Log("Attack To Player Scenario"); return NodeStatus.SUCCESS; })
             });
 
             return attackToPlayerScenario;
@@ -287,6 +291,7 @@ namespace Root
 
             var lifeScenario = new SequenceNode(new List<ABTNode>
             {
+                new ActionNode(() => { Debug.Log("Life Scenario"); return NodeStatus.SUCCESS; }),
                 isLifeCondition,
                 BuildLifeSelector()
             });

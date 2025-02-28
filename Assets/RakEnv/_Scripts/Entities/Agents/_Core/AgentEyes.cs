@@ -23,6 +23,8 @@ namespace Root
 
         public void Update()
         {
+            Debug.Log($"Is Freeze {IsFreeze}");
+
             Reset();
 
             if (IsFreeze) return;
