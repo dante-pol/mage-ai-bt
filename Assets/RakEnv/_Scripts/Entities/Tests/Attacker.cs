@@ -12,6 +12,8 @@ namespace Root.Tests
 
             if (entity == null) return;
 
+            Debug.Log(other.gameObject.name);
+
             entity.TakeAttack(new AttackProcess(_damage));
         }
     }
