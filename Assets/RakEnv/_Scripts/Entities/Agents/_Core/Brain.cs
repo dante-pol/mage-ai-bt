@@ -19,7 +19,8 @@ namespace Root
 
             _root = new SelectorNode(new List<ABTNode>
             {
-                BuildLifeScenario()
+                BuildLifeScenario(),
+                BuildDeathScenario()
             });
 
         }
@@ -27,12 +28,48 @@ namespace Root
         public void Update()
             => _root.Tick();
 
+        private SequenceNode BuildDeathScenario()
+        {
+            var isDeathCondition = new ConditionNode(() =>  !_agent.IsLife);
+
+            var hasNotDeadYet = new ConditionNode(() => !_agent.HasDeadYet);
+
+            var motionBlockAction = new ActionNode(() =>
+            {
+                _agent.Motion.SetMotionLock(true);
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var visionBlockAction = new ActionNode(() =>
+            {
+                _agent.Eyes.IsFreeze = true;
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var deathAnimationActiveAction = new ActionNode(() =>
+            {
+                _agent.Animator.SetDeath();
+
+                _agent.HasDeadYet = true;
+
+                return NodeStatus.SUCCESS;
+            });
+
+            return new SequenceNode(new List<ABTNode>
+            {
+                isDeathCondition,
+                hasNotDeadYet,
+                motionBlockAction,
+                visionBlockAction,
+                deathAnimationActiveAction
+            });
+        }
 
         public SequenceNode BuildRetreatScenario()
         {
             var isAloneAgentCondition = new ConditionNode(() => _agent.IsAlone);
-
-            
 
             var retreatScenario = new SequenceNode(new List<ABTNode>
             {

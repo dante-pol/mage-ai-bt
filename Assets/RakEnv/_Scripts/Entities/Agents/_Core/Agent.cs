@@ -11,6 +11,8 @@ namespace Root
 
         public bool IsZombie { get; private set; }
 
+        public bool HasDeadYet { get; set; }
+
         public float HeatPoint = 100;
 
         public bool IsAlone => _commandCenter.IsOneAgent;
@@ -34,6 +36,8 @@ namespace Root
             IsLife = true;
 
             IsZombie = false;
+
+            HasDeadYet = false;
 
             var agent = GetComponent<NavMeshAgent>();
 
