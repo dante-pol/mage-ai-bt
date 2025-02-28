@@ -5,6 +5,8 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private int _poolSize = 20;
 
+    [SerializeField] private Transform _shootPoint;
+
     private int _hitCount = 0;
     private bool _ultiIsAvailiable = false;
 
@@ -29,9 +31,9 @@ public class GameInitializer : MonoBehaviour
         PlayerController playerController = FindObjectOfType<PlayerController>();
         Transform playerTransform = playerController.transform;
         Transform cameraPivot = playerTransform.Find("Head");
-
+        
         CharacterController characterController = playerController.GetComponent<CharacterController>();
-        Animator animator = playerController.GetComponent<Animator>();
+        Animator animator = playerController.GetComponentInChildren<Animator>();
 
 
         IInputHandler inputHandler = new InputHandler(animator);
@@ -39,7 +41,8 @@ public class GameInitializer : MonoBehaviour
         ICameraRotationHandler cameraRotationHandler = new CameraRotationHandler(playerTransform, cameraPivot);
         IAnimatorUpdater animatorUpdater = new AnimatorUpdater(animator, movementHandler, inputHandler);
 
-
+        InputHandlerAdapter adapter = playerController.GetComponentInChildren<InputHandlerAdapter>();
+        adapter.Setup(_shootPoint, (InputHandler)inputHandler);
         playerController.Initialize(movementHandler, cameraRotationHandler, inputHandler, animatorUpdater);
     }
 

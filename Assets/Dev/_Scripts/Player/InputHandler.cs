@@ -18,26 +18,32 @@ public class InputHandler : IInputHandler
         {
             EventManager.Instance.ToggleCamera();
         }
+
         if (Input.GetMouseButtonDown(0))
         {
             StartAttack();
         }
+
         if (_isAttacking && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !_animator.IsInTransition(0))
         {
             EndAttack();
         }
-        if(Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             _isSprinting = true;
         }
+
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             _isSprinting = false;
         }
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Debug.Log("Клавиша Q нажата");
@@ -48,13 +54,6 @@ public class InputHandler : IInputHandler
     private void StartAttack()
     {
         _isAttacking = true;
-
-        Camera mainCamera = Camera.main;
-
-        Vector3 position = mainCamera.transform.position + mainCamera.transform.forward + new Vector3(1.25f,0,0);
-        Vector3 direction = mainCamera.transform.forward;
-
-        EventManager.Instance.TriggerAttack(position, direction);
     }
 
     private void EndAttack()
@@ -78,5 +77,4 @@ public class InputHandler : IInputHandler
     public bool IsAttacking => _isAttacking;
     public bool IsJumpPressed => _isJumping;
     public bool IsSprinting => _isSprinting;
-
 }
