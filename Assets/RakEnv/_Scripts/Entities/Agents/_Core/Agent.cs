@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,8 +10,6 @@ namespace Root
     public class Agent : MonoBehaviour, IEntityAttacked
     {
         public bool IsLife { get; private set; }
-
-        public bool IsZombie { get; private set; }
 
         public bool HasDeadYet { get; set; }
 
@@ -29,13 +29,15 @@ namespace Root
 
         public AgentEscape Escape;
 
+        public AgentZombie ZombieMode;
+
         private Brain _brain;
+
+        [SerializeField] private AnimatorOverrideController _overrideController;
 
         private void Awake()
         {
             IsLife = true;
-
-            IsZombie = false;
 
             HasDeadYet = false;
 
@@ -47,9 +49,11 @@ namespace Root
 
             Eyes = new AgentEyes(transform);
 
-            Animator = new AgentAnimator(animator);
+            Animator = new AgentAnimator(animator, _overrideController);
 
             Escape = new AgentEscape(Motion);
+
+            ZombieMode = new AgentZombie(Animator);
 
             Eyes.SetSearchTarget(EntitiesBroker.Player);
 
@@ -79,8 +83,5 @@ namespace Root
 
             IsLife = false;
         }
-
-        public void StartZombie()
-            => IsZombie = true;
     }
 }

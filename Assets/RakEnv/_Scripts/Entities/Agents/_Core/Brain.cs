@@ -14,9 +14,6 @@ namespace Root
         {
             _agent = agent;
 
-            var isZombiCondition = new ConditionNode(() => _agent.IsZombie);
-
-
             _root = new SelectorNode(new List<ABTNode>
             {
                 BuildLifeScenario(),
@@ -229,7 +226,7 @@ namespace Root
 
         public SequenceNode BuildLifeScenario()
         {
-            var isLifeCondition = new ConditionNode(() => _agent.IsLife);
+            var isLifeCondition = new ConditionNode(() => _agent.IsLife || _agent.ZombieMode.IsZombie);
 
             var lifeScenario = new SequenceNode(new List<ABTNode>
             {

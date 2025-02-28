@@ -6,10 +6,17 @@ namespace Root
     {
         private Agent _agent;
 
-        private void Start() 
+        private void Start()
             => _agent = GetComponentInParent<Agent>();
 
         public void OnBaseAttackAnimationEvent()
             => _agent.Animator.EndAttack();
+
+        public void OnRisingFromDead()
+        {
+            _agent.Animator.EndTurningZombie();
+
+            _agent.ZombieMode.HandlerEndTurningIntoZombie();
+        }
     }
 }

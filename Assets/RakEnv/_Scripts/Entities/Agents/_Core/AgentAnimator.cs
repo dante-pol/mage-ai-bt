@@ -2,75 +2,24 @@
 
 namespace Root
 {
-
-    public class ZombieAnimatorStrategy : IAgentAnimatorStrategy
-    {
-        public void SetBaseAttack()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void SetDeath()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void SetIdle()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void SetRun()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void SetWalk()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-
-    public class BaseAnimatorStrategy : IAgentAnimatorStrategy
-    {
-        public void SetBaseAttack()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void SetDeath()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void SetIdle()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void SetRun()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void SetWalk()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-
     public class AgentAnimator
     {
+        public bool IsAttacking { get; private set; } = false;
+        public bool IsTurningZombie { get; private set; } = false;
+
         private readonly int SpeedHash = Animator.StringToHash("Speed");
         private readonly int DeathHash = Animator.StringToHash("Death");
         private readonly int BaseAttackHash = Animator.StringToHash("BaseAttack");
+        private readonly int BeZombieHash = Animator.StringToHash("BeZombie");
 
         private readonly Animator _stateMachine;
+        private readonly AnimatorOverrideController _overrideController;
 
-        public bool IsAttacking { get; private set; } = false;
-
-        public AgentAnimator(Animator animator)
-            => _stateMachine = animator;
+        public AgentAnimator(Animator animator,AnimatorOverrideController overrideController)
+        {
+            _stateMachine = animator;
+            _overrideController = overrideController;
+        }
 
         public void SetIdle()
             => _stateMachine.SetFloat(SpeedHash, 0.5f);
@@ -91,7 +40,20 @@ namespace Root
             _stateMachine.SetTrigger(BaseAttackHash);
         }
 
+        public void SetTurnIntoZombie()
+        {
+            IsTurningZombie = true;
+
+            _stateMachine.SetTrigger(BeZombieHash);
+        }
+
         public void EndAttack()
             => IsAttacking = false;
+
+        public void EndTurningZombie()
+            => IsTurningZombie = false;
+
+        public void SetConfigForZombie()
+            => _stateMachine.runtimeAnimatorController = _overrideController;
     }
 }
