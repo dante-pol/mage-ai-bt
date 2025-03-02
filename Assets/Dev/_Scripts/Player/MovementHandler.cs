@@ -9,6 +9,7 @@ public class MovementHandler : IMovementHandler
     private float _jumpForce = 6f;
     private float _gravity = -15f;
     private float _verticalVelocity;
+    private bool _shouldJump = false;
     private IInputHandler _inputHandler;
 
     public MovementHandler(CharacterController characterController, IInputHandler inputHandler)
@@ -39,10 +40,11 @@ public class MovementHandler : IMovementHandler
         {
             _verticalVelocity = -1f;
             
-            if (_inputHandler.IsJumpPressed)
+            if (_shouldJump)
             {
                 _verticalVelocity = _jumpForce;
                 _inputHandler.ResetJump();
+                _shouldJump = false;
             }
         }
         else
@@ -60,6 +62,11 @@ public class MovementHandler : IMovementHandler
             0,
             Input.GetAxis("Vertical")
         );
+    }
+
+    public void TriggerJump()
+    {
+        _shouldJump = true;
     }
     
 }

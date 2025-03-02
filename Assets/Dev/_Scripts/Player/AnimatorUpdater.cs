@@ -22,6 +22,13 @@ public class AnimatorUpdater : IAnimatorUpdater
             _animator.SetBool("IsAttack", _inputHandler.IsAttacking);
             _animator.SetBool("IsJump", _inputHandler.IsJumpPressed);
             _animator.SetBool("IsRun", _inputHandler.IsSprinting);
+            _animator.SetBool("IsUlti", _inputHandler.IsUlti);
+
+            if (_inputHandler.JumpTriggered)
+            {
+                _animator.SetTrigger("Jump");
+                _inputHandler.ResetJumpTrigger();
+            }
         }
     }
 }

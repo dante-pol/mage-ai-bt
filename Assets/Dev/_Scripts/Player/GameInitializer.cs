@@ -42,7 +42,7 @@ public class GameInitializer : MonoBehaviour
         IAnimatorUpdater animatorUpdater = new AnimatorUpdater(animator, movementHandler, inputHandler);
 
         InputHandlerAdapter adapter = playerController.GetComponentInChildren<InputHandlerAdapter>();
-        adapter.Setup(_shootPoint, (InputHandler)inputHandler);
+        adapter.Setup(_shootPoint, (InputHandler)inputHandler, (MovementHandler)movementHandler);
         playerController.Initialize(movementHandler, cameraRotationHandler, inputHandler, animatorUpdater);
     }
 

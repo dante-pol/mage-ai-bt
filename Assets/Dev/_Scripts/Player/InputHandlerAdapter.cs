@@ -4,12 +4,14 @@ public class InputHandlerAdapter : MonoBehaviour
 {
     private Transform _shootPoint;
     private InputHandler _inputHandler;
+    private MovementHandler _movementHandler;
 
 
-    public void Setup(Transform shootPoint, InputHandler inputHandler)
+    public void Setup(Transform shootPoint, InputHandler inputHandler, MovementHandler movementHandler)
     {
         _shootPoint = shootPoint;
         _inputHandler = inputHandler;
+        _movementHandler = movementHandler;
     }
 
 
@@ -21,5 +23,10 @@ public class InputHandlerAdapter : MonoBehaviour
             Vector3 direction = mainCamera.transform.forward;
             EventManager.Instance.TriggerAttack(_shootPoint.position, direction);
         }
+    }
+
+    public void CallJump()
+    {
+        _movementHandler.TriggerJump();
     }
 }

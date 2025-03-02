@@ -4,6 +4,8 @@ public interface IInputHandler
     void ResetJump();
     bool IsAttacking { get; }
     bool IsJumpPressed { get; }
-
     bool IsSprinting { get; }
+    bool IsUlti { get; }
+    bool JumpTriggered { get; }
+    void ResetJumpTrigger();
 }

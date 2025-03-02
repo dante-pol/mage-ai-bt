@@ -3,9 +3,11 @@ using UnityEngine;
 public class InputHandler : IInputHandler
 {
     private Animator _animator;
+
     private bool _isAttacking;
     private bool _isJumping;
     private bool _isSprinting;
+    private bool _isUlti;
 
     public InputHandler(Animator animator)
     {
@@ -46,6 +48,7 @@ public class InputHandler : IInputHandler
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            _isUlti = true;
             Debug.Log("Клавиша Q нажата");
             EventManager.Instance.UseSuperAbility();
         }
@@ -65,8 +68,13 @@ public class InputHandler : IInputHandler
     {
         if (!_isJumping)
         {
-            _isJumping = true;
+            JumpTriggered = true;
         }
+    }
+
+    public void ResetJumpTrigger()
+    {
+        JumpTriggered = false;
     }
 
     public void ResetJump()
@@ -77,4 +85,6 @@ public class InputHandler : IInputHandler
     public bool IsAttacking => _isAttacking;
     public bool IsJumpPressed => _isJumping;
     public bool IsSprinting => _isSprinting;
+    public bool JumpTriggered { get; private set; }
+    public bool IsUlti => _isUlti;
 }

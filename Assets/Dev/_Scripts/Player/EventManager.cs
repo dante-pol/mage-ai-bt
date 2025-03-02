@@ -8,8 +8,8 @@ public class EventManager : MonoBehaviour
     public event Action OnToggleCamera;
     public event Action<Vector3, Vector3> OnAttack;
     public event Action OnSuperAbilityUse;
-
     public event Action OnEnemyHit;
+
 
     private void Awake()
     {
@@ -44,4 +44,5 @@ public class EventManager : MonoBehaviour
     {
         OnEnemyHit?.Invoke();
     }
+
 }
