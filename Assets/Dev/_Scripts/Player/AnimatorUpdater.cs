@@ -6,6 +6,9 @@ public class AnimatorUpdater : IAnimatorUpdater
     private IMovementHandler _movementHandler;
     private IInputHandler _inputHandler;
 
+    private float _idleTimer = 0f;
+    private const float IdleTimeThreshold = 10f;
+
     public AnimatorUpdater(Animator animator, IMovementHandler movementHandler, IInputHandler inputHandler)
     {
         _animator = animator;
@@ -18,11 +21,29 @@ public class AnimatorUpdater : IAnimatorUpdater
         if (_animator != null)
         {
             float speed = ((MovementHandler)_movementHandler).GetMoveDirection().magnitude;
+
             _animator.SetFloat("Speed", speed);
             _animator.SetBool("IsAttack", _inputHandler.IsAttacking);
             _animator.SetBool("IsJump", _inputHandler.IsJumpPressed);
             _animator.SetBool("IsRun", _inputHandler.IsSprinting);
             _animator.SetBool("IsUlti", _inputHandler.IsUlti);
+
+            bool isPlayerActive = CheckPlayerActivity(speed);
+
+            if (isPlayerActive)
+            {
+                _idleTimer = 0f;
+                _animator.SetBool("IsIdle", false);
+            }
+            else
+            {
+                _idleTimer += Time.deltaTime;
+
+                if (_idleTimer >= IdleTimeThreshold)
+                {
+                    _animator.SetBool("IsIdle", true);
+                }
+            }
 
             if (_inputHandler.JumpTriggered)
             {
@@ -30,5 +51,10 @@ public class AnimatorUpdater : IAnimatorUpdater
                 _inputHandler.ResetJumpTrigger();
             }
         }
+    }
+
+    private bool CheckPlayerActivity(float speed)
+    {
+        return speed > 0 || _inputHandler.IsJumpPressed || _inputHandler.IsAttacking || _inputHandler.IsUlti;
     }
 }
