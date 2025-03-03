@@ -1,0 +1,59 @@
+﻿using UnityEngine;
+
+namespace Root
+{
+    public class AgentAnimator
+    {
+        public bool IsAttacking { get; private set; } = false;
+        public bool IsTurningZombie { get; private set; } = false;
+
+        private readonly int SpeedHash = Animator.StringToHash("Speed");
+        private readonly int DeathHash = Animator.StringToHash("Death");
+        private readonly int BaseAttackHash = Animator.StringToHash("BaseAttack");
+        private readonly int BeZombieHash = Animator.StringToHash("BeZombie");
+
+        private readonly Animator _stateMachine;
+        private readonly AnimatorOverrideController _overrideController;
+
+        public AgentAnimator(Animator animator,AnimatorOverrideController overrideController)
+        {
+            _stateMachine = animator;
+            _overrideController = overrideController;
+        }
+
+        public void SetIdle()
+            => _stateMachine.SetFloat(SpeedHash, 0.5f);
+
+        public void SetWalk()
+            => _stateMachine.SetFloat(SpeedHash, 1.5f);
+
+        public void SetRun()
+            => _stateMachine.SetFloat(SpeedHash, 2.5f);
+
+        public void SetDeath()
+            => _stateMachine.SetTrigger(DeathHash);
+
+        public void SetBaseAttack()
+        {
+            IsAttacking = true;
+
+            _stateMachine.SetTrigger(BaseAttackHash);
+        }
+
+        public void SetTurnIntoZombie()
+        {
+            IsTurningZombie = true;
+
+            _stateMachine.SetTrigger(BeZombieHash);
+        }
+
+        public void EndAttack()
+            => IsAttacking = false;
+
+        public void EndTurningZombie()
+            => IsTurningZombie = false;
+
+        public void SetConfigForZombie()
+            => _stateMachine.runtimeAnimatorController = _overrideController;
+    }
+}
