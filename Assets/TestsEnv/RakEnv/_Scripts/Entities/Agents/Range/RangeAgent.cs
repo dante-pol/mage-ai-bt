@@ -2,7 +2,7 @@
 
 namespace Root.Core.Entities.Agents.Range
 {
-    public class RangeAgent : MonoBehaviour
+    public class RangeAgent : MonoBehaviour, IEntityAttacked
     {
         public bool IsLife { get; private set; }
 
@@ -24,11 +24,15 @@ namespace Root.Core.Entities.Agents.Range
 
         private RangeBrain _brain;
 
+        private float _heatPoint;
+
         private void Start()
         {
             IsLife = true;
 
             IsDeath = false;
+
+            _heatPoint = 2;
 
             Eyes = new AgentEyes(transform);
 
@@ -39,7 +43,6 @@ namespace Root.Core.Entities.Agents.Range
             _brain = new RangeBrain(this);
         }
 
-        #region Tests
         private void Update()
         {
             _brain.Update();
@@ -47,9 +50,18 @@ namespace Root.Core.Entities.Agents.Range
             Attacker.Update();
 
             Eyes.Update();
-
-            Debug.Log("----- Range DETECT STATUS: " + Eyes.IsDetect);
         }
-        #endregion
+
+        public void TakeAttack(IAttackProcess attackProcess)
+        {
+            _heatPoint -= attackProcess.Damage;
+
+            if (_heatPoint <= 0)
+            {
+                _heatPoint = 0;
+
+                IsLife = false;
+            }
+        }
     }
 }
