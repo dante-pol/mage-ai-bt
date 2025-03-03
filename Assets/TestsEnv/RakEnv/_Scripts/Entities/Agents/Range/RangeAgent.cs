@@ -30,7 +30,9 @@ namespace Root.Core.Entities.Agents.Range
 
             IsDeath = false;
 
-            Eyes = new AgentEyes(_player);
+            Eyes = new AgentEyes(transform);
+
+            Eyes.SetSearchTarget(_player);
 
             Attacker = new RangeAttacker(this, _player, _prefabSpellBall, _attackConfigs);
 
@@ -43,6 +45,10 @@ namespace Root.Core.Entities.Agents.Range
             _brain.Update();
 
             Attacker.Update();
+
+            Eyes.Update();
+
+            Debug.Log("----- Range DETECT STATUS: " + Eyes.IsDetect);
         }
         #endregion
     }
