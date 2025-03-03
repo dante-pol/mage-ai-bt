@@ -26,10 +26,10 @@ public class InputHandler : IInputHandler
             StartAttack();
         }
 
-        if (_isAttacking && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !_animator.IsInTransition(0))
-        {
-            EndAttack();
-        }
+        // if (_isAttacking && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !_animator.IsInTransition(0))
+        // {
+        //     EndAttack();
+        // }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -59,7 +59,7 @@ public class InputHandler : IInputHandler
         _isAttacking = true;
     }
 
-    private void EndAttack()
+    public void EndAttack()
     {
         _isAttacking = false;
     }

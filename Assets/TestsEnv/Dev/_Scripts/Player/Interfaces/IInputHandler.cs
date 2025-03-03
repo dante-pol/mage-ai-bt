@@ -8,4 +8,5 @@ public interface IInputHandler
     bool IsUlti { get; }
     bool JumpTriggered { get; }
     void ResetJumpTrigger();
+    void EndAttack();
 }
