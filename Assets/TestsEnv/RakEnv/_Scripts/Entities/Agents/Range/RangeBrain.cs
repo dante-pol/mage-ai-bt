@@ -50,7 +50,7 @@ namespace Root.Core.Entities.Agents.Range
 
             var effectAnimAction = new ActionNode(() =>
             {
-                // TODO: Activate Blue Effect use Animator
+                _agent.Animator.SetIdle();
 
                 return NodeStatus.SUCCESS;
             });

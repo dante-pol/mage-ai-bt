@@ -12,7 +12,7 @@ namespace Root.Core.Entities.Agents.Range
 
         public AgentEyes Eyes;
 
-        public RangeAnimator _animator;
+        public RangeAnimator Animator;
 
         public RangeAttacker Attacker;
 
@@ -26,6 +26,8 @@ namespace Root.Core.Entities.Agents.Range
 
         private float _heatPoint;
 
+        [SerializeField] GameObject _spellBall;
+
         private void Start()
         {
             IsLife = true;
@@ -35,6 +37,8 @@ namespace Root.Core.Entities.Agents.Range
             _heatPoint = 2;
 
             Eyes = new AgentEyes(transform);
+
+            Animator = new RangeAnimator(gameObject, _spellBall);
 
             Eyes.SetSearchTarget(_player);
 
