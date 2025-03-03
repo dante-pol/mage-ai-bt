@@ -18,9 +18,13 @@ namespace Root.Core.Entities.Agents.Range
 
         private Transform _target;
 
+        private readonly float _cooldownTime;
+
+        private float _currentCooldown;
+
         public RangeAttacker(RangeAgent range, Transform target, SpellBall prefabSpellBall, RangeAttackConfig[] attackConfigs)
         {
-            HasCooldownPassed = false;
+            HasCooldownPassed = true;
 
             _range = range;
 
@@ -32,6 +36,8 @@ namespace Root.Core.Entities.Agents.Range
             _attackConfigs = attackConfigs;
 
             _currentAttackConfig = _attackConfigs[0];
+
+            _cooldownTime = 3;
         }
 
         public void Attack()
@@ -45,6 +51,10 @@ namespace Root.Core.Entities.Agents.Range
             ball.Construct(_currentAttackConfig.Damage);
 
             ball.PushIt(toTarget);
+
+            HasCooldownPassed = false;
+
+            _currentCooldown = _cooldownTime;
         }
 
         private SpellBall CreateSpellBall()
@@ -55,8 +65,16 @@ namespace Root.Core.Entities.Agents.Range
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-                Attack();
+            if (HasCooldownPassed) return;
+
+            _currentCooldown -= Time.deltaTime;
+
+            if (_currentCooldown <= 0)
+            {
+                HasCooldownPassed = true;
+
+                _currentCooldown = 0;
+            }
         }
     }
 }
