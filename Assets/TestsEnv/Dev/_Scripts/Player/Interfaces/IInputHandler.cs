@@ -9,4 +9,5 @@ public interface IInputHandler
     bool JumpTriggered { get; }
     void ResetJumpTrigger();
     void EndAttack();
+    void ResetUlt();
 }

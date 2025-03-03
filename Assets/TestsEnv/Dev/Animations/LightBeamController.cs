@@ -7,6 +7,7 @@ public class LightBeamController : MonoBehaviour
     [SerializeField] private Transform _lightSource;
     [SerializeField] private float _beamLength = 10f;
     [SerializeField] private float _beamGrowSpeed = 5f;
+    [SerializeField] private LayerMask _enemyLayer;
 
     private bool _isBeamActive;
     private float _currentBeamLength;
@@ -38,6 +39,10 @@ public class LightBeamController : MonoBehaviour
     {
         Debug.Log("activate beam");
         _isBeamActive = !_isBeamActive;
+        if (!_isBeamActive)
+        {
+            _currentBeamLength = 0f;
+        }
     }
 
     private void Update()
@@ -55,6 +60,11 @@ public class LightBeamController : MonoBehaviour
 
         _lineRenderer.enabled = _currentBeamLength > 0f;
         UpdateBeam();
+
+        if (_isBeamActive)
+        {
+            CheckForCollisions();
+        }
     }
 
     private void UpdateBeam()
@@ -67,5 +77,21 @@ public class LightBeamController : MonoBehaviour
 
         _lineRenderer.SetPosition(0, _lightSource.position);
         _lineRenderer.SetPosition(1, _lightSource.position + _lightSource.forward * _currentBeamLength);
+    }
+
+    private void CheckForCollisions()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(_lightSource.position, _lightSource.forward, out hit, _beamLength, _enemyLayer))
+        {
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                Destroy(hit.collider.gameObject);
+            }
+            else if (hit.collider.CompareTag("Boss"))
+            {
+                Debug.Log("Нанес урон боссу");
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@ public class MovementHandler : IMovementHandler
     private float _gravity = -15f;
     private float _verticalVelocity;
     private bool _shouldJump = false;
+    private bool _isMovementLocked = false;
     private IInputHandler _inputHandler;
 
     public MovementHandler(CharacterController characterController, IInputHandler inputHandler)
@@ -17,10 +18,32 @@ public class MovementHandler : IMovementHandler
         _characterController = characterController;
         _inputHandler = inputHandler;
         _currentSpeed = _moveSpeed;
+        
+        SubscribeToEvents();
+    }
+
+    private void SubscribeToEvents()
+    {
+        EventManager.Instance.OnMovementLock += LockMovement;
+        EventManager.Instance.OnMovementUnlock += UnlockMovement;
+    }
+
+    public void LockMovement()
+    {
+        _isMovementLocked = true;
+    }
+
+    public void UnlockMovement()
+    {
+        _isMovementLocked = false;
     }
 
     public void HandleMovement()
     {
+        if (_isMovementLocked)
+        {
+            return;
+        }
         _currentSpeed = _inputHandler.IsSprinting ? _runSpeed : _moveSpeed;
 
         Vector3 moveDirection = GetMoveDirection();

@@ -48,9 +48,16 @@ public class InputHandler : IInputHandler
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            _isUlti = true;
-            Debug.Log("Клавиша Q нажата");
-            EventManager.Instance.UseSuperAbility();
+            if(EventManager.Instance.IsSuperAbilityAvailable())
+            {
+                _isUlti = true;
+                Debug.Log("Клавиша Q нажата");
+                EventManager.Instance.TriggerSuperAbilityUse();
+            }
+            else
+            {
+                Debug.Log("Суперспособность недоступна!");
+            }
         }
     }
 
@@ -80,6 +87,11 @@ public class InputHandler : IInputHandler
     public void ResetJump()
     {
         _isJumping = false;
+    }
+    
+    public void ResetUlt()
+    {
+        _isUlti = false;
     }
 
     public bool IsAttacking => _isAttacking;

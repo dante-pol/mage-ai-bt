@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class GameInitializer : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private Transform _shootPoint;
 
     private int _hitCount = 0;
+    private const int RequiredHitsForSuperAbility = 10;
     private bool _ultiIsAvailiable = false;
+    private bool _isSuperAbilityActive = false;
+    private IInputHandler _inputHandler;
 
     private void Start()
     {
@@ -44,6 +48,8 @@ public class GameInitializer : MonoBehaviour
         InputHandlerAdapter adapter = playerController.GetComponentInChildren<InputHandlerAdapter>();
         adapter.Setup(_shootPoint, (InputHandler)inputHandler, (MovementHandler)movementHandler);
         playerController.Initialize(movementHandler, cameraRotationHandler, inputHandler, animatorUpdater);
+
+        _inputHandler = inputHandler;
     }
 
     private void SubscribeToEvents()
@@ -57,9 +63,10 @@ public class GameInitializer : MonoBehaviour
         _hitCount++;
         Debug.Log($"Попаданий: {_hitCount}");
 
-        if (_hitCount >= 1)
+        if (_hitCount >= RequiredHitsForSuperAbility)
         {
             _ultiIsAvailiable = true;
+            EventManager.Instance.SetSuperAbilityAvailability(true);
             Debug.Log("Суперспособность доступна");
         }
     }
@@ -71,6 +78,26 @@ public class GameInitializer : MonoBehaviour
             Debug.Log("Суперспособность активирована");
             _ultiIsAvailiable = false;
             _hitCount = 0;
+
+            StartCoroutine(ActivateSuperAbility());
         }
+    }
+
+    private IEnumerator ActivateSuperAbility()
+    {
+        _isSuperAbilityActive = true;
+
+        EventManager.Instance.TriggerMovementLock();
+
+        EventManager.Instance.TriggerSuperAbilityUse();
+
+        yield return new WaitForSeconds(10f);
+
+        _inputHandler.ResetUlt();
+
+        EventManager.Instance.TriggerSuperAbilityEnd();
+        _isSuperAbilityActive = false;
+
+        EventManager.Instance.TriggerMovementUnlock();
     }
 }

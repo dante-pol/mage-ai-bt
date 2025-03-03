@@ -8,8 +8,11 @@ public class EventManager : MonoBehaviour
     public event Action OnToggleCamera;
     public event Action<Vector3, Vector3> OnAttack;
     public event Action OnSuperAbilityUse;
+    public event Action OnSuperAbilityEnd;
+    public event Action OnMovementLock;
+    public event Action OnMovementUnlock;
     public event Action OnEnemyHit;
-
+    private bool _isSuperAbilityAvailable = false;
 
     private void Awake()
     {
@@ -24,6 +27,16 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    public bool IsSuperAbilityAvailable()
+    {
+        return _isSuperAbilityAvailable;
+    }
+
+    public void SetSuperAbilityAvailability(bool isAvailable)
+    {
+        _isSuperAbilityAvailable = isAvailable;
+    }
+
     public void ToggleCamera()
     {
         OnToggleCamera?.Invoke();
@@ -34,15 +47,32 @@ public class EventManager : MonoBehaviour
         OnAttack?.Invoke(position, direction);
     }
 
-    public void UseSuperAbility()
+    public void TriggerSuperAbilityUse()
     {
         Debug.Log("Сфывфывфывфыв");
         OnSuperAbilityUse?.Invoke();
     }
 
+    public void TriggerSuperAbilityEnd()
+    {
+        OnSuperAbilityEnd?.Invoke();
+    }
+
+    public void TriggerMovementLock()
+    {
+        OnMovementLock?.Invoke();
+    }
+
+    public void TriggerMovementUnlock()
+    {
+        OnMovementUnlock?.Invoke();
+    }
+
+
     public void TriggerHitEnemy()
     {
         OnEnemyHit?.Invoke();
     }
+
 
 }
