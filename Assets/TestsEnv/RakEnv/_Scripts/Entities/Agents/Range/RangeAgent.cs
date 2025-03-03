@@ -14,7 +14,7 @@ namespace Root.Core.Entities.Agents.Range
 
         public RangeAnimator _animator;
 
-        public RangeAttacker _attacker;
+        public RangeAttacker Attacker;
 
         public Transform _player;
 
@@ -22,20 +22,27 @@ namespace Root.Core.Entities.Agents.Range
 
         public RangeAttackConfig[] _attackConfigs;
 
+        private RangeBrain _brain;
+
         private void Start()
         {
-            _attacker = new RangeAttacker(this, _player, _prefabSpellBall, _attackConfigs);
+            IsLife = true;
+
+            IsDeath = false;
+
+            Eyes = new AgentEyes(_player);
+
+            Attacker = new RangeAttacker(this, _player, _prefabSpellBall, _attackConfigs);
+
+            _brain = new RangeBrain(this);
         }
 
         #region Tests
         private void Update()
         {
-            if (_attacker == null)
-            {
-                Debug.Log("Krara///////");
-                return;
-            }
-            _attacker.Update(); 
+            _brain.Update();
+
+            Attacker.Update();
         }
         #endregion
     }
