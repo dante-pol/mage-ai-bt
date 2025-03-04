@@ -4,9 +4,9 @@ namespace Root
 {
     public class AgentCommandCenter : MonoBehaviour
     {
-        public Agent FirstAgent;
+        public MeleeAgent FirstAgent;
 
-        public Agent SecondAgent;
+        public MeleeAgent SecondAgent;
 
         public bool IsOneAgent;
 

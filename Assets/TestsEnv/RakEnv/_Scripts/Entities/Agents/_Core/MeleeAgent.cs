@@ -1,5 +1,3 @@
-using System.Runtime.CompilerServices;
-using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,7 +5,7 @@ namespace Root
 {
 
     [RequireComponent(typeof(NavMeshAgent))]
-    public class Agent : MonoBehaviour, IEntityAttacked
+    public class MeleeAgent : MonoBehaviour, IEntityAttacked
     {
         public bool IsLife { get; private set; }
 
@@ -19,19 +17,19 @@ namespace Root
 
         public AgentCommandCenter _commandCenter;
 
-        public AgentMotion Motion;
+        public MeleeMotion Motion;
 
         public EntitiesBroker EntitiesBroker;
 
         public AgentEyes Eyes;
 
-        public AgentAnimator Animator;
+        public MeleeAnimator Animator;
 
-        public AgentEscape Escape;
+        public MeleeEscape Escape;
 
-        public AgentZombie ZombieMode;
+        public MeleeZombie ZombieMode;
 
-        private Brain _brain;
+        private MeleeBrain _brain;
 
         [SerializeField] private AnimatorOverrideController _overrideController;
 
@@ -45,19 +43,19 @@ namespace Root
 
             var animator = transform.GetChild(0).GetComponent<Animator>();
 
-            Motion = new AgentMotion(agent);
+            Motion = new MeleeMotion(agent);
 
             Eyes = new AgentEyes(transform);
 
-            Animator = new AgentAnimator(animator, _overrideController);
+            Animator = new MeleeAnimator(animator, _overrideController);
 
-            Escape = new AgentEscape(Motion);
+            Escape = new MeleeEscape(Motion);
 
-            ZombieMode = new AgentZombie(Animator);
+            ZombieMode = new MeleeZombie(Animator);
 
             Eyes.SetSearchTarget(EntitiesBroker.Player);
 
-            _brain = new Brain(this);
+            _brain = new MeleeBrain(this);
         }
 
         private void Update()

@@ -4,10 +4,10 @@ namespace Root
 {
     public class ChildAnimationHandler : MonoBehaviour
     {
-        private Agent _agent;
+        private MeleeAgent _agent;
 
         private void Start()
-            => _agent = GetComponentInParent<Agent>();
+            => _agent = GetComponentInParent<MeleeAgent>();
 
         public void OnBaseAttackAnimationEvent()
         {

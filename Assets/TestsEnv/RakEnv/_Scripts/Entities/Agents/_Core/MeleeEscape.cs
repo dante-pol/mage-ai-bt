@@ -2,19 +2,19 @@
 
 namespace Root
 {
-    public class AgentEscape
+    public class MeleeEscape
     {
         public bool IsSelect = false;
 
         public bool HasEscape { get; set; }
 
-        private AgentMotion _motion;
+        private MeleeMotion _motion;
 
         public Transform[] _points;
 
         private Transform _escapePoint;
 
-        public AgentEscape(AgentMotion motion)
+        public MeleeEscape(MeleeMotion motion)
         {
             _motion = motion;
 

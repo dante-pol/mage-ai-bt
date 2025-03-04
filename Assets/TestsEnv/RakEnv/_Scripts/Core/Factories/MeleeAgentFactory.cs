@@ -6,14 +6,14 @@ namespace Root.Core.Entities.Agents.Range
     {
         private const string PATH_TO_PREFAB = "";
 
-        private readonly Agent _prefabAgent;
+        private readonly MeleeAgent _prefabAgent;
 
         public MeleeAgentFactory()
         {
-            _prefabAgent = AssetsProvider.Load<Agent>(PATH_TO_PREFAB);
+            _prefabAgent = AssetsProvider.Load<MeleeAgent>(PATH_TO_PREFAB);
         }
 
-        public Agent Create()
+        public MeleeAgent Create()
         {
             var agent = Instantiate(_prefabAgent);
 

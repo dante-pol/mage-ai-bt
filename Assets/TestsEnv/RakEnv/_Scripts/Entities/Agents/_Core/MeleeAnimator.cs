@@ -2,7 +2,7 @@
 
 namespace Root
 {
-    public class AgentAnimator
+    public class MeleeAnimator
     {
         public bool IsAttacking { get; private set; } = false;
         public bool IsTurningZombie { get; private set; } = false;
@@ -15,7 +15,7 @@ namespace Root
         private readonly Animator _stateMachine;
         private readonly AnimatorOverrideController _overrideController;
 
-        public AgentAnimator(Animator animator,AnimatorOverrideController overrideController)
+        public MeleeAnimator(Animator animator,AnimatorOverrideController overrideController)
         {
             _stateMachine = animator;
             _overrideController = overrideController;

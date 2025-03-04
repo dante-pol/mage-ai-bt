@@ -7,7 +7,7 @@ namespace Root.Tests
 {
     public class TestCommandCenter : MonoBehaviour
     {
-        public List<Agent> _melees;
+        public List<MeleeAgent> _melees;
         public List<RangeAgent> _ranges;
 
         private void Awake()

@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace Root
 {
-    public class Brain
+    public class MeleeBrain
     {
-        private Agent _agent;
+        private MeleeAgent _agent;
 
         private SelectorNode _root;
 
-        public Brain(Agent agent)
+        public MeleeBrain(MeleeAgent agent)
         {
             _agent = agent;
 

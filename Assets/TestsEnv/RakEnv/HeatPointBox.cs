@@ -6,7 +6,7 @@ namespace Root.Tests
     {
         private void OnTriggerEnter(Collider other)
         {
-            var enemy = other.GetComponent<Agent>();
+            var enemy = other.GetComponent<MeleeAgent>();
 
             if (enemy == null) return;
 

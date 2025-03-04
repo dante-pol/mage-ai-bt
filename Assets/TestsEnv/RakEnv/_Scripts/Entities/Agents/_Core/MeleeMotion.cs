@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 namespace Root
 {
-    public class AgentMotion
+    public class MeleeMotion
     {
         public bool IsFreeze { get; set; }
         public bool HasReachedTarget { get; private set; }
@@ -12,7 +12,7 @@ namespace Root
 
         private Transform _target;
 
-        public AgentMotion(NavMeshAgent agent)
+        public MeleeMotion(NavMeshAgent agent)
         {
             _agent = agent;
 

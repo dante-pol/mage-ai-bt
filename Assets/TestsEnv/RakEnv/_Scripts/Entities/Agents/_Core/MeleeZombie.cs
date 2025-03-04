@@ -2,13 +2,13 @@
 
 namespace Root
 {
-    public class AgentZombie
+    public class MeleeZombie
     {
         public bool IsZombie { get; private set; }
 
         public bool IsStartingProcessZombie { get; private set; }
 
-        public readonly AgentAnimator _animator;
+        public readonly MeleeAnimator _animator;
         
         private readonly float _maxLimit;
 
@@ -16,7 +16,7 @@ namespace Root
 
         private readonly float _thresholdValue;
 
-        public AgentZombie(AgentAnimator animator)
+        public MeleeZombie(MeleeAnimator animator)
         {
             _animator = animator;
 
