@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Root.Core.Factories.Tools;
+using UnityEngine;
 
 namespace Root.Core.Entities.Agents.Range
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class SpellBall : MonoBehaviour
+    public class SpellBall : MonoBehaviour, IObjectPool
     {
         [SerializeField] private float _speed;
 

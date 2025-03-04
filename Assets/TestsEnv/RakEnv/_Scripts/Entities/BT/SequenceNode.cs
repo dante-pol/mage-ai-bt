@@ -14,9 +14,12 @@ namespace Root.Core.BT
         {
             foreach (var node in _children)
             {
-                if (node.Tick() == NodeStatus.FAILURE)
+                var status = node.Tick();
+
+                if (status == NodeStatus.FAILURE)
                     return NodeStatus.FAILURE;
-                else if (node.Tick() == NodeStatus.RUNNING)
+                
+                else if (status == NodeStatus.RUNNING)
                     return NodeStatus.RUNNING;
             }
 

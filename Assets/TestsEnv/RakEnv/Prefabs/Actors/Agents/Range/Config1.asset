@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffbe78ab513f9746a08e6aff464db91, type: 3}
   m_Name: Config1
   m_EditorClassIdentifier: 
-  _damage: 5
-  _cooldown: 1
-  _color: {r: 0, g: 0, b: 0, a: 0}
+  _startLevel: 0
+  _endLevel: 0
+  _idleColor: {r: 0, g: 0, b: 0, a: 0}
+  _attackConfigs: []

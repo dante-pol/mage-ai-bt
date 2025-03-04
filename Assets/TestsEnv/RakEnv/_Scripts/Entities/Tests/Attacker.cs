@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Root.Tests
 {
+
     public class Attacker : MonoBehaviour
     {
         [SerializeField] [Range(0, 50)] private float _damage = 10;

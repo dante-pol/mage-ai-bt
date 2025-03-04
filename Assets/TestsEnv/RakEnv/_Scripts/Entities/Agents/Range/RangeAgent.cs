@@ -2,7 +2,7 @@
 
 namespace Root.Core.Entities.Agents.Range
 {
-    public class RangeAgent : MonoBehaviour
+    public class RangeAgent : MonoBehaviour, IEntityAttacked
     {
         public bool IsLife { get; private set; }
 
@@ -12,31 +12,56 @@ namespace Root.Core.Entities.Agents.Range
 
         public AgentEyes Eyes;
 
-        public RangeAnimator _animator;
+        public RangeAnimator Animator;
 
-        public RangeAttacker _attacker;
+        public RangeAttacker Attacker;
 
         public Transform _player;
 
         public SpellBall _prefabSpellBall;
 
-        public RangeAttackConfig[] _attackConfigs;
+        private RangeBrain _brain;
 
-        private void Start()
+        private float _heatPoint;
+
+        [SerializeField] GameObject _spellBall;
+
+        public void Construct()
         {
-            _attacker = new RangeAttacker(this, _player, _prefabSpellBall, _attackConfigs);
+            IsLife = true;
+
+            IsDeath = false;
+
+            Eyes = new AgentEyes(transform);
+
+            Animator = new RangeAnimator(gameObject, _spellBall);
+
+            Eyes.SetSearchTarget(_player);
+
+            Attacker = new RangeAttacker(this, _player);
+
+            _brain = new RangeBrain(this);
         }
 
-        #region Tests
         private void Update()
         {
-            if (_attacker == null)
-            {
-                Debug.Log("Krara///////");
-                return;
-            }
-            _attacker.Update(); 
+            _brain.Update();
+
+            Attacker.Update();
+
+            Eyes.Update();
         }
-        #endregion
+
+        public void TakeAttack(IAttackProcess attackProcess)
+        {
+            _heatPoint -= attackProcess.Damage;
+
+            if (_heatPoint <= 0)
+            {
+                _heatPoint = 0;
+
+                IsLife = false;
+            }
+        }
     }
 }
