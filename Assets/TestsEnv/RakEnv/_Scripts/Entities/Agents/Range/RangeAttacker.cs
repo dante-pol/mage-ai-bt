@@ -13,9 +13,7 @@ namespace Root.Core.Entities.Agents.Range
 
         private readonly RangeSpellBallFactory _ballFactory;
 
-        private readonly RangeAttackConfig[] _attackConfigs;
-
-        private RangeAttackConfig _currentAttackConfig;
+        private RangeProgressConfig _currentAttackConfig;
 
         private Transform _target;
 
@@ -23,7 +21,7 @@ namespace Root.Core.Entities.Agents.Range
 
         private float _currentCooldown;
 
-        public RangeAttacker(RangeAgent range, Transform target, RangeAttackConfig[] attackConfigs)
+        public RangeAttacker(RangeAgent range, Transform target)
         {
             HasCooldownPassed = true;
 
@@ -31,11 +29,6 @@ namespace Root.Core.Entities.Agents.Range
 
             _me = range.transform;
             _target = target;
-
-
-            _attackConfigs = attackConfigs;
-
-            _currentAttackConfig = _attackConfigs[0];
 
             _cooldownTime = 3;
         }
@@ -47,8 +40,6 @@ namespace Root.Core.Entities.Agents.Range
             SpellBall ball = _ballFactory.Create();
 
             Vector3 toTarget = CalculateDirectionToTarget();
-
-            ball.Construct(_currentAttackConfig.Damage);
 
             ball.PushIt(toTarget);
 

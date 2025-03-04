@@ -3,7 +3,6 @@ using Root.Core.Tools;
 
 namespace Root.Core.Entities.Agents.Range
 {
-
     public class RangeSpellBallFactory : ABaseFactory
     {
         private const string PATH_TO_PREFAB = "";
@@ -11,6 +10,7 @@ namespace Root.Core.Entities.Agents.Range
         private readonly SpellBall _prefabBall;
 
         private readonly Pool<SpellBall> _pool;
+
 
         public RangeSpellBallFactory()
         {

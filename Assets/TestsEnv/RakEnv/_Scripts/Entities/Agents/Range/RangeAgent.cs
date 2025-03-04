@@ -20,21 +20,17 @@ namespace Root.Core.Entities.Agents.Range
 
         public SpellBall _prefabSpellBall;
 
-        public RangeAttackConfig[] _attackConfigs;
-
         private RangeBrain _brain;
 
         private float _heatPoint;
 
         [SerializeField] GameObject _spellBall;
 
-        private void Start()
+        public void Construct()
         {
             IsLife = true;
 
             IsDeath = false;
-
-            _heatPoint = 2;
 
             Eyes = new AgentEyes(transform);
 
@@ -42,7 +38,7 @@ namespace Root.Core.Entities.Agents.Range
 
             Eyes.SetSearchTarget(_player);
 
-            Attacker = new RangeAttacker(this, _player, _prefabSpellBall, _attackConfigs);
+            Attacker = new RangeAttacker(this, _player);
 
             _brain = new RangeBrain(this);
         }
