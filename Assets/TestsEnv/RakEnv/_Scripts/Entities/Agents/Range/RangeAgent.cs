@@ -72,9 +72,15 @@ namespace Root.Core.Entities.Agents.Range
 
                 IsLife = false;
             }
+
+            Debug.Log($"IsLife: {IsLife}");
         }
 
         public void Dead()
-            => DeathEvent?.Invoke();
+        {
+            DeathEvent?.Invoke();
+
+            gameObject.SetActive( false );
+        }
     }
 }
