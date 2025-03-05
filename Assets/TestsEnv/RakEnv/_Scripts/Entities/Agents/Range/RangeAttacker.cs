@@ -37,7 +37,7 @@ namespace Root.Core.Entities.Agents.Range
         {
             Debug.Log("Attack;");
 
-            SpellBall ball = _ballFactory.Create();
+            SpellBall ball = _ballFactory.Create() as SpellBall;
 
             Vector3 toTarget = CalculateDirectionToTarget();
 

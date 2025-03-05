@@ -4,8 +4,8 @@ namespace Root.Core.Factories
 {
     public interface IFactory
     {
-        T Create<T>() where T : Object;
+        Object Create();
 
-        T Create<T>(Vector3 position, Quaternion orientation) where T : Object;
+        Object Create(Vector3 position, Quaternion orientation);
     }
 }

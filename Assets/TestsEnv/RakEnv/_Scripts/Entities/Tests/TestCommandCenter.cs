@@ -1,5 +1,4 @@
 ﻿using Root.Core.Entities.Agents.Range;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -7,16 +6,42 @@ namespace Root.Tests
 {
     public class TestCommandCenter : MonoBehaviour
     {
-        public List<MeleeAgent> _melees;
-        public List<RangeAgent> _ranges;
+        private RangeAgentFactory _rangeFactory;
+        private MeleeAgentFactory _meleeFactory;
+
+        public bool IsOneMelee { get; private set; }
 
         private void Awake()
         {
-            _ranges = FindObjectsOfType<RangeAgent>().ToList();
+            _rangeFactory = new RangeAgentFactory();
 
-            foreach (var range in _ranges)
+            _meleeFactory = new MeleeAgentFactory(this);
+
+            StartingSpawnMelee();
+        }
+
+        public void SpawnMelee()
+        {
+
+        }
+
+        public void StartingSpawnMelee()
+        {
+            var spawnPoints = GameObject.FindGameObjectsWithTag("MeleeS").ToArray().Select((obj) => obj.transform);
+
+            foreach (var spawnPoint in spawnPoints)
             {
-                range.Construct();
+                _meleeFactory.Create(spawnPoint.position, spawnPoint.rotation);
+            }
+        }
+
+        public void SpawnRange()
+        {
+            var spawnPoints = GameObject.FindGameObjectsWithTag("Range").ToArray().Select((obj) => obj.transform);
+
+            foreach (var spawnPoint in spawnPoints)
+            {
+                _rangeFactory.Create(spawnPoint.position, spawnPoint.rotation);
             }
         }
     }

@@ -1,3 +1,4 @@
+using Root.Tests;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,9 +14,7 @@ namespace Root
 
         public float HeatPoint = 100;
 
-        public bool IsAlone => _commandCenter.IsOneAgent;
-
-        public AgentCommandCenter _commandCenter;
+        public bool IsAlone => _commandCenter.IsOneMelee;
 
         public MeleeMotion Motion;
 
@@ -29,12 +28,17 @@ namespace Root
 
         public MeleeZombie ZombieMode;
 
+        public TestCommandCenter _commandCenter;
+
         private MeleeBrain _brain;
 
-        [SerializeField] private AnimatorOverrideController _overrideController;
+        [SerializeField] 
+        private AnimatorOverrideController _overrideController;
 
-        private void Awake()
+        public void Construct(TestCommandCenter commandCenter)
         {
+            _commandCenter = commandCenter;
+
             IsLife = true;
 
             HasDeadYet = false;

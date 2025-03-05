@@ -1,11 +1,12 @@
 ﻿using Root.Core.Factories.Tools;
 using Root.Core.Tools;
+using UnityEngine;
 
 namespace Root.Core.Entities.Agents.Range
 {
     public class RangeSpellBallFactory : ABaseFactory
     {
-        private const string PATH_TO_PREFAB = "";
+        private const string PATH_TO_PREFAB = "Prefabs/Actors/Agents/Range/SpellBall";
 
         private readonly SpellBall _prefabBall;
 
@@ -17,7 +18,7 @@ namespace Root.Core.Entities.Agents.Range
             _prefabBall = AssetsProvider.Load<SpellBall>(PATH_TO_PREFAB);
         }
 
-        public SpellBall Create()
+        public override Object Create()
         {
             //TODO: Configs...
 
@@ -31,6 +32,11 @@ namespace Root.Core.Entities.Agents.Range
             }
 
             return ball;
+        }
+
+        public override Object Create(Vector3 position, Quaternion orientation)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
