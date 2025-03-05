@@ -113,6 +113,8 @@ namespace Root.Core.Entities.Agents.Range
             {
                 _agent.IsDeath = true;
 
+                _agent.Dead();
+
                 //TODO: Activate Animator
 
                 return NodeStatus.SUCCESS;

@@ -9,15 +9,19 @@ namespace Root.Tests
         private RangeAgentFactory _rangeFactory;
         private MeleeAgentFactory _meleeFactory;
 
+        public int RangeAgentOfCount = 6;
+
         public bool IsOneMelee { get; private set; }
 
         private void Awake()
         {
-            //_rangeFactory = new RangeAgentFactory(this);
+            _rangeFactory = new RangeAgentFactory(this);
 
             _meleeFactory = new MeleeAgentFactory(this);
 
             StartingSpawnMelee();
+            SpawnRange();
+
         }
 
         public void SpawnMelee()
@@ -41,7 +45,9 @@ namespace Root.Tests
 
             foreach (var spawnPoint in spawnPoints)
             {
-                _rangeFactory.Create(spawnPoint.position, spawnPoint.rotation);
+                RangeAgent agent = _rangeFactory.Create(spawnPoint.position, spawnPoint.rotation) as RangeAgent;
+
+                agent.DeathEvent += () => { RangeAgentOfCount--; };
             }
         }
     }

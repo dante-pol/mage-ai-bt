@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Point
   - MeleeS
+  - Range
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4943d5c30f67cc4f8d75b3a6fb8396d, type: 3}
   m_Name: MeleeConfig
   m_EditorClassIdentifier: 
-  _isLifeDefault: 0
+  _isLifeDefault: 1
   _heatPoint: 10
   _damage: 100
   _heatPointZombie: 1

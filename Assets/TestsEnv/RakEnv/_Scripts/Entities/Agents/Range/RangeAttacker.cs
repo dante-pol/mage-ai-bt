@@ -2,7 +2,6 @@
 
 namespace Root.Core.Entities.Agents.Range
 {
-
     public class RangeAttacker
     {
         public bool HasCooldownPassed { get; private set; }
@@ -13,7 +12,9 @@ namespace Root.Core.Entities.Agents.Range
 
         private readonly RangeSpellBallFactory _ballFactory;
 
-        private RangeProgressConfig _currentAttackConfig;
+        private readonly Transform _spawnPoint;
+
+        private RangeConfig _currentAttackConfig;
 
         private Transform _target;
 
@@ -21,9 +22,13 @@ namespace Root.Core.Entities.Agents.Range
 
         private float _currentCooldown;
 
-        public RangeAttacker(RangeAgent range, Transform target)
+        public RangeAttacker(RangeAgent range, Transform target, Transform spawnPoint)
         {
+            _spawnPoint = spawnPoint;
+
             HasCooldownPassed = true;
+
+            _ballFactory = new RangeSpellBallFactory();
 
             _range = range;
 
@@ -37,7 +42,7 @@ namespace Root.Core.Entities.Agents.Range
         {
             Debug.Log("Attack;");
 
-            SpellBall ball = _ballFactory.Create() as SpellBall;
+            SpellBall ball = _ballFactory.Create(_spawnPoint.position, _spawnPoint.rotation) as SpellBall;
 
             Vector3 toTarget = CalculateDirectionToTarget();
 

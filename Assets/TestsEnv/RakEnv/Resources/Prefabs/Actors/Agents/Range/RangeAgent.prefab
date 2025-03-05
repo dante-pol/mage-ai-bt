@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5574228926895463317}
   - component: {fileID: 6740533183450528215}
   - component: {fileID: 4331241495305133588}
-  - component: {fileID: 2949433584649795964}
   m_Layer: 0
   m_Name: MagicBall
   m_TagString: Untagged
@@ -84,27 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2949433584649795964
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2473150161000657531}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9074442018456870998
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,10 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d179a95006ca59459408a7a44f3075e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _prefabSpellBall: {fileID: 1010331600769745832, guid: 6923aa6df6eed3145aa49cf307c4e764, type: 3}
-  _attackConfigs:
-  - {fileID: 11400000, guid: cb0548ccdc682e44e8fb3b35f756bb23, type: 2}
   _spellBall: {fileID: 2473150161000657531}
 --- !u!136 &7559923051924170147
 CapsuleCollider:
@@ -320,6 +295,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2802e960a915ab64eb468dfb38fdc6da, type: 2}
+    - target: {fileID: 5866666021909216657, guid: bafd5e91fc2b8fe42849555858933ba8, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform
+        'mixamorig:LeftArm'\n\tTransform 'mixamorig:LeftForeArm'\n\tTransform 'mixamorig:Spine2'\n\tFrom
+        animation clip 'idle'"
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: bafd5e91fc2b8fe42849555858933ba8, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
