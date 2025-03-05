@@ -1,23 +1,56 @@
 ﻿using Root.Core.Entities.Agents.Range;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Root.Tests
 {
     public class TestCommandCenter : MonoBehaviour
     {
+        public bool IsOneMelee { get; private set; }
+
         private RangeAgentFactory _rangeFactory;
         private MeleeAgentFactory _meleeFactory;
 
-        public int RangeAgentOfCount = 6;
+        private List<RangeAgent> _ranges;
 
-        public bool IsOneMelee { get; private set; }
+        public int LevelRangeAgent
+        {
+            get
+            {
+                return _levelRangeAgent;
+            }
+            set
+            {
+                if (_levelRangeAgent == 5)
+                    return;
+
+                _levelRangeAgent = value;
+
+                UpdateRangeProgress();
+            }
+
+        }
+
+        private void UpdateRangeProgress()
+        {
+            foreach (RangeAgent range in _ranges)
+            {
+                range.UpdateProgress();
+            }
+        }
+
+        private int _levelRangeAgent;
 
         private void Awake()
         {
             _rangeFactory = new RangeAgentFactory(this);
 
             _meleeFactory = new MeleeAgentFactory(this);
+
+            _ranges = new List<RangeAgent>();
 
             StartingSpawnMelee();
             SpawnRange();
@@ -47,7 +80,9 @@ namespace Root.Tests
             {
                 RangeAgent agent = _rangeFactory.Create(spawnPoint.position, spawnPoint.rotation) as RangeAgent;
 
-                agent.DeathEvent += () => { RangeAgentOfCount--; };
+                agent.DeathEvent += () => { LevelRangeAgent++; };
+                
+                _ranges.Add(agent);
             }
         }
     }

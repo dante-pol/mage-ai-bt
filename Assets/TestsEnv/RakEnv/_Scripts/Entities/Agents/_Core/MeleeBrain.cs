@@ -94,11 +94,18 @@ namespace Root
                 return NodeStatus.SUCCESS;
             });
 
-            var tryBeZombieAction = new ActionNode(() =>
+            var beDeathAction = new ActionNode(() =>
             {
                 _agent.HasDeadYet = true;
 
-                _agent.ZombieMode.TryBeZombie();
+                return NodeStatus.SUCCESS;
+            });
+
+            var canBeZombieCondition = new ConditionNode(() => !_agent.ZombieMode.IsZombie);
+
+            var tryBeZombieAction = new ActionNode(() =>
+            {
+                     _agent.ZombieMode.TryBeZombie();
 
                 return NodeStatus.SUCCESS;
             });
@@ -110,6 +117,8 @@ namespace Root
                 motionBlockAction,
                 visionBlockAction,
                 deathAnimationActiveAction,
+                beDeathAction,
+                canBeZombieCondition,
                 tryBeZombieAction
             });
         }

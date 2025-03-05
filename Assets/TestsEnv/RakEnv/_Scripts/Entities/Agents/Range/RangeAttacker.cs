@@ -14,11 +14,9 @@ namespace Root.Core.Entities.Agents.Range
 
         private readonly Transform _spawnPoint;
 
-        private RangeConfig _currentAttackConfig;
-
         private Transform _target;
 
-        private readonly float _cooldownTime;
+        private float _cooldownTime;
 
         private float _currentCooldown;
 
@@ -35,7 +33,14 @@ namespace Root.Core.Entities.Agents.Range
             _me = range.transform;
             _target = target;
 
-            _cooldownTime = 3;
+            _cooldownTime = 0;
+        }
+
+        public void UpdateConfigAttacker(int damage, float cooldown, Color color)
+        {
+            _ballFactory.UpdateConfig(damage, color);
+
+            _cooldownTime = cooldown;
         }
 
         public void Attack()

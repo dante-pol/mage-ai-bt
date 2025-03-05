@@ -5,7 +5,7 @@ namespace Root.Tests
 
     public class Attacker : MonoBehaviour
     {
-        [SerializeField] [Range(0, 50)] private float _damage = 10;
+        [SerializeField] [Range(0, 50)] private float _damage = 100;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -16,6 +16,8 @@ namespace Root.Tests
             Debug.Log(other.gameObject.name);
 
             entity.TakeAttack(new AttackProcess(_damage));
+
+            gameObject.SetActive(false);
         }
     }
 }

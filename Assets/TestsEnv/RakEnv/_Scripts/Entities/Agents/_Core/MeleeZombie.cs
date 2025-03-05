@@ -16,8 +16,12 @@ namespace Root
 
         private readonly float _thresholdValue;
 
-        public MeleeZombie(MeleeAnimator animator)
+        private readonly MeleeAgent _agent;
+
+        public MeleeZombie(MeleeAgent agent, MeleeAnimator animator)
         {
+            _agent = agent;
+
             _animator = animator;
 
             IsZombie = false;
@@ -49,6 +53,8 @@ namespace Root
             IsStartingProcessZombie = false;
 
             IsZombie = true;
+
+            _agent.Resurrection();
         }
 
         private float CalculateProbabilityBeZombie() 

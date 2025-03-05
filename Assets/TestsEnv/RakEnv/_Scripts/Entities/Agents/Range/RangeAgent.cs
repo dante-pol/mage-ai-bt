@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Root.Core.Entities.Agents.Range
@@ -19,7 +20,6 @@ namespace Root.Core.Entities.Agents.Range
 
         public RangeAttacker Attacker;
 
-
         public SpellBall _prefabSpellBall;
 
         private RangeBrain _brain;
@@ -31,6 +31,8 @@ namespace Root.Core.Entities.Agents.Range
         private float _heatPoint;
 
         [SerializeField] GameObject _spellBall;
+
+        private int _numberOfAttack;
 
         public void Construct(RangeConfig config)
         {
@@ -51,6 +53,10 @@ namespace Root.Core.Entities.Agents.Range
             Attacker = new RangeAttacker(this, _player, _spellBall.transform);
 
             _brain = new RangeBrain(this);
+
+            _numberOfAttack = -1;
+
+            UpdateProgress();
         }
 
         private void Update()
@@ -72,9 +78,24 @@ namespace Root.Core.Entities.Agents.Range
 
                 IsLife = false;
             }
+
+            Debug.Log($"IsLife: {IsLife}");
         }
 
         public void Dead()
-            => DeathEvent?.Invoke();
+        {
+            DeathEvent?.Invoke();
+
+            gameObject.SetActive( false );
+        }
+
+        public void UpdateProgress()
+        {
+            _numberOfAttack += 1;
+
+            var config = _config.AttackConfigs[_numberOfAttack];
+
+            Attacker.UpdateConfigAttacker(config.Damage, config.Cooldown, config.ColorAttack);
+        }
     }
 }

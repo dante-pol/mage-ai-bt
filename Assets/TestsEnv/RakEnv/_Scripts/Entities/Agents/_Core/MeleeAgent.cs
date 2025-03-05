@@ -91,7 +91,7 @@ namespace Root
 
             Escape = new MeleeEscape(Motion);
 
-            ZombieMode = new MeleeZombie(Animator);
+            ZombieMode = new MeleeZombie(this, Animator);
 
             _brain = new MeleeBrain(this);
         }
@@ -112,6 +112,12 @@ namespace Root
                 
                 return;
             }
+        }
+
+        public void Resurrection()
+        {
+            IsLife = true;
+            HasDeadYet = false;
         }
     }
 }
