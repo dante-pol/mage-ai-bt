@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Root.Core.Entities.Agents.Range
 {
     public class RangeAgent : MonoBehaviour, IEntityAttacked
     {
+        public event UnityAction DeathEvent;
+
         public bool IsLife { get; private set; }
 
         public bool IsDeath { get; set; }
@@ -16,18 +19,25 @@ namespace Root.Core.Entities.Agents.Range
 
         public RangeAttacker Attacker;
 
-        public Transform _player;
 
         public SpellBall _prefabSpellBall;
 
         private RangeBrain _brain;
 
+        private RangeConfig _config;
+
+        private Transform _player;
+        
         private float _heatPoint;
 
         [SerializeField] GameObject _spellBall;
 
-        public void Construct()
+        public void Construct(RangeConfig config)
         {
+            _config = config;
+
+            _player = GameObject.FindGameObjectWithTag("Player").transform;
+
             IsLife = true;
 
             IsDeath = false;
@@ -38,7 +48,7 @@ namespace Root.Core.Entities.Agents.Range
 
             Eyes.SetSearchTarget(_player);
 
-            Attacker = new RangeAttacker(this, _player);
+            Attacker = new RangeAttacker(this, _player, _spellBall.transform);
 
             _brain = new RangeBrain(this);
         }
@@ -63,5 +73,8 @@ namespace Root.Core.Entities.Agents.Range
                 IsLife = false;
             }
         }
+
+        public void Dead()
+            => DeathEvent?.Invoke();
     }
 }

@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Enemy
   - Point
+  - MeleeS
+  - Range
   layers:
   - Default
   - TransparentFX

@@ -1,3 +1,4 @@
+using Root.Tests;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,15 +12,15 @@ namespace Root
 
         public bool HasDeadYet { get; set; }
 
-        public float HeatPoint = 100;
+        public float HeatPoint { get; private set; }
 
-        public bool IsAlone => _commandCenter.IsOneAgent;
+        public float Damage { get; private set; }
 
-        public AgentCommandCenter _commandCenter;
+        public bool IsAlone => _commandCenter.IsOneMelee;
 
         public MeleeMotion Motion;
 
-        public EntitiesBroker EntitiesBroker;
+        //public EntitiesBroker EntitiesBroker;
 
         public AgentEyes Eyes;
 
@@ -29,33 +30,30 @@ namespace Root
 
         public MeleeZombie ZombieMode;
 
+        public TestCommandCenter _commandCenter;
+
         private MeleeBrain _brain;
 
-        [SerializeField] private AnimatorOverrideController _overrideController;
+        private MeleeConfig _config;
 
-        private void Awake()
+        [SerializeField] 
+        private AnimatorOverrideController _overrideController;
+        public Transform Player;
+
+        public void Construct(TestCommandCenter commandCenter, MeleeConfig config)
         {
-            IsLife = true;
+            _commandCenter = commandCenter;
 
-            HasDeadYet = false;
+            _config = config;
 
-            var agent = GetComponent<NavMeshAgent>();
+            InitConfig();
 
-            var animator = transform.GetChild(0).GetComponent<Animator>();
+            InitComponents();
 
-            Motion = new MeleeMotion(agent);
+            Player = GameObject.FindGameObjectWithTag("Player").transform;
 
-            Eyes = new AgentEyes(transform);
+            Eyes.SetSearchTarget(Player);
 
-            Animator = new MeleeAnimator(animator, _overrideController);
-
-            Escape = new MeleeEscape(Motion);
-
-            ZombieMode = new MeleeZombie(Animator);
-
-            Eyes.SetSearchTarget(EntitiesBroker.Player);
-
-            _brain = new MeleeBrain(this);
         }
 
         private void Update()
@@ -66,20 +64,54 @@ namespace Root
 
             _brain.Update();
 
-            Debug.Log($"Animator.IsAttacking: {Animator.IsAttacking}");
+        }
 
+        private void InitConfig()
+        {
+            IsLife = _config.IsLifeDefault;
+
+            HasDeadYet = false;
+
+            HeatPoint = _config.HeatPoint;
+
+            Damage = _config.Damage;
+        }
+
+        private void InitComponents()
+        {
+            var agent = GetComponent<NavMeshAgent>();
+
+            var animator = GetComponentInChildren<Animator>();
+
+            Motion = new MeleeMotion(agent, _config);
+
+            Eyes = new AgentEyes(transform);
+
+            Animator = new MeleeAnimator(animator, _overrideController);
+
+            Escape = new MeleeEscape(Motion);
+
+            ZombieMode = new MeleeZombie(Animator);
+
+            _brain = new MeleeBrain(this);
         }
 
         public void TakeAttack(IAttackProcess attackProcess)
         {
+            if (!IsLife) return;
+
             if (attackProcess == null) return;
 
             HeatPoint -= attackProcess.Damage;
 
             if (HeatPoint <= 0)
+            {
                 HeatPoint = 0;
 
-            IsLife = false;
+                IsLife = false;
+                
+                return;
+            }
         }
     }
 }
