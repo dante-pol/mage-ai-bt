@@ -7,21 +7,26 @@ namespace Root.Core.Entities.Agents.Range
     public class MeleeAgentFactory : ABaseFactory
     {
         private const string PATH_TO_PREFAB = "Prefabs/Actors/Agents/MeleeAgent";
+        private const string PATH_TO_CONFIG = "Prefabs/Actors/Agents/MeleeConfig";
 
         private readonly MeleeAgent _prefabAgent;
-        private readonly TestCommandCenter commandCenter;
+        private readonly MeleeConfig _config;
+
+        private readonly TestCommandCenter _commandCenter;
 
         public MeleeAgentFactory(TestCommandCenter commandCenter)
         {
             _prefabAgent = AssetsProvider.Load<MeleeAgent>(PATH_TO_PREFAB);
-            this.commandCenter = commandCenter;
+            _config = AssetsProvider.Load<MeleeConfig>(PATH_TO_PREFAB);
+
+            _commandCenter = commandCenter;
         }
 
         public override Object Create()
         {
             var agent = Instantiate(_prefabAgent);
 
-            agent.Construct(commandCenter);
+            agent.Construct(_commandCenter, _config);
 
             return agent;
         }
@@ -30,7 +35,7 @@ namespace Root.Core.Entities.Agents.Range
         {
             var agent = Instantiate(_prefabAgent, position, orientation);
 
-            agent.Construct(commandCenter);
+            agent.Construct(_commandCenter, _config);
 
             return agent;
         }

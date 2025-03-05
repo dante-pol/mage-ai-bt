@@ -12,7 +12,9 @@ namespace Root
 
         public bool HasDeadYet { get; set; }
 
-        public float HeatPoint = 100;
+        public float HeatPoint { get; private set; }
+
+        public float Damage { get; private set; }
 
         public bool IsAlone => _commandCenter.IsOneMelee;
 
@@ -32,34 +34,23 @@ namespace Root
 
         private MeleeBrain _brain;
 
+        private MeleeConfig _config;
+
         [SerializeField] 
         private AnimatorOverrideController _overrideController;
 
-        public void Construct(TestCommandCenter commandCenter)
+        public void Construct(TestCommandCenter commandCenter, MeleeConfig config)
         {
             _commandCenter = commandCenter;
 
-            IsLife = true;
+            _config = config;
 
-            HasDeadYet = false;
+            InitConfig();
 
-            var agent = GetComponent<NavMeshAgent>();
-
-            var animator = transform.GetChild(0).GetComponent<Animator>();
-
-            Motion = new MeleeMotion(agent);
-
-            Eyes = new AgentEyes(transform);
-
-            Animator = new MeleeAnimator(animator, _overrideController);
-
-            Escape = new MeleeEscape(Motion);
-
-            ZombieMode = new MeleeZombie(Animator);
+            InitComponents();
 
             Eyes.SetSearchTarget(EntitiesBroker.Player);
 
-            _brain = new MeleeBrain(this);
         }
 
         private void Update()
@@ -70,8 +61,36 @@ namespace Root
 
             _brain.Update();
 
-            Debug.Log($"Animator.IsAttacking: {Animator.IsAttacking}");
+        }
 
+        private void InitConfig()
+        {
+            IsLife = true;
+
+            HasDeadYet = false;
+
+            HeatPoint = _config.HeatPoint;
+
+            Damage = _config.Damage;
+        }
+
+        private void InitComponents()
+        {
+            var agent = GetComponent<NavMeshAgent>();
+
+            var animator = GetComponentInChildren<Animator>();
+
+            Motion = new MeleeMotion(agent, _config);
+
+            Eyes = new AgentEyes(transform);
+
+            Animator = new MeleeAnimator(animator, _overrideController);
+
+            Escape = new MeleeEscape(Motion);
+
+            ZombieMode = new MeleeZombie(Animator);
+
+            _brain = new MeleeBrain(this);
         }
 
         public void TakeAttack(IAttackProcess attackProcess)

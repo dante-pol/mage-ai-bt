@@ -10,11 +10,29 @@ namespace Root
 
         private readonly NavMeshAgent _agent;
 
+        private readonly IMeleeMotionConfig _config;
+        
         private Transform _target;
 
-        public MeleeMotion(NavMeshAgent agent)
+        private float _walkSpeed;
+
+        private float _runSpeed;
+
+        public MeleeMotion(NavMeshAgent agent, IMeleeMotionConfig config)
         {
             _agent = agent;
+            _config = config;
+
+            InitConfig();
+        }
+
+        private void InitConfig()
+        {
+            _walkSpeed = _config.WalkSpeed;
+
+            _runSpeed = _config.RunSpeed;
+
+            _agent.speed = _walkSpeed;
 
             _agent.stoppingDistance = 2.0f;
         }
@@ -43,6 +61,32 @@ namespace Root
 
         public void SetMotionLock(bool value)
             => _agent.isStopped = value;
+
+        public void UpdateConfig(bool isZombie)
+        { 
+            if (isZombie)
+            {
+                _walkSpeed = _config.WalkSpeedZombie;
+
+                _runSpeed = _config.RunSpeedZombie;
+            }
+            else
+            {
+                _walkSpeed = _config.WalkSpeed;
+
+                _runSpeed = _config.RunSpeed;
+            }
+
+            SetActiveRun(false);
+        }
+
+        public void SetActiveRun(bool value)
+        {
+            _agent.speed = _walkSpeed;
+
+            if (value)
+                _agent.speed = _runSpeed;
+        }
 
         private void Move() 
             => _agent.SetDestination(_target.position);
