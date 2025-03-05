@@ -87,6 +87,24 @@ public class MovementHandler : IMovementHandler
         );
     }
 
+    public float GetDirection()
+    {
+        Vector3 moveDirection = GetMoveDirection();
+        float horizontal = moveDirection.x;
+        float vertical = moveDirection.z;
+
+        if (Mathf.Abs(horizontal) > Mathf.Abs(vertical))
+        {
+            return Mathf.Sign(horizontal);
+        }
+        else if (vertical < 0)
+        {
+            return -2f;
+        }
+
+        return 0f;
+    }
+
     public void TriggerJump()
     {
         _shouldJump = true;

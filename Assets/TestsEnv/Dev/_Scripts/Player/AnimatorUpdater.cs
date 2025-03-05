@@ -22,7 +22,12 @@ public class AnimatorUpdater : IAnimatorUpdater
         {
             float speed = ((MovementHandler)_movementHandler).GetMoveDirection().magnitude;
 
+            float direction = ((MovementHandler)_movementHandler).GetDirection();
+
             _animator.SetFloat("Speed", speed);
+
+            _animator.SetFloat("Direction", direction);
+
             if(_inputHandler.IsAttacking)
             {
                 _animator.SetTrigger("Attack");  
