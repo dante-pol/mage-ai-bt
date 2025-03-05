@@ -87,10 +87,7 @@ namespace Root
             _agent.speed = _walkSpeed;
 
             if (value)
-            {
-                Debug.Log("RUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUn");
                 _agent.speed = _runSpeed;
-            }
         }
 
         private void Move() 

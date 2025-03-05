@@ -5,6 +5,7 @@ namespace Root
     [CreateAssetMenu(fileName = "NewMeleeConfig", menuName = "Create New Melee Config", order = 21)]
     public class MeleeConfig : ScriptableObject, IMeleeMotionConfig, IMeleeAgentConfig
     {
+        public bool IsLifeDefault => _isLifeDefault;
         public int HeatPoint => _heatPoint;
         public int Damage => _damage;
         public int HeatPointZombie => _heatPointZombie;
@@ -17,6 +18,8 @@ namespace Root
         [Header("Melee Agent")]
         [Space]
         [Header("Human Agent")]
+        [SerializeField] bool _isLifeDefault;
+
         [SerializeField][Range(0, 100)] private int _heatPoint;
         [SerializeField][Range(0, 100)] private int _damage;
 

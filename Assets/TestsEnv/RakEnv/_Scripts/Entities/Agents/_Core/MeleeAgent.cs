@@ -68,7 +68,7 @@ namespace Root
 
         private void InitConfig()
         {
-            IsLife = true;
+            IsLife = _config.IsLifeDefault;
 
             HasDeadYet = false;
 
@@ -98,14 +98,20 @@ namespace Root
 
         public void TakeAttack(IAttackProcess attackProcess)
         {
+            if (!IsLife) return;
+
             if (attackProcess == null) return;
 
             HeatPoint -= attackProcess.Damage;
 
             if (HeatPoint <= 0)
+            {
                 HeatPoint = 0;
 
-            IsLife = false;
+                IsLife = false;
+                
+                return;
+            }
         }
     }
 }
