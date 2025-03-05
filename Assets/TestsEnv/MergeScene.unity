@@ -1828,7 +1828,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b441469644d700247ae342484554b16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RangeAgentOfCount: 6
 --- !u!1 &2000231319
 GameObject:
   m_ObjectHideFlags: 0
