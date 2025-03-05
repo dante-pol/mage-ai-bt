@@ -317,7 +317,7 @@ MonoBehaviour:
   HeatPoint: 100
   _commandCenter: {fileID: 0}
   EntitiesBroker: {fileID: 3718338209362022755}
-  _overrideController: {fileID: 0}
+  _overrideController: {fileID: 22100000, guid: 8a6e403eb8870fe43a3b685133a935be, type: 2}
 --- !u!114 &3718338209362022755
 MonoBehaviour:
   m_ObjectHideFlags: 0
