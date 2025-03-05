@@ -20,7 +20,7 @@ namespace Root
 
         public MeleeMotion Motion;
 
-        public EntitiesBroker EntitiesBroker;
+        //public EntitiesBroker EntitiesBroker;
 
         public AgentEyes Eyes;
 
@@ -38,6 +38,7 @@ namespace Root
 
         [SerializeField] 
         private AnimatorOverrideController _overrideController;
+        public Transform Player;
 
         public void Construct(TestCommandCenter commandCenter, MeleeConfig config)
         {
@@ -49,7 +50,9 @@ namespace Root
 
             InitComponents();
 
-            Eyes.SetSearchTarget(EntitiesBroker.Player);
+            Player = GameObject.FindGameObjectWithTag("Player").transform;
+
+            Eyes.SetSearchTarget(Player);
 
         }
 

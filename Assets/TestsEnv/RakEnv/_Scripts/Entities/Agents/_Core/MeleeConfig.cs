@@ -11,8 +11,8 @@ namespace Root
         public int DamageZombie => _damageZombie;
         public float WalkSpeed => _walkSpeed;
         public float RunSpeed => _runSpeed;
-        public int WalkSpeedZombie => _walkSpeedZombie;
-        public int RunSpeedZombie => _runSpeedZombie;
+        public float WalkSpeedZombie => _walkSpeedZombie;
+        public float RunSpeedZombie => _runSpeedZombie;
 
         [Header("Melee Agent")]
         [Space]
@@ -32,7 +32,7 @@ namespace Root
         [SerializeField][Range(0, 100)] private float _runSpeed;
 
         [Header("Zombie Motion")]
-        [SerializeField][Range(0, 100)] private int _walkSpeedZombie;
-        [SerializeField][Range(0, 100)] private int _runSpeedZombie;
+        [SerializeField][Range(0, 100)] private float _walkSpeedZombie;
+        [SerializeField][Range(0, 100)] private float _runSpeedZombie;
     }
 }

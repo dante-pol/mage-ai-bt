@@ -35,6 +35,8 @@ namespace Root
             _agent.speed = _walkSpeed;
 
             _agent.stoppingDistance = 2.0f;
+
+            IsFreeze = false;
         }
 
         public void Update()
@@ -85,7 +87,10 @@ namespace Root
             _agent.speed = _walkSpeed;
 
             if (value)
+            {
+                Debug.Log("RUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUn");
                 _agent.speed = _runSpeed;
+            }
         }
 
         private void Move() 

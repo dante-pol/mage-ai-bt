@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4943d5c30f67cc4f8d75b3a6fb8396d, type: 3}
   m_Name: MeleeConfig
   m_EditorClassIdentifier: 
-  _heatPoint: 0
-  _damage: 0
-  _heatPointZombie: 0
-  _damageZombie: 0
-  _walkSpeed: 0
-  _runSpeed: 0
-  _walkSpeedZombie: 0
+  _heatPoint: 10
+  _damage: 3
+  _heatPointZombie: 1
+  _damageZombie: 5
+  _walkSpeed: 2
+  _runSpeed: 8
+  _walkSpeedZombie: 0.5
   _runSpeedZombie: 0

@@ -1,5 +1,4 @@
 ﻿using Root.Core.BT;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,12 +47,20 @@ namespace Root
                 return NodeStatus.SUCCESS;
             });
 
+            var updateMotionForZombieAction = new ActionNode(() =>
+            {
+                _agent.Motion.UpdateConfig(true);
+
+                return NodeStatus.SUCCESS;
+            });
+
             return new SequenceNode(new List<ABTNode>
             {
                 hasTurningZombieCondition,
                 isNotActiveZombieProcessAnimCondition,
                 zombieProcessAnimActive,
-                unLockEyeAction
+                unLockEyeAction,
+                updateMotionForZombieAction
             });
         }
 
@@ -198,7 +205,6 @@ namespace Root
                 BuildRetreatScenario(),
                 new SequenceNode(new List<ABTNode>
                 {
-                    new ActionNode(() => { Debug.Log("Life Selector"); return NodeStatus.SUCCESS; }),
                     new ConditionNode(() => !_agent.IsAlone),
                     BuildActiveLifeScenario(),
                 })
@@ -251,7 +257,16 @@ namespace Root
 
             var isPlayerBeatenCondition = new ConditionNode(() => _agent.HeatPoint <= 50);
 
-            var activeSuperMotionAction = new ActionNode(ActiveSuperMotion);
+            var isNotZombieCondition = new ConditionNode(() => !_agent.ZombieMode.IsZombie);
+
+            var activeSuperMotionAction = new ActionNode(() =>
+            {
+                _agent.Motion.SetActiveRun(true);
+
+                _agent.Animator.SetRun();
+
+                return NodeStatus.SUCCESS;
+            });
 
             var goToPlayerScenario = new SequenceNode(new List<ABTNode>
             {
@@ -260,7 +275,8 @@ namespace Root
                 isNotAttackingCondition,
                 goToPlayerAction,
                 isPlayerBeatenCondition,
-                new ActionNode(() => { Debug.Log("Go To Player Scenario"); return NodeStatus.SUCCESS; })
+                isNotZombieCondition,
+                activeSuperMotionAction,
             });
             
             return goToPlayerScenario;
@@ -299,13 +315,6 @@ namespace Root
             return lifeScenario;
         }
 
-        private NodeStatus RetreatAction()
-        {
-            _agent.Escape.Run();
-
-            return _agent.Motion.HasReachedTarget ? NodeStatus.SUCCESS : NodeStatus.RUNNING;
-        }
-
         private NodeStatus AttackToPlayer()
         {
             _agent.Animator.SetBaseAttack();
@@ -317,13 +326,15 @@ namespace Root
 
         private NodeStatus GoToPlayer()
         {
-            _agent.Motion.SetTarget(_agent.EntitiesBroker.Player);
+            _agent.Motion.SetTarget(_agent.Player);
 
             _agent.Animator.SetWalk();
 
+            _agent.Motion.SetActiveRun(false);
+
             _agent.Motion.SetMotionLock(false);
 
-            return _agent.Motion.HasReachedTarget ? NodeStatus.SUCCESS : NodeStatus.RUNNING;
+            return NodeStatus.SUCCESS;
         }
 
         private NodeStatus IdleAction()
@@ -333,11 +344,6 @@ namespace Root
             _agent.Motion.SetMotionLock(true);
 
             return NodeStatus.SUCCESS;
-        }
-
-        private NodeStatus ActiveSuperMotion()
-        {
-            throw new NotImplementedException();
         }
     }
 }

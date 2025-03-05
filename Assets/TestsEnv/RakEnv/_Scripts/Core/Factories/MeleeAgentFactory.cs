@@ -17,7 +17,7 @@ namespace Root.Core.Entities.Agents.Range
         public MeleeAgentFactory(TestCommandCenter commandCenter)
         {
             _prefabAgent = AssetsProvider.Load<MeleeAgent>(PATH_TO_PREFAB);
-            _config = AssetsProvider.Load<MeleeConfig>(PATH_TO_PREFAB);
+            _config = AssetsProvider.Load<MeleeConfig>(PATH_TO_CONFIG);
 
             _commandCenter = commandCenter;
         }

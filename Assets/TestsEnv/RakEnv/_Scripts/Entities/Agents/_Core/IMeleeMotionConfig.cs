@@ -3,8 +3,8 @@
     public interface IMeleeMotionConfig
     {
         float RunSpeed { get; }
-        int RunSpeedZombie { get; }
+        float RunSpeedZombie { get; }
         float WalkSpeed { get; }
-        int WalkSpeedZombie { get; }
+        float WalkSpeedZombie { get; }
     }
 }
