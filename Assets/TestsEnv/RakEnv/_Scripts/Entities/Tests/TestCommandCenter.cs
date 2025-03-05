@@ -24,6 +24,9 @@ namespace Root.Tests
             }
             set
             {
+                if (_levelRangeAgent == 5)
+                    return;
+
                 _levelRangeAgent = value;
 
                 UpdateRangeProgress();
