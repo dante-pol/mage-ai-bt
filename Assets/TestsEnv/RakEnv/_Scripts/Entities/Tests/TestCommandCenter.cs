@@ -13,7 +13,7 @@ namespace Root.Tests
 
         private void Awake()
         {
-            _rangeFactory = new RangeAgentFactory();
+            _rangeFactory = new RangeAgentFactory(this);
 
             _meleeFactory = new MeleeAgentFactory(this);
 
