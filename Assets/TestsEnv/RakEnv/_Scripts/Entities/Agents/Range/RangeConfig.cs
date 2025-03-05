@@ -7,19 +7,12 @@ namespace Root.Core.Entities.Agents.Range
     public class RangeConfig : ScriptableObject
     {
         public int HeatPoint => _heatPoint;
-
-        public int StartLevel => _startLevel;
-        public int EndLevel => _endLevel;
         public Color IdleColor => _idleColor;
 
         public AttackConfig[] AttackConfigs => _attackConfigs;
 
         [Header("Range Agent")]
         [SerializeField] private int _heatPoint;
-
-        [Header("Range Progressing")]
-        [SerializeField] private int _startLevel;
-        [SerializeField] private int _endLevel;
         [SerializeField] private Color _idleColor;
 
         [Header("Range Attacker")]
@@ -36,6 +29,5 @@ namespace Root.Core.Entities.Agents.Range
             [SerializeField] private float _cooldown;
             [SerializeField] private Color _colorAttack;
         }
-
     }
 }
