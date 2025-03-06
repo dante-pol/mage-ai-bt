@@ -106,7 +106,6 @@ public class MovementHandler : IMovementHandler
     public void TriggerJump()
     {   
         _shouldJump = true;
-        UnlockMovement();
     }
     
 }

@@ -16,4 +16,4 @@ MonoBehaviour:
   _moveSpeed: 2.5
   _jumpForce: 5
   _gravity: -15
-  _mouseSensivity: 0
+  _mouseSensivity: 1
