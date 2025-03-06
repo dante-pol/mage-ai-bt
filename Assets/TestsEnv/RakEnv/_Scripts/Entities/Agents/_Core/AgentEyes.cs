@@ -47,7 +47,7 @@ namespace Root
 
             Debug.DrawRay(_agent.position, ((_targetDetect.position - _agent.position)).normalized * 20, Color.red);
 
-            if (Vector3.Distance(_agent.position, _targetDetect.position) < 20)
+            if (Vector3.Distance(_agent.position, _targetDetect.position) < 60)
             {
                 IsDetect = true;
             }

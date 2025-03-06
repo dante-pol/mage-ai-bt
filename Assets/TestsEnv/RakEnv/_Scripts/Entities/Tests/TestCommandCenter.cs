@@ -1,4 +1,5 @@
 ﻿using Root.Core.Entities.Agents.Range;
+using Root.Entities.Interactive;
 using UnityEngine;
 
 namespace Root.Tests

@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Root.Tests
 {
+
     public class RangeCommandCenter
     {
         public int LevelRangeAgent

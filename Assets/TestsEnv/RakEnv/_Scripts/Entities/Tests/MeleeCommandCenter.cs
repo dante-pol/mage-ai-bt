@@ -1,4 +1,5 @@
 ﻿using Root.Core.Entities.Agents.Range;
+using Root.Entities.Interactive;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,11 +60,16 @@ namespace Root.Tests
 
         private IEnumerator Spawning()
         {
-
-            yield return new WaitForSeconds(_timeBetweenSpawn);
+            DoorObstacle[] doors = GameObject.FindObjectsOfType<DoorObstacle>();
 
             while (true)
             {
+
+                yield return new WaitForSeconds(_timeBetweenSpawn);
+
+                foreach (var door in doors) 
+                    door.OpenDoor();
+
                 for (int i = 0; i < 3; i++)
                 {
                     foreach (var spawnPoint in _spawnPointsForPeriod)
@@ -73,8 +79,13 @@ namespace Root.Tests
                         _allMelee.Add(melee as MeleeAgent);
                     }
 
-                    yield return new WaitForSeconds(1);
+                    yield return new WaitForSeconds(2);
                 }
+
+                yield return new WaitForSeconds(5);
+
+                foreach (var door in doors)
+                    door.CloseDoor();
             }
         }
 

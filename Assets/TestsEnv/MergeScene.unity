@@ -437,6 +437,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Location
       objectReference: {fileID: 0}
+    - target: {fileID: 3312790104656979864, guid: d0b435c4eba7b184bb4025e619987f4c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3398871594870837645, guid: d0b435c4eba7b184bb4025e619987f4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.2
@@ -477,55 +481,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4561608059525151338, guid: d0b435c4eba7b184bb4025e619987f4c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4567504750366806340, guid: d0b435c4eba7b184bb4025e619987f4c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962012425859913364, guid: d0b435c4eba7b184bb4025e619987f4c, type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962012425859913364, guid: d0b435c4eba7b184bb4025e619987f4c, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 7b5f3aa574f5d624d9c8bd58c0200efe, type: 2}
+    - target: {fileID: 5204683647760620928, guid: d0b435c4eba7b184bb4025e619987f4c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6126149556901060292, guid: d0b435c4eba7b184bb4025e619987f4c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 707916777}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0b435c4eba7b184bb4025e619987f4c, type: 3}
 --- !u!4 &707916775 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3398871594870837645, guid: d0b435c4eba7b184bb4025e619987f4c, type: 3}
   m_PrefabInstance: {fileID: 707916774}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &707916776 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6126149556901060292, guid: d0b435c4eba7b184bb4025e619987f4c, type: 3}
-  m_PrefabInstance: {fileID: 707916774}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &707916777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 707916776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 1
-  m_Size: {x: 51.415775, y: 10, z: 50.062828}
-  m_Center: {x: 3.9433842, y: 2, z: 5.517582}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: fd45ecaac96c9344e861a88b5bec4a33, type: 2}
-  m_BuildHeightMesh: 0
 --- !u!1001 &712124932
 PrefabInstance:
   m_ObjectHideFlags: 0
