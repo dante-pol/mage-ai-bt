@@ -13,12 +13,8 @@ namespace Root.Core.Entities.Agents.Range
 
         private readonly RangeConfig _rangeConfig;
 
-        private readonly TestCommandCenter _testCommandCenter;
-
-        public RangeAgentFactory(TestCommandCenter testCommandCenter)
+        public RangeAgentFactory()
         {
-            _testCommandCenter = testCommandCenter;
-
             _prefabAgent = AssetsProvider.Load<RangeAgent>(PATH_TO_PREFAB);
 
             _rangeConfig = AssetsProvider.Load<RangeConfig>(PATH_TO_CONFIG);

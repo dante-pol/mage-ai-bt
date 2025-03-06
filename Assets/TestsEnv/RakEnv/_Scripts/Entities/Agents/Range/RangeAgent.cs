@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace Root.Core.Entities.Agents.Range
@@ -32,7 +31,7 @@ namespace Root.Core.Entities.Agents.Range
 
         [SerializeField] GameObject _spellBall;
 
-        private int _numberOfAttack;
+        private int _levelAttack;
 
         public void Construct(RangeConfig config)
         {
@@ -54,7 +53,7 @@ namespace Root.Core.Entities.Agents.Range
 
             _brain = new RangeBrain(this);
 
-            _numberOfAttack = -1;
+            _levelAttack = -1;
 
             UpdateProgress();
         }
@@ -78,8 +77,6 @@ namespace Root.Core.Entities.Agents.Range
 
                 IsLife = false;
             }
-
-            Debug.Log($"IsLife: {IsLife}");
         }
 
         public void Dead()
@@ -91,9 +88,11 @@ namespace Root.Core.Entities.Agents.Range
 
         public void UpdateProgress()
         {
-            _numberOfAttack += 1;
+            _levelAttack += 1;
 
-            var config = _config.AttackConfigs[_numberOfAttack];
+            var config = _config.AttackConfigs[_levelAttack];
+
+            Animator.UpdateEffectMagicBall(config.ColorAttack);
 
             Attacker.UpdateConfigAttacker(config.Damage, config.Cooldown, config.ColorAttack);
         }
