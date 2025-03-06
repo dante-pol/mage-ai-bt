@@ -11,6 +11,8 @@ public class MovementHandler : IMovementHandler
     private float _verticalVelocity;
     private bool _shouldJump = false;
     private bool _isMovementLocked = false;
+    private bool _inAir = false;
+
     private IInputHandler _inputHandler;
 
     public MovementHandler(CharacterController characterController, IInputHandler inputHandler)
@@ -74,7 +76,6 @@ public class MovementHandler : IMovementHandler
         {
             _verticalVelocity += _gravity * Time.deltaTime;
         }
-
         moveDirection.y = _verticalVelocity;
     }
 
@@ -106,8 +107,9 @@ public class MovementHandler : IMovementHandler
     }
 
     public void TriggerJump()
-    {
+    {   
         _shouldJump = true;
+        UnlockMovement();
     }
     
 }

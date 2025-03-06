@@ -33,6 +33,7 @@ public class InputHandler : IInputHandler
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            EventManager.Instance.TriggerMovementLock();
             Jump();
         }
 

@@ -5,6 +5,7 @@ public class InputHandlerAdapter : MonoBehaviour
     private Transform _shootPoint;
     private InputHandler _inputHandler;
     private MovementHandler _movementHandler;
+    private float _leftOffset = 0.1f;
 
 
     public void Setup(Transform shootPoint, InputHandler inputHandler, MovementHandler movementHandler)
@@ -20,7 +21,8 @@ public class InputHandlerAdapter : MonoBehaviour
         if (_shootPoint != null)
         {
             Camera mainCamera = Camera.main;
-            Vector3 direction = mainCamera.transform.forward;
+            Vector3 direction = mainCamera.transform.forward + (mainCamera.transform.right * -_leftOffset);
+            direction.Normalize();
             EventManager.Instance.TriggerAttack(_shootPoint.position, direction);
         }
     }
