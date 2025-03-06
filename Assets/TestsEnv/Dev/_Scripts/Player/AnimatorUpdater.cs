@@ -28,7 +28,7 @@ public class AnimatorUpdater : IAnimatorUpdater
 
             _animator.SetFloat("Direction", direction);
 
-            if(_inputHandler.IsAttacking)
+            if(_inputHandler.IsAttacking && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
                 _animator.SetTrigger("Attack");  
                 _inputHandler.EndAttack();
@@ -56,8 +56,11 @@ public class AnimatorUpdater : IAnimatorUpdater
 
             if (_inputHandler.JumpTriggered)
             {
-                _animator.SetTrigger("Jump");
-                _inputHandler.ResetJumpTrigger();
+                if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+                {
+                    _animator.SetTrigger("Jump");
+                    _inputHandler.ResetJumpTrigger();
+                }
             }
         }
     }

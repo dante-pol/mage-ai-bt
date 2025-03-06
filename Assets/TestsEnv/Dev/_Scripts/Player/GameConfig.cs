@@ -9,6 +9,7 @@ public class GameConfig : ScriptableObject
     public float JumpForce => _jumpForce;
     public float Gravity => _gravity;
     public float MouseSensitivity => _mouseSensivity;
+    public float PlayerMaxHealth => _maxHealth;
 
     [Header("Player Movement")]
     [SerializeField] private float _runSpeed = 10f;
@@ -21,6 +22,8 @@ public class GameConfig : ScriptableObject
     [Header("Camera Settings")]
     [SerializeField] private float _mouseSensivity = 2f;
 
+    [Header("Player Health")]
+    [SerializeField] private float _maxHealth = 10;
     
 
 }

@@ -29,6 +29,8 @@ public class InputHandlerAdapter : MonoBehaviour
 
     public void CallJump()
     {
+
         _movementHandler.TriggerJump();
+
     }
 }

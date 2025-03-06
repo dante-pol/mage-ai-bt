@@ -39,7 +39,7 @@ public class GameInitializer : MonoBehaviour
         CharacterController characterController = playerController.GetComponent<CharacterController>();
         Animator animator = playerController.GetComponentInChildren<Animator>();
 
-
+        PlayerHealth playerHealth = new PlayerHealth(_gameConfig);
         IInputHandler inputHandler = new InputHandler(animator);
         IMovementHandler movementHandler = new MovementHandler(characterController, inputHandler, _gameConfig);
         ICameraRotationHandler cameraRotationHandler = new CameraRotationHandler(playerTransform, cameraPivot, _gameConfig);
@@ -47,7 +47,7 @@ public class GameInitializer : MonoBehaviour
 
         InputHandlerAdapter adapter = playerController.GetComponentInChildren<InputHandlerAdapter>();
         adapter.Setup(_shootPoint, (InputHandler)inputHandler, (MovementHandler)movementHandler);
-        playerController.Initialize(movementHandler, cameraRotationHandler, inputHandler, animatorUpdater);
+        playerController.Initialize(movementHandler, cameraRotationHandler, inputHandler, animatorUpdater, playerHealth);
 
         _inputHandler = inputHandler;
     }

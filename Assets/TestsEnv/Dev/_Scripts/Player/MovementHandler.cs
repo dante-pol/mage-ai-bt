@@ -9,6 +9,7 @@ public class MovementHandler : IMovementHandler
     private bool _isMovementLocked = false;
     private GameConfig _gameConfig;
     private IInputHandler _inputHandler;
+    private bool _wasGrounded;
 
 
     public MovementHandler(CharacterController characterController, IInputHandler inputHandler, GameConfig gameConfig)
@@ -65,14 +66,18 @@ public class MovementHandler : IMovementHandler
             if (_shouldJump)
             {
                 _verticalVelocity = _gameConfig.JumpForce;
-                _inputHandler.ResetJump();
                 _shouldJump = false;
+            }
+            if (!_wasGrounded)
+            {
+                _inputHandler.ResetJump();
             }
         }
         else
         {
             _verticalVelocity += _gameConfig.Gravity * Time.deltaTime;
         }
+        _wasGrounded = isGrounded;
         moveDirection.y = _verticalVelocity;
     }
 

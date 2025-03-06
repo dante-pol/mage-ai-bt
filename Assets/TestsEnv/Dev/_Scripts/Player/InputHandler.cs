@@ -8,6 +8,9 @@ public class InputHandler : IInputHandler
     private bool _isJumping;
     private bool _isSprinting;
     private bool _isUlti;
+    private float _lastAttackTime = -Mathf.Infinity;
+    private float _attackCooldown = 0.5f;
+    
 
     public InputHandler(Animator animator)
     {
@@ -21,15 +24,11 @@ public class InputHandler : IInputHandler
             EventManager.Instance.ToggleCamera();
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && CanAttack())
         {
             StartAttack();
+            _lastAttackTime = Time.time;
         }
-
-        // if (_isAttacking && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !_animator.IsInTransition(0))
-        // {
-        //     EndAttack();
-        // }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -61,6 +60,11 @@ public class InputHandler : IInputHandler
         }
     }
 
+    private bool CanAttack()
+    {
+        return !_isAttacking && (Time.time - _lastAttackTime >= _attackCooldown);
+    }
+
     private void StartAttack()
     {
         _isAttacking = true;
@@ -73,10 +77,12 @@ public class InputHandler : IInputHandler
 
     private void Jump()
     {
-        if (!_isJumping)
+        if(!_isJumping)
         {
-            JumpTriggered = true;
+            _isJumping = true;
+            JumpTriggered = true; 
         }
+        
     }
 
     public void ResetJumpTrigger()
