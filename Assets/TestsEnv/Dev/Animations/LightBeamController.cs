@@ -1,97 +1,91 @@
 using UnityEngine;
 using System;
+using System.Collections;
+using Root;
 
 public class LightBeamController : MonoBehaviour
 {
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private Transform _lightSource;
     [SerializeField] private float _beamLength = 10f;
-    [SerializeField] private float _beamGrowSpeed = 5f;
     [SerializeField] private LayerMask _enemyLayer;
+    [SerializeField] private GameConfig _gameConfig;
 
     private bool _isBeamActive;
     private float _currentBeamLength;
-    private Action _toggleBeamCallback;
+    private float _beamDuration = 6f;
+    private float _beamEndTime;
 
-    private void Start()
+    public void ActivateBeam()
     {
-        SubscribeToSuperAbilityEvent(ToggleBeam);
-    }
-
-    private void SubscribeToSuperAbilityEvent(Action toggleCallback)
-    {
-        _toggleBeamCallback = toggleCallback;
-        if (_toggleBeamCallback != null && EventManager.Instance != null)
-        {
-            EventManager.Instance.OnSuperAbilityUse += _toggleBeamCallback;
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (_toggleBeamCallback != null && EventManager.Instance != null)
-        {
-            EventManager.Instance.OnSuperAbilityUse -= _toggleBeamCallback;
-        }
-    }
-
-    private void ToggleBeam()
-    {
-        Debug.Log("activate beam");
-        _isBeamActive = !_isBeamActive;
         if (!_isBeamActive)
         {
+            _isBeamActive = true;
             _currentBeamLength = 0f;
+            _beamEndTime = Time.time + _beamDuration;
+            StartCoroutine(BeamLifecycle());
+        }
+    }
+
+    private IEnumerator BeamLifecycle()
+    {
+        float growTime = 1f;
+        float startTime = Time.time;
+        
+        while (Time.time - startTime < growTime)
+        {
+            _currentBeamLength = Mathf.Lerp(0f, _beamLength, (Time.time - startTime)/growTime);
+            yield return null;
+        }
+        _currentBeamLength = _beamLength;
+
+        while (Time.time < _beamEndTime)
+        {
+            CheckForCollisions();
+            yield return null;
+        }
+
+        startTime = Time.time;
+        while (Time.time - startTime < growTime)
+        {
+            _currentBeamLength = Mathf.Lerp(_beamLength, 0f, (Time.time - startTime)/growTime);
+            yield return null;
+        }
+        _currentBeamLength = 0f;
+        EventManager.Instance.SetSuperAbilityAvailability(false);
+        _isBeamActive = false;
+    }
+
+    private void CheckForCollisions()
+    {
+        RaycastHit[] hits = Physics.RaycastAll(_lightSource.position, _lightSource.forward, _beamLength, _enemyLayer);
+        
+        foreach (var hit in hits)
+        {
+            if (hit.collider.TryGetComponent(out IEntityAttacked entity))
+            {
+                entity.TakeAttack(new AttackProcess(_gameConfig.UltiDamage));
+            }
+            
+            if (hit.collider.CompareTag("Boss"))
+            {
+                Debug.Log("Урон боссу!");
+            }
         }
     }
 
     private void Update()
     {
-        if (_isBeamActive)
-        {
-            _currentBeamLength += _beamGrowSpeed * Time.deltaTime;
-            _currentBeamLength = Mathf.Min(_currentBeamLength, _beamLength);
-        }
-        else
-        {
-            _currentBeamLength -= _beamGrowSpeed * Time.deltaTime;
-            _currentBeamLength = Mathf.Max(_currentBeamLength, 0f);
-        }
-
-        _lineRenderer.enabled = _currentBeamLength > 0f;
         UpdateBeam();
-
-        if (_isBeamActive)
-        {
-            CheckForCollisions();
-        }
     }
 
     private void UpdateBeam()
     {
-        if (_lineRenderer == null || _lightSource == null)
+        if (_lineRenderer != null)
         {
-            Debug.LogError("_lineRenderer or _lightSource is not assigned!");
-            return;
-        }
-
-        _lineRenderer.SetPosition(0, _lightSource.position);
-        _lineRenderer.SetPosition(1, _lightSource.position + _lightSource.forward * _currentBeamLength);
-    }
-
-    private void CheckForCollisions()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(_lightSource.position, _lightSource.forward, out hit, _beamLength, _enemyLayer))
-        {
-            if (hit.collider.CompareTag("Enemy"))
-            {
-                Destroy(hit.collider.gameObject);
-            }
-            else if (hit.collider.CompareTag("Boss"))
-            {
-                Debug.Log("Нанес урон боссу");
-            }
+            _lineRenderer.enabled = _currentBeamLength > 0f;
+            _lineRenderer.SetPosition(0, _lightSource.position);
+            _lineRenderer.SetPosition(1, _lightSource.position + _lightSource.forward * _currentBeamLength);
         }
     }
 }

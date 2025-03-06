@@ -31,10 +31,10 @@ public class ProjectileBehaviour : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Попал по врагу");
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             Debug.Log("Попал по врагу");
             EventManager.Instance.TriggerHitEnemy();

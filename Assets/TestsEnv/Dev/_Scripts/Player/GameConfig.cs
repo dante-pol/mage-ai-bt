@@ -10,6 +10,7 @@ public class GameConfig : ScriptableObject
     public float Gravity => _gravity;
     public float MouseSensitivity => _mouseSensivity;
     public float PlayerMaxHealth => _maxHealth;
+    public float UltiDamage => _ultiDamage;
 
     [Header("Player Movement")]
     [SerializeField] private float _runSpeed = 10f;
@@ -24,6 +25,9 @@ public class GameConfig : ScriptableObject
 
     [Header("Player Health")]
     [SerializeField] private float _maxHealth = 10;
+
+    [Header("Super Spell Damage")]
+    [SerializeField] private float _ultiDamage;
     
 
 }

@@ -5,14 +5,16 @@ public class InputHandlerAdapter : MonoBehaviour
     private Transform _shootPoint;
     private InputHandler _inputHandler;
     private MovementHandler _movementHandler;
+    private LightBeamController _lightBeamController;
     private float _leftOffset = 0.1f;
 
 
-    public void Setup(Transform shootPoint, InputHandler inputHandler, MovementHandler movementHandler)
+    public void Setup(Transform shootPoint, InputHandler inputHandler, MovementHandler movementHandler, LightBeamController lightBeam)
     {
         _shootPoint = shootPoint;
         _inputHandler = inputHandler;
         _movementHandler = movementHandler;
+        _lightBeamController = lightBeam;
     }
 
 
@@ -29,8 +31,11 @@ public class InputHandlerAdapter : MonoBehaviour
 
     public void CallJump()
     {
-
         _movementHandler.TriggerJump();
+    }
 
+    public void TriggerBeamActivation()
+    {
+        _lightBeamController.ActivateBeam();
     }
 }

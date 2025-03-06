@@ -44,8 +44,9 @@ public class GameInitializer : MonoBehaviour
         ICameraRotationHandler cameraRotationHandler = new CameraRotationHandler(playerTransform, cameraPivot, _gameConfig);
         IAnimatorUpdater animatorUpdater = new AnimatorUpdater(animator, movementHandler, inputHandler);
 
+        LightBeamController beamController = playerController.GetComponentInChildren<LightBeamController>();
         InputHandlerAdapter adapter = playerController.GetComponentInChildren<InputHandlerAdapter>();
-        adapter.Setup(_shootPoint, (InputHandler)inputHandler, (MovementHandler)movementHandler);
+        adapter.Setup(_shootPoint, (InputHandler)inputHandler, (MovementHandler)movementHandler, beamController);
         playerController.Initialize(movementHandler, cameraRotationHandler, inputHandler, animatorUpdater);
 
         _inputHandler = inputHandler;
@@ -68,6 +69,10 @@ public class GameInitializer : MonoBehaviour
             EventManager.Instance.SetSuperAbilityAvailability(true);
             Debug.Log("Суперспособность доступна");
         }
+        else
+        {
+            EventManager.Instance.SetSuperAbilityAvailability(false);
+        }
     }
 
     private void UseSuperAbility()
@@ -77,7 +82,7 @@ public class GameInitializer : MonoBehaviour
             Debug.Log("Суперспособность активирована");
             _ultiIsAvailiable = false;
             _hitCount = 0;
-
+            EventManager.Instance.SetSuperAbilityAvailability(false);
             StartCoroutine(ActivateSuperAbility());
         }
     }

@@ -18,3 +18,4 @@ MonoBehaviour:
   _gravity: -15
   _mouseSensivity: 1
   _maxHealth: 100
+  _ultiDamage: 10
