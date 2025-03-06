@@ -1,21 +1,20 @@
-using Root;
 using UnityEngine;
+using Root;
 
-public class PlayerHealth : IEntityAttacked
+public class PlayerHealth : MonoBehaviour, IEntityAttacked 
 {
+    [SerializeField] private GameConfig _config;
     private float _currentHealth;
-    private readonly float _maxHealth;
 
-    public PlayerHealth(GameConfig config)
+    private void Awake()
     {
-        _maxHealth = config.PlayerMaxHealth;
-        _currentHealth = _maxHealth;
+        _currentHealth = _config.PlayerMaxHealth;
     }
 
     public void TakeAttack(IAttackProcess attackProcess)
     {
         _currentHealth -= attackProcess.Damage;
-        Debug.Log($"Player получил урон: {attackProcess.Damage}. Осталось: {_currentHealth}");
+        Debug.Log($"Урон: {attackProcess.Damage}. Осталось: {_currentHealth}");
 
         if (_currentHealth <= 0)
         {
@@ -25,9 +24,6 @@ public class PlayerHealth : IEntityAttacked
 
     private void Die()
     {
-        Debug.Log("Player умер!");
+        Debug.Log("Игрок умер!");
     }
-
-    public float GetCurrentHealth() => _currentHealth;
-    public float GetMaxHealth() => _maxHealth;
 }

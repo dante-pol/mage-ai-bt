@@ -17,3 +17,4 @@ MonoBehaviour:
   _jumpForce: 5
   _gravity: -15
   _mouseSensivity: 1
+  _maxHealth: 100

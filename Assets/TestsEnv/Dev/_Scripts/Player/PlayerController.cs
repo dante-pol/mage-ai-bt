@@ -14,14 +14,12 @@ public class PlayerController : MonoBehaviour
         IMovementHandler movementHandler,
         ICameraRotationHandler cameraRotationHandler,
         IInputHandler inputHandler,
-        IAnimatorUpdater animatorUpdater,
-        PlayerHealth playerHealth)
+        IAnimatorUpdater animatorUpdater)
     {
         _movementHandler = movementHandler;
         _cameraRotationHandler = cameraRotationHandler;
         _inputHandler = inputHandler;
         _animatorUpdater = animatorUpdater;
-        _playerHealth = playerHealth;
     }
 
     private void Update()
