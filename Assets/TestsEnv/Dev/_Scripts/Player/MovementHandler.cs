@@ -3,24 +3,21 @@ using UnityEngine;
 public class MovementHandler : IMovementHandler
 {
     private CharacterController _characterController;
-    private float _moveSpeed = 5f;
-    private float _runSpeed = 10f;
     private float _currentSpeed;
-    private float _jumpForce = 6f;
-    private float _gravity = -15f;
     private float _verticalVelocity;
     private bool _shouldJump = false;
     private bool _isMovementLocked = false;
-    private bool _inAir = false;
-
+    private GameConfig _gameConfig;
     private IInputHandler _inputHandler;
 
-    public MovementHandler(CharacterController characterController, IInputHandler inputHandler)
+
+    public MovementHandler(CharacterController characterController, IInputHandler inputHandler, GameConfig gameConfig)
     {
         _characterController = characterController;
         _inputHandler = inputHandler;
-        _currentSpeed = _moveSpeed;
-        
+        _gameConfig = gameConfig;
+        _currentSpeed = _gameConfig.MoveSpeed;
+
         SubscribeToEvents();
     }
 
@@ -46,7 +43,7 @@ public class MovementHandler : IMovementHandler
         {
             return;
         }
-        _currentSpeed = _inputHandler.IsSprinting ? _runSpeed : _moveSpeed;
+        _currentSpeed = _inputHandler.IsSprinting ? _gameConfig.RunSpeed : _gameConfig.MoveSpeed;
 
         Vector3 moveDirection = GetMoveDirection();
         moveDirection = _characterController.transform.TransformDirection(moveDirection);
@@ -67,14 +64,14 @@ public class MovementHandler : IMovementHandler
             
             if (_shouldJump)
             {
-                _verticalVelocity = _jumpForce;
+                _verticalVelocity = _gameConfig.JumpForce;
                 _inputHandler.ResetJump();
                 _shouldJump = false;
             }
         }
         else
         {
-            _verticalVelocity += _gravity * Time.deltaTime;
+            _verticalVelocity += _gameConfig.Gravity * Time.deltaTime;
         }
         moveDirection.y = _verticalVelocity;
     }

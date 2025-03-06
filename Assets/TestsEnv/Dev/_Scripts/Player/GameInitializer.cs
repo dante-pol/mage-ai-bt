@@ -5,7 +5,7 @@ public class GameInitializer : MonoBehaviour
 {
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private int _poolSize = 20;
-
+    [SerializeField] private GameConfig _gameConfig;
     [SerializeField] private Transform _shootPoint;
 
     private int _hitCount = 0;
@@ -41,8 +41,8 @@ public class GameInitializer : MonoBehaviour
 
 
         IInputHandler inputHandler = new InputHandler(animator);
-        IMovementHandler movementHandler = new MovementHandler(characterController, inputHandler);
-        ICameraRotationHandler cameraRotationHandler = new CameraRotationHandler(playerTransform, cameraPivot);
+        IMovementHandler movementHandler = new MovementHandler(characterController, inputHandler, _gameConfig);
+        ICameraRotationHandler cameraRotationHandler = new CameraRotationHandler(playerTransform, cameraPivot, _gameConfig);
         IAnimatorUpdater animatorUpdater = new AnimatorUpdater(animator, movementHandler, inputHandler);
 
         InputHandlerAdapter adapter = playerController.GetComponentInChildren<InputHandlerAdapter>();

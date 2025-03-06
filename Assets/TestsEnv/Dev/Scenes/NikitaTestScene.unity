@@ -1373,6 +1373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 5620316860109379912, guid: 50a0af8af10bc7a4a90576d791cf8e41, type: 3}
   _poolSize: 20
+  _gameConfig: {fileID: 11400000, guid: a152801a423103445a133b8c481216b0, type: 2}
   _shootPoint: {fileID: 1832120066}
 --- !u!114 &1176786400
 MonoBehaviour:
