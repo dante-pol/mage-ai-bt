@@ -31,7 +31,14 @@ namespace Root.Tests
 
         private int _levelRangeAgent;
 
-        public void SpawnRange()
+        public RangeCommandCenter(RangeAgentFactory rangeFactory)
+        {
+            _rangeFactory = rangeFactory;
+
+            _ranges = new List<RangeAgent>();
+        }
+
+        public void RunSpawn()
         {
             var spawnPoints = GameObject.FindGameObjectsWithTag("Range").ToArray().Select((obj) => obj.transform);
 

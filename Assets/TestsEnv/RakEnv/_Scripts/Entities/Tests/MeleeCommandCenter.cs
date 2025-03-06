@@ -26,11 +26,15 @@ namespace Root.Tests
         private List<MeleeAgent> _allMelee;
         private List<Transform> _spawnPointsForPeriod;
 
-        public MeleeCommandCenter(MonoBehaviour coroutineRunner)
+        public MeleeCommandCenter(MonoBehaviour coroutineRunner, MeleeAgentFactory factory)
         {
-            _timeBetweenSpawn = 15;
-
             _coroutineRunner = coroutineRunner;
+
+            _meleeFactory = factory;
+
+            _timeBetweenSpawn = 30;
+
+            _allMelee = new List<MeleeAgent>();
         }
 
         public void RunPeriodsSpawn()
@@ -55,6 +59,9 @@ namespace Root.Tests
 
         private IEnumerator Spawning()
         {
+
+            yield return new WaitForSeconds(_timeBetweenSpawn);
+
             while (true)
             {
                 for (int i = 0; i < 3; i++)
@@ -64,12 +71,10 @@ namespace Root.Tests
                         var melee = _meleeFactory.Create(spawnPoint.position, spawnPoint.rotation);
 
                         _allMelee.Add(melee as MeleeAgent);
-
-                        yield return null;
                     }
-                }
 
-                yield return new WaitForSeconds(_timeBetweenSpawn);
+                    yield return new WaitForSeconds(1);
+                }
             }
         }
 

@@ -18,13 +18,19 @@ namespace Root.Tests
 
         private void Awake()
         {
-            _meleeCommandCenter = new MeleeCommandCenter(this);
-
-            _rangeCommandCenter = new RangeCommandCenter();
-
             var rangeFactory = new RangeAgentFactory();
-
+            
             var meleeFactory = new MeleeAgentFactory(this);
+
+            _meleeCommandCenter = new MeleeCommandCenter(this, meleeFactory);
+
+            _rangeCommandCenter = new RangeCommandCenter(rangeFactory);
+
+            _meleeCommandCenter.RunSingleSpawn();
+
+            _meleeCommandCenter.RunPeriodsSpawn();
+
+            _rangeCommandCenter.RunSpawn();
 
         }
     }
