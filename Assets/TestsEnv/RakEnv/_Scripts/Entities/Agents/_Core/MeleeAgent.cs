@@ -16,7 +16,7 @@ namespace Root
 
         public float Damage { get; private set; }
 
-        public bool IsAlone => _commandCenter.IsOneMelee;
+        public bool IsAlone => _commandCenter.IsAloneMelee;
 
         public MeleeMotion Motion;
 
@@ -30,7 +30,7 @@ namespace Root
 
         public MeleeZombie ZombieMode;
 
-        public TestCommandCenter _commandCenter;
+        public ICommandCenter _commandCenter;
 
         private MeleeBrain _brain;
 
@@ -40,7 +40,7 @@ namespace Root
         private AnimatorOverrideController _overrideController;
         public Transform Player;
 
-        public void Construct(TestCommandCenter commandCenter, MeleeConfig config)
+        public void Construct(ICommandCenter commandCenter, MeleeConfig config)
         {
             _commandCenter = commandCenter;
 

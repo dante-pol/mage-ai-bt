@@ -12,9 +12,9 @@ namespace Root.Core.Entities.Agents.Range
         private readonly MeleeAgent _prefabAgent;
         private readonly MeleeConfig _config;
 
-        private readonly TestCommandCenter _commandCenter;
+        private readonly ICommandCenter _commandCenter;
 
-        public MeleeAgentFactory(TestCommandCenter commandCenter)
+        public MeleeAgentFactory(ICommandCenter commandCenter)
         {
             _prefabAgent = AssetsProvider.Load<MeleeAgent>(PATH_TO_PREFAB);
             _config = AssetsProvider.Load<MeleeConfig>(PATH_TO_CONFIG);
