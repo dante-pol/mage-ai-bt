@@ -33,7 +33,7 @@ namespace Root
             _agentAudioSource.Play();
         }
 
-        public void PlayTurnZombie()
+        public void PlayZombieTransformation()
         {
             _agentAudioSource.clip = _config.ZombieTransformation;
 
