@@ -5,6 +5,7 @@ using UnityEngine.AI;
 namespace Root
 {
 
+
     [RequireComponent(typeof(NavMeshAgent))]
     public class MeleeAgent : MonoBehaviour, IEntityAttacked
     {
@@ -30,12 +31,15 @@ namespace Root
 
         public MeleeZombie ZombieMode;
 
+        public MeleeSounds Sounds;
+
         public ICommandCenter _commandCenter;
 
         private MeleeBrain _brain;
 
         private MeleeConfig _config;
 
+        
         [SerializeField] 
         private AnimatorOverrideController _overrideController;
         public Transform Player;
@@ -92,6 +96,11 @@ namespace Root
             Escape = new MeleeEscape(Motion);
 
             ZombieMode = new MeleeZombie(this, Animator);
+
+            Sounds = new MeleeSounds(
+                _config.SoundConfig, 
+                transform.Find("AgentSound").GetComponent<AudioSource>(), 
+                transform.Find("LegsSound").GetComponent<AudioSource>());
 
             _brain = new MeleeBrain(this);
         }

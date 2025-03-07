@@ -21,3 +21,9 @@ MonoBehaviour:
   _runSpeed: 4
   _walkSpeedZombie: 0.45
   _runSpeedZombie: 0
+  _soundConfig:
+    _walk: {fileID: 0}
+    _run: {fileID: 0}
+    _attack: {fileID: 8300000, guid: d3eb5491a37da534b919a81af9c6f188, type: 3}
+    _death: {fileID: 8300000, guid: 5cd2a4ed666fe784ca5e14e7f2f6bfb2, type: 3}
+    _zombieTransformation: {fileID: 8300000, guid: 3b437c93bffaddf4da82f1b91ac77018, type: 3}
