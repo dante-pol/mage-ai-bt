@@ -6,6 +6,15 @@ public class AnimatorUpdater : IAnimatorUpdater
     private IMovementHandler _movementHandler;
     private IInputHandler _inputHandler;
 
+    private float _smoothSpeed;
+    private float _speedVelocity;
+    private float _smoothDirection;
+    private float _directionVelocity;
+    private float _savedSpeed;
+    private float _savedDirection;
+    private const float SpeedSmoothTime = 0.3f;
+    private const float DirectionSmoothTime = 0.1f;
+
     private float _idleTimer = 0f;
     private const float IdleTimeThreshold = 10f;
 
@@ -18,55 +27,83 @@ public class AnimatorUpdater : IAnimatorUpdater
 
     public void UpdateAnimator()
     {
-        if (_animator != null)
+        UpdateBaseLayer();
+    }
+
+    private void UpdateBaseLayer()
+    {
+        if (_animator == null) return;
+
+        float targetSpeed = CalculateTargetSpeed();
+        _smoothSpeed = Mathf.SmoothDamp(_smoothSpeed, targetSpeed, ref _speedVelocity, SpeedSmoothTime);
+        _animator.SetFloat("Speed", _smoothSpeed);
+
+
+        float rawDirection = ((MovementHandler)_movementHandler).GetDirection();
+        _smoothDirection = Mathf.SmoothDamp(_smoothDirection, rawDirection, ref _directionVelocity, DirectionSmoothTime);
+        _animator.SetFloat("Direction", _smoothDirection);
+
+
+        if (_inputHandler.IsAttacking && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            float speed = ((MovementHandler)_movementHandler).GetMoveDirection().magnitude;
+            _animator.SetTrigger("Attack");
+            _inputHandler.EndAttack();
+        }
 
-            float direction = ((MovementHandler)_movementHandler).GetDirection();
 
-            _animator.SetFloat("Speed", speed);
+        _animator.SetBool("IsUlti", _inputHandler.IsUlti);
 
-            _animator.SetFloat("Direction", direction);
 
-            if(_inputHandler.IsAttacking && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        bool isPlayerActive = IsPlayerActive();
+        UpdateIdleState(isPlayerActive);
+        Debug.Log($"{isPlayerActive}");
+
+
+        HandleJumpAnimation();
+    }
+
+    private float CalculateTargetSpeed()
+    {
+        Vector3 moveDirection = ((MovementHandler)_movementHandler).GetMoveDirection();
+        bool isSprinting = _inputHandler.IsSprinting;
+
+        if (moveDirection.magnitude < 0.1f)
+            return 0f;
+
+        return isSprinting ? 2f : 1f;
+    }
+
+    private bool IsPlayerActive()
+    {
+        return _smoothSpeed > 0.1f || 
+               _inputHandler.IsJumpPressed || 
+               _inputHandler.IsAttacking || 
+               _inputHandler.IsUlti;
+    }
+
+    private void UpdateIdleState(bool isActive)
+    {
+        if (isActive)
+        {
+            _idleTimer = 0f;
+            _animator.SetBool("IsIdle", false);
+        }
+        else
+        {
+            _idleTimer += Time.deltaTime;
+            if (_idleTimer >= IdleTimeThreshold)
             {
-                _animator.SetTrigger("Attack");  
-                _inputHandler.EndAttack();
-            }
-        
-            _animator.SetBool("IsRun", _inputHandler.IsSprinting);
-            _animator.SetBool("IsUlti", _inputHandler.IsUlti);
-
-            bool isPlayerActive = CheckPlayerActivity(speed);
-
-            if (isPlayerActive)
-            {
-                _idleTimer = 0f;
-                _animator.SetBool("IsIdle", false);
-            }
-            else
-            {
-                _idleTimer += Time.deltaTime;
-
-                if (_idleTimer >= IdleTimeThreshold)
-                {
-                    _animator.SetBool("IsIdle", true);
-                }
-            }
-
-            if (_inputHandler.JumpTriggered)
-            {
-                if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
-                {
-                    _animator.SetTrigger("Jump");
-                    _inputHandler.ResetJumpTrigger();
-                }
-            }
+               _animator.SetBool("IsIdle", true); 
+            }    
         }
     }
 
-    private bool CheckPlayerActivity(float speed)
+    private void HandleJumpAnimation()
     {
-        return speed > 0 || _inputHandler.IsJumpPressed || _inputHandler.IsAttacking || _inputHandler.IsUlti;
+        if (_inputHandler.JumpTriggered && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+        {
+            _animator.SetTrigger("Jump");
+            _inputHandler.ResetJumpTrigger();
+        }
     }
 }
