@@ -19,6 +19,8 @@ namespace Root
 
         public bool IsAlone => _commandCenter.IsAloneMelee;
 
+        public Teams TeamID => _teamID;
+
         public MeleeMotion Motion;
 
         //public EntitiesBroker EntitiesBroker;
@@ -44,6 +46,8 @@ namespace Root
         
         [SerializeField] private ChildTriggerHandler _sword;
         [SerializeField] private AnimatorOverrideController _overrideController;
+        [SerializeField] private Teams _teamID;
+        
         public Transform Player;
 
         public void Construct(ICommandCenter commandCenter, MeleeConfig config)

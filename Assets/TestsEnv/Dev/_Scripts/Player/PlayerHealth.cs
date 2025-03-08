@@ -3,7 +3,11 @@ using Root;
 
 public class PlayerHealth : MonoBehaviour, IEntityAttacked 
 {
+    public Teams TeamID => _teamID;
+    
+    [SerializeField] private Teams _teamID;
     [SerializeField] private GameConfig _config;
+    
     private float _currentHealth;
 
     private void Awake()

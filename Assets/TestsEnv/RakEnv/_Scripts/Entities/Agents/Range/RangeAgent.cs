@@ -13,6 +13,8 @@ namespace Root.Core.Entities.Agents.Range
 
         public int NumberProgress { get; private set; }
 
+        public Teams TeamID => _teamID;
+
         public AgentEyes Eyes;
 
         public RangeAnimator Animator;
@@ -33,6 +35,8 @@ namespace Root.Core.Entities.Agents.Range
 
         [SerializeField] GameObject _spellBall;
 
+        [SerializeField] private Teams _teamID;
+        
         private int _levelAttack;
 
         public void Construct(RangeConfig config)
