@@ -29,5 +29,6 @@ public class GameConfig : ScriptableObject
     [Header("Super Spell Damage")]
     [SerializeField] private float _ultiDamage;
     
-
+    public float ShieldDuration = 5f;
+    public float ShieldCooldown = 10f;  
 }

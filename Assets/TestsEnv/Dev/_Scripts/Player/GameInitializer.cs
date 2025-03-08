@@ -7,6 +7,7 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private int _poolSize = 20;
     [SerializeField] private GameConfig _gameConfig;
     [SerializeField] private Transform _shootPoint;
+    [SerializeField] private ShieldController _shieldController;
 
     private int _hitCount = 0;
     private const int RequiredHitsForSuperAbility = 10;
@@ -39,7 +40,9 @@ public class GameInitializer : MonoBehaviour
         CharacterController characterController = playerController.GetComponent<CharacterController>();
         Animator animator = playerController.GetComponentInChildren<Animator>();
 
-        IInputHandler inputHandler = new InputHandler(animator);
+        
+
+        IInputHandler inputHandler = new InputHandler(animator, _gameConfig);
         IMovementHandler movementHandler = new MovementHandler(characterController, inputHandler, _gameConfig);
         ICameraRotationHandler cameraRotationHandler = new CameraRotationHandler(playerTransform, cameraPivot, _gameConfig);
         IAnimatorUpdater animatorUpdater = new AnimatorUpdater(animator, movementHandler, inputHandler);
@@ -48,6 +51,9 @@ public class GameInitializer : MonoBehaviour
         InputHandlerAdapter adapter = playerController.GetComponentInChildren<InputHandlerAdapter>();
         adapter.Setup(_shootPoint, (InputHandler)inputHandler, (MovementHandler)movementHandler, beamController);
         playerController.Initialize(movementHandler, cameraRotationHandler, inputHandler, animatorUpdater);
+
+        ShieldController shieldController = playerController.GetComponentInChildren<ShieldController>();
+        shieldController.Initialize(_gameConfig, (InputHandler)inputHandler);
 
         _inputHandler = inputHandler;
     }

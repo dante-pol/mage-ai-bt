@@ -12,6 +12,9 @@ public class EventManager : MonoBehaviour
     public event Action OnMovementLock;
     public event Action OnMovementUnlock;
     public event Action OnEnemyHit;
+    public event Action OnShieldActivation;
+
+    
     private bool _isSuperAbilityAvailable = false;
 
     private void Awake()
@@ -74,5 +77,8 @@ public class EventManager : MonoBehaviour
         OnEnemyHit?.Invoke();
     }
 
-
+    public void TriggerShieldActivation()
+    {
+        OnShieldActivation?.Invoke();
+    }
 }

@@ -19,3 +19,5 @@ MonoBehaviour:
   _mouseSensivity: 1
   _maxHealth: 100
   _ultiDamage: 10
+  ShieldDuration: 15
+  ShieldCooldown: 10

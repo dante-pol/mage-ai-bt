@@ -10,11 +10,16 @@ public class InputHandler : IInputHandler
     private bool _isUlti;
     private float _lastAttackTime = -Mathf.Infinity;
     private float _attackCooldown = 0.5f;
+    private bool _isShielding;
+    private float _lastShieldTime = -Mathf.Infinity;
+    private const float ShieldCooldown = 10f;
+    private GameConfig _config;
     
 
-    public InputHandler(Animator animator)
+    public InputHandler(Animator animator, GameConfig config)
     {
         _animator = animator;
+        _config = config;
     }
 
     public void HandleInput()
@@ -58,6 +63,14 @@ public class InputHandler : IInputHandler
                 Debug.Log("Суперспособность недоступна!");
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1) && CanActivateShield())
+        {
+            Debug.Log("Правая нажата");
+            _isShielding = true;
+            EventManager.Instance.TriggerShieldActivation();
+            _lastShieldTime = Time.time;
+        }
     }
 
     private bool CanAttack()
@@ -68,6 +81,17 @@ public class InputHandler : IInputHandler
     private void StartAttack()
     {
         _isAttacking = true;
+    }
+
+    private bool CanActivateShield()
+    {
+        return !_isShielding && (Time.time - _lastShieldTime >= _config.ShieldCooldown);
+    }
+
+    public void EndShield()
+    {
+        _isShielding = false;
+        _lastShieldTime = Time.time;
     }
 
     public void EndAttack()
