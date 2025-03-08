@@ -6,6 +6,8 @@ public class CameraRotationHandler : ICameraRotationHandler
     private Transform _cameraPivot;
     private float _rotationX = 0f;
     private GameConfig _gameConfig;
+    private bool _blockVerticalRotation = false;
+
 
     public CameraRotationHandler(Transform playerTransform, Transform cameraPivot, GameConfig gameConfig)
     {
@@ -14,6 +16,9 @@ public class CameraRotationHandler : ICameraRotationHandler
         _gameConfig = gameConfig;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        EventManager.Instance.OnSuperAbilityUse += () => _blockVerticalRotation = true;
+        EventManager.Instance.OnSuperAbilityEnd += () => _blockVerticalRotation = false;
     }
 
     public void HandleCameraRotation()
@@ -21,10 +26,14 @@ public class CameraRotationHandler : ICameraRotationHandler
         float mouseX = Input.GetAxis("Mouse X") * _gameConfig.MouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * _gameConfig.MouseSensitivity;
 
-        _rotationX -= mouseY;
-        _rotationX = Mathf.Clamp(_rotationX, -90f, 90f);
-        _cameraPivot.localRotation = Quaternion.Euler(_rotationX, 0f, 0f);
+        if (!_blockVerticalRotation)
+        {
+            _rotationX -= mouseY;
+            _rotationX = Mathf.Clamp(_rotationX, -90f, 90f);
+            _cameraPivot.localRotation = Quaternion.Euler(_rotationX, 0f, 0f);
+        }
 
         _playerTransform.Rotate(Vector3.up * mouseX);
     }
+
 }

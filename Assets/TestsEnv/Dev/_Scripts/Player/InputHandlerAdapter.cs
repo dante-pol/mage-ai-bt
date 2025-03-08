@@ -38,4 +38,5 @@ public class InputHandlerAdapter : MonoBehaviour
     {
         _lightBeamController.ActivateBeam();
     }
+
 }

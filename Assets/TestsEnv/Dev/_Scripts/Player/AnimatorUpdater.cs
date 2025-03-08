@@ -48,6 +48,7 @@ public class AnimatorUpdater : IAnimatorUpdater
         {
             _animator.SetTrigger("Attack");
             _inputHandler.EndAttack();
+            ResetIdleTimer();
         }
 
 
@@ -78,7 +79,8 @@ public class AnimatorUpdater : IAnimatorUpdater
         return _smoothSpeed > 0.1f || 
                _inputHandler.IsJumpPressed || 
                _inputHandler.IsAttacking || 
-               _inputHandler.IsUlti;
+               _inputHandler.IsUlti ||
+               _animator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
     }
 
     private void UpdateIdleState(bool isActive)
@@ -105,5 +107,11 @@ public class AnimatorUpdater : IAnimatorUpdater
             _animator.SetTrigger("Jump");
             _inputHandler.ResetJumpTrigger();
         }
+    }
+
+    private void ResetIdleTimer()
+    {
+        _idleTimer = 0f;
+        _animator.SetBool("IsIdle", false);
     }
 }

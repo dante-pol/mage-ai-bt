@@ -73,6 +73,7 @@ public class InputHandler : IInputHandler
     public void EndAttack()
     {
         _isAttacking = false;
+        _lastAttackTime = Time.time;
     }
 
     private void Jump()
