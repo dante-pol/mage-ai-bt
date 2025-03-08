@@ -19,6 +19,8 @@ namespace Root.Core.Entities.Agents.Range
 
         public RangeAttacker Attacker;
 
+        public RangeSounds Sounds;
+
         public SpellBall _prefabSpellBall;
 
         private RangeBrain _brain;
@@ -50,6 +52,8 @@ namespace Root.Core.Entities.Agents.Range
             Eyes.SetSearchTarget(_player);
 
             Attacker = new RangeAttacker(this, _player, _spellBall.transform);
+
+            Sounds = new RangeSounds(transform.Find("Audio").GetComponent<AudioSource>(), _config);
 
             _brain = new RangeBrain(this);
 
