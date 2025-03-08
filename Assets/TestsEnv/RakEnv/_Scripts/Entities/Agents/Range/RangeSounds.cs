@@ -8,6 +8,15 @@ namespace Root.Core.Entities.Agents.Range
 
         private readonly IRangeSoundsConfig _config;
 
+        public RangeSounds(AudioSource audioSource, IRangeSoundsConfig config)
+        {
+            _audioSource = audioSource;
+            _config = config;
+
+            _audioSource.playOnAwake = false;
+            _audioSource.loop = false;
+        }
+
         public void PlayAttack()
         {
             _audioSource.clip = _config.SoundConfig.Attack;
