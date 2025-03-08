@@ -33,6 +33,8 @@ namespace Root
 
         public MeleeSounds Sounds;
 
+        public MeleeAttacker Attacker;
+
         public ICommandCenter _commandCenter;
 
         private MeleeBrain _brain;
@@ -40,8 +42,8 @@ namespace Root
         private MeleeConfig _config;
 
         
-        [SerializeField] 
-        private AnimatorOverrideController _overrideController;
+        [SerializeField] private ChildTriggerHandler _sword;
+        [SerializeField] private AnimatorOverrideController _overrideController;
         public Transform Player;
 
         public void Construct(ICommandCenter commandCenter, MeleeConfig config)
@@ -101,6 +103,8 @@ namespace Root
                 _config.SoundConfig, 
                 transform.Find("AgentSound").GetComponent<AudioSource>(), 
                 transform.Find("LegsSound").GetComponent<AudioSource>());
+
+            Attacker = new MeleeAttacker(_sword, this, _config);
 
             _brain = new MeleeBrain(this);
         }
