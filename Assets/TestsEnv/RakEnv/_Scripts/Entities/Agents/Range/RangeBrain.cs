@@ -72,7 +72,12 @@ namespace Root.Core.Entities.Agents.Range
             {
                 _agent.Attacker.Attack();
 
-                Debug.Log("Range Agent has Attack!");
+                return NodeStatus.SUCCESS;
+            });
+
+            var activeSound = new ActionNode(() =>
+            {
+                _agent.Sounds.PlayAttack();
 
                 return NodeStatus.SUCCESS;
             });
@@ -81,7 +86,8 @@ namespace Root.Core.Entities.Agents.Range
             {
                 isDetectPlayerCondition,
                 isCooldownPassedCondition,
-                attackAction
+                attackAction,
+                activeSound
             });
         }
 
@@ -120,10 +126,18 @@ namespace Root.Core.Entities.Agents.Range
                 return NodeStatus.SUCCESS;
             });
 
+            var activateSound = new ActionNode(() =>
+            {
+                _agent.Sounds.PlayDeath();
+
+                return NodeStatus.SUCCESS;
+            });
+
             return new SequenceNode(new List<ABTNode>
             {
                 isNotDeathAgentCondition,
-                deathAction
+                deathAction,
+                activateSound
             });
         }
 

@@ -73,6 +73,8 @@ namespace Root.Core.Entities.Agents.Range
 
         public void TakeAttack(IAttackProcess attackProcess)
         {
+            Sounds.PlayTakeDamage();
+
             _heatPoint -= attackProcess.Damage;
 
             if (_heatPoint <= 0)

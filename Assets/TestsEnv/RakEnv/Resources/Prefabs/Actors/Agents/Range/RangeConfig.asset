@@ -33,3 +33,7 @@ MonoBehaviour:
   - _damage: 6
     _cooldown: 1
     _colorAttack: {r: 0, g: 0, b: 0, a: 0}
+  _soundConfig:
+    _attack: {fileID: 8300000, guid: 1c6a52776a0e80644a7896ba9f1735e9, type: 3}
+    _takeDamage: {fileID: 8300000, guid: d2c4210de2382c1448d7537939ffa1f8, type: 3}
+    _death: {fileID: 8300000, guid: b36eb83bd82d66f47b61b5a48fc25891, type: 3}

@@ -13,8 +13,8 @@ namespace Root.Core.Entities.Agents.Range
             _audioSource = audioSource;
             _config = config;
 
-            _audioSource.playOnAwake = false;
-            _audioSource.loop = false;
+            //_audioSource.playOnAwake = false;
+            //_audioSource.loop = false;
         }
 
         public void PlayAttack()
