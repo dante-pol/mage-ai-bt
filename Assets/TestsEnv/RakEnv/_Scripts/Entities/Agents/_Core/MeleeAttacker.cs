@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 namespace Root
 {
@@ -6,13 +7,13 @@ namespace Root
     {
         public bool IsFreeze { get; set; }
 
-        private readonly ITriggerHandler _triggerHandler;
+        private readonly IEntityAttacked _agent;
 
-        private readonly MeleeAgent _agent;
+        private readonly ITriggerHandler _triggerHandler;
 
         private readonly IMeleeAgentConfig _config;
 
-        public MeleeAttacker(ITriggerHandler triggerHandler, MeleeAgent agent, IMeleeAgentConfig config)
+        public MeleeAttacker(ITriggerHandler triggerHandler, IEntityAttacked agent, IMeleeAgentConfig config)
         {
             _triggerHandler = triggerHandler;
             _agent = agent;
@@ -28,6 +29,8 @@ namespace Root
             IEntityAttacked entity = other.GetComponent<IEntityAttacked>();
 
             if (entity == null) return;
+
+            if (_agent.TeamID == entity.TeamID) return;
 
             entity.TakeAttack(new AttackProcess(_config.Damage));
         }
