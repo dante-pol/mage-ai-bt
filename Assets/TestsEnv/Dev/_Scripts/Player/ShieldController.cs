@@ -9,6 +9,7 @@ public class ShieldController : MonoBehaviour, IEntityAttacked
     [SerializeField] private Teams _teamID;
     [SerializeField] private GameObject _shieldVisual;
     [SerializeField] private Material _shieldMaterial;
+    [SerializeField] private Material _damageMaterial;
 
     private bool _isShieldActive;
     private bool _isOnCooldown;
@@ -66,7 +67,7 @@ public class ShieldController : MonoBehaviour, IEntityAttacked
 
     private IEnumerator BlockEffect()
     {
-        _shieldMaterial.color = Color.red;
+        _shieldMaterial.color = _damageMaterial.color;
         yield return new WaitForSeconds(0.2f);
         _shieldMaterial.color = _baseColor;
     }
