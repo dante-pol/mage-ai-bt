@@ -1479,7 +1479,7 @@ MonoBehaviour:
   _poolSize: 20
   _gameConfig: {fileID: 11400000, guid: a152801a423103445a133b8c481216b0, type: 2}
   _shootPoint: {fileID: 1016239704}
-  _shieldController: {fileID: 1602540366}
+  _shieldController: {fileID: 7782427385715993190}
 --- !u!4 &1275349663
 Transform:
   m_ObjectHideFlags: 0
@@ -1736,17 +1736,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 163975743}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1602540366 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2515921929775735710, guid: c21163ab00751904fbf94da0b240cb98, type: 3}
-  m_PrefabInstance: {fileID: 7782427385715993189}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a12ee7d78a653914f9f40836ce38a8a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1741441015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,6 +2399,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharNikitaActual
       objectReference: {fileID: 0}
+    - target: {fileID: 4763734042356789883, guid: c21163ab00751904fbf94da0b240cb98, type: 3}
+      propertyPath: _enemyLayer.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4813887666755384936, guid: c21163ab00751904fbf94da0b240cb98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2455,6 +2448,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c21163ab00751904fbf94da0b240cb98, type: 3}
+--- !u!114 &7782427385715993190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9067255930669026724, guid: c21163ab00751904fbf94da0b240cb98, type: 3}
+  m_PrefabInstance: {fileID: 7782427385715993189}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a12ee7d78a653914f9f40836ce38a8a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
