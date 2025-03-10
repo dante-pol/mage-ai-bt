@@ -46,6 +46,8 @@ public class ObjectPool : MonoBehaviour
         projectile.transform.position = position;
         projectile.transform.rotation = Quaternion.LookRotation(direction);
         projectile.SetActive(true);
+
+        projectile.GetComponent<ProjectileBehaviour>().Play();
     }
 
     public void ReturnObject(GameObject obj)

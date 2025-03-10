@@ -17,6 +17,7 @@ public class ShieldController : MonoBehaviour, IEntityAttacked
     private Color _baseColor;
     private GameConfig _config;
     private InputHandler _inputHandler;
+    private AudioSource _audiosource;
 
 
     public void Initialize(GameConfig config, InputHandler inputHandler)
@@ -25,6 +26,7 @@ public class ShieldController : MonoBehaviour, IEntityAttacked
         _inputHandler = inputHandler;
         _baseColor = _shieldMaterial.color;
         _shieldVisual.SetActive(false);
+        _audiosource = GetComponent<AudioSource>();
 
         EventManager.Instance.OnShieldActivation += ActivateShield;
     }
@@ -56,6 +58,7 @@ public class ShieldController : MonoBehaviour, IEntityAttacked
     {
         if (_isShieldActive)
         {
+            _audiosource.Play();
             StartCoroutine(BlockEffect());
             Debug.Log("Урон заблокирован щитом!");
         }

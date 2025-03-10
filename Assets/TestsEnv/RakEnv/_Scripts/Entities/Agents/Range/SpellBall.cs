@@ -12,7 +12,7 @@ namespace Root.Core.Entities.Agents.Range
 
         private Rigidbody _rigidbody;
 
-
+        private AudioSource _audioSource;
         private float _damage;
 
         public void Construct(float damage, Color color)
@@ -26,10 +26,13 @@ namespace Root.Core.Entities.Agents.Range
             _material = GetComponentInChildren<MeshRenderer>().material;
 
             _material.color = color;
+
+            _audioSource = GetComponent<AudioSource>();
         }
 
         public void PushIt(Vector3 direction)
         {
+            _audioSource.Play();
             _rigidbody.velocity = direction * _speed;
         }
     }
