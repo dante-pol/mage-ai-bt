@@ -11,15 +11,18 @@ public class PlayerHealth : MonoBehaviour, IEntityAttacked, IHealthAndPosition
     [SerializeField] private GameConfig _config;
     
     private float _currentHealth;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         _currentHealth = _config.PlayerMaxHealth;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void TakeAttack(IAttackProcess attackProcess)
     {
         _currentHealth -= attackProcess.Damage;
+        _audioSource.Play();
         Debug.Log($"Урон: {attackProcess.Damage}. Осталось: {_currentHealth}");
 
         if (_currentHealth <= 0)
