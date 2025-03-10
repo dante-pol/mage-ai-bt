@@ -7,7 +7,10 @@ public class InputHandlerAdapter : MonoBehaviour
     private MovementHandler _movementHandler;
     private LightBeamController _lightBeamController;
     private float _leftOffset = 0.1f;
-
+    private AudioSource _audioSource;
+    private float _pitchRange = 0.2f;
+    private float _minPitch = 0.8f;
+    private float _maxPitch = 1.2f;
 
     public void Setup(Transform shootPoint, InputHandler inputHandler, MovementHandler movementHandler, LightBeamController lightBeam)
     {
@@ -15,6 +18,8 @@ public class InputHandlerAdapter : MonoBehaviour
         _inputHandler = inputHandler;
         _movementHandler = movementHandler;
         _lightBeamController = lightBeam;
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -39,4 +44,20 @@ public class InputHandlerAdapter : MonoBehaviour
         _lightBeamController.ActivateBeam();
     }
 
+    public void Step()
+    {
+        if (_movementHandler != null && IsMoving())
+        {
+            float randomPitch = Random.Range(_minPitch, _maxPitch);
+            _audioSource.pitch = randomPitch;
+            
+            _audioSource.Play();
+        }
+    }
+
+    private bool IsMoving()
+    {
+        return _movementHandler != null && 
+            (_movementHandler.GetMoveDirection().magnitude > 0.1f);
+    }
 }
