@@ -30,4 +30,13 @@ public class PlayerHealth : MonoBehaviour, IEntityAttacked
     {
         Debug.Log("Игрок умер!");
     }
+
+    private void OnGUI()
+    {
+        var labelStyle = new GUIStyle(GUI.skin.label);
+        labelStyle.fontSize = 48; // Укажи нужный размер шрифта
+        labelStyle.normal.textColor = Color.white; // Цвет текста
+
+        GUI.Label(new Rect(25,25,350, 200), _currentHealth.ToString(), labelStyle);
+    }
 }
