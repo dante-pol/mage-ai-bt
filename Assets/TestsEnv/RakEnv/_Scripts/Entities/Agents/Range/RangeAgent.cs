@@ -31,7 +31,7 @@ namespace Root.Core.Entities.Agents.Range
 
         private Transform _player;
         
-        private float _heatPoint;
+        private float _heatPoint = 2;
 
         [SerializeField] GameObject _spellBall;
 

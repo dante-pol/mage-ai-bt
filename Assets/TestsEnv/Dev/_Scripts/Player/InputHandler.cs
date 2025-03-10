@@ -14,6 +14,7 @@ public class InputHandler : IInputHandler
     private float _lastShieldTime = -Mathf.Infinity;
     private const float ShieldCooldown = 10f;
     private GameConfig _config;
+    public event System.Action OnShieldDeactivated;
     
 
     public InputHandler(Animator animator, GameConfig config)
@@ -69,8 +70,13 @@ public class InputHandler : IInputHandler
             Debug.Log("Правая нажата");
             _isShielding = true;
             EventManager.Instance.TriggerShieldActivation();
-            _lastShieldTime = Time.time;
         }
+
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            OnShieldDeactivated?.Invoke();
+        }
+        
     }
 
     private bool CanAttack()
@@ -88,10 +94,13 @@ public class InputHandler : IInputHandler
         return !_isShielding && (Time.time - _lastShieldTime >= _config.ShieldCooldown);
     }
 
-    public void EndShield()
+    public void EndShield(bool cooldown = false)
     {
         _isShielding = false;
-        _lastShieldTime = Time.time;
+        if (cooldown)
+        {
+            _lastShieldTime = Time.time;
+        }
     }
 
     public void EndAttack()
