@@ -11,6 +11,8 @@ namespace Root.Core.Entities.Agents.Range
         private readonly SpellBall _prefabBall;
 
         private readonly Pool<SpellBall> _pool;
+        
+        private Teams _teamID;
 
         private float _damage;
 
@@ -26,8 +28,10 @@ namespace Root.Core.Entities.Agents.Range
             _colorAttack = Color.white;
         }
 
-        public void UpdateConfig(int damage, Color color)
+        public void UpdateConfig(Teams teamID, int damage, Color color)
         {
+            _teamID = teamID;
+
             _damage = damage;
 
             _colorAttack = color;
@@ -39,7 +43,7 @@ namespace Root.Core.Entities.Agents.Range
 
             SpellBall ball = Instantiate(_prefabBall);
 
-            ball.Construct(_damage, _colorAttack);
+            ball.Construct(_teamID, _damage, _colorAttack);
 
             return ball;
         }
@@ -48,7 +52,7 @@ namespace Root.Core.Entities.Agents.Range
         {
             SpellBall ball = Instantiate(_prefabBall, position, orientation);
 
-            ball.Construct(_damage, _colorAttack);
+            ball.Construct(_teamID, _damage, _colorAttack);
 
             return ball;
         }
