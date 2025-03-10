@@ -17,7 +17,7 @@ MonoBehaviour:
   _jumpForce: 5
   _gravity: -15
   _mouseSensivity: 1
-  _maxHealth: 100
-  _ultiDamage: 10
-  ShieldDuration: 5
+  _maxHealth: 10
+  _ultiDamage: 1
+  ShieldDuration: 15
   ShieldCooldown: 10

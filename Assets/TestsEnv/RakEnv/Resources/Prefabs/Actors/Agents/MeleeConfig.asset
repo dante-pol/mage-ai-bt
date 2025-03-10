@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: MeleeConfig
   m_EditorClassIdentifier: 
   _isLifeDefault: 1
-  _heatPoint: 10
-  _damage: 100
+  _heatPoint: 2
+  _damage: 1
   _heatPointZombie: 1
-  _damageZombie: 5
-  _walkSpeed: 2
-  _runSpeed: 4
-  _walkSpeedZombie: 0.45
+  _damageZombie: 2
+  _walkSpeed: 3
+  _runSpeed: 6
+  _walkSpeedZombie: 1.5
   _runSpeedZombie: 0
   _soundConfig:
     _walk: {fileID: 0}

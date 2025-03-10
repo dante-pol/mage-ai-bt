@@ -13,10 +13,15 @@ namespace Root.Core.Entities.Agents.Range
         private Rigidbody _rigidbody;
 
         private AudioSource _audioSource;
+
+        private Teams _teamID;
+
         private float _damage;
 
-        public void Construct(float damage, Color color)
+        public void Construct(Teams teamId, float damage, Color color)
         {
+            _teamID = teamId;
+
             _damage = damage;
 
             _rigidbody = GetComponent<Rigidbody>();
@@ -34,6 +39,19 @@ namespace Root.Core.Entities.Agents.Range
         {
             _audioSource.Play();
             _rigidbody.velocity = direction * _speed;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            IEntityAttacked entity = other.GetComponent<IEntityAttacked>();
+
+            if (entity == null) return;
+
+            if (_teamID == entity.TeamID) return;
+
+            entity.TakeAttack(new AttackProcess(_damage));
+
+            gameObject.SetActive(false);
         }
     }
 }

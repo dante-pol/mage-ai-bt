@@ -104,7 +104,7 @@ namespace Root.Core.Entities.Agents.Range
 
             Animator.UpdateEffectMagicBall(config.ColorAttack);
 
-            Attacker.UpdateConfigAttacker(config.Damage, config.Cooldown, config.ColorAttack);
+            Attacker.UpdateConfigAttacker(_teamID, config.Damage, config.Cooldown, config.ColorAttack);
         }
     }
 }
