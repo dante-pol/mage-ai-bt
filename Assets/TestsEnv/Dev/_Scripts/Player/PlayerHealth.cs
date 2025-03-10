@@ -1,9 +1,11 @@
 using UnityEngine;
 using Root;
 
-public class PlayerHealth : MonoBehaviour, IEntityAttacked 
+public class PlayerHealth : MonoBehaviour, IEntityAttacked, IHealthAndPosition
 {
     public Teams TeamID => _teamID;
+    public float CurrentHealth => _currentHealth;
+    public Vector3 Position => transform.position;
     
     [SerializeField] private Teams _teamID;
     [SerializeField] private GameConfig _config;
