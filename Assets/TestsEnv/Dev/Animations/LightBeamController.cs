@@ -15,11 +15,13 @@ public class LightBeamController : MonoBehaviour
     private float _currentBeamLength;
     private float _beamDuration = 6f;
     private float _beamEndTime;
+    private AudioSource _audioSource;
 
     public void ActivateBeam()
     {
         if (!_isBeamActive)
         {
+            _audioSource = GetComponent<AudioSource>();
             _isBeamActive = true;
             _currentBeamLength = 0f;
             _beamEndTime = Time.time + _beamDuration;
@@ -31,6 +33,7 @@ public class LightBeamController : MonoBehaviour
     {
         float growTime = 1f;
         float startTime = Time.time;
+        _audioSource.Play();
         
         while (Time.time - startTime < growTime)
         {
@@ -52,6 +55,7 @@ public class LightBeamController : MonoBehaviour
             yield return null;
         }
         _currentBeamLength = 0f;
+        _audioSource.Stop();
         EventManager.Instance.SetSuperAbilityAvailability(false);
         _isBeamActive = false;
     }

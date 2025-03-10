@@ -48,7 +48,10 @@ MonoBehaviour:
   _lineRenderer: {fileID: 3425715987491238293}
   _lightSource: {fileID: 5942486738852461317}
   _beamLength: 10
-  _beamGrowSpeed: 5
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _gameConfig: {fileID: 11400000, guid: a152801a423103445a133b8c481216b0, type: 2}
 --- !u!1001 &5905063871702781943
 PrefabInstance:
   m_ObjectHideFlags: 0
