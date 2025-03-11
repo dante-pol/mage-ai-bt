@@ -7,6 +7,8 @@ namespace Root
     {
         public event Action DeathEvent;
 
+        public event Action BeZombieEvent;
+
         public bool IsAttacking { get; private set; } = false;
         public bool IsTurningZombie { get; private set; } = false;
         public bool IsDeading{ get; private set; } = false;
@@ -24,6 +26,9 @@ namespace Root
             _stateMachine = animator;
             _overrideController = overrideController;
         }
+
+        public void SetConfigForZombie()
+            => _stateMachine.runtimeAnimatorController = _overrideController;
 
         public void SetIdle()
             => _stateMachine.SetFloat(SpeedHash, 0.5f);
@@ -59,12 +64,17 @@ namespace Root
             => IsAttacking = false;
 
         public void EndTurningZombie()
-            => IsTurningZombie = false;
+        {
+            BeZombieEvent?.Invoke();
 
-        public void SetConfigForZombie()
-            => _stateMachine.runtimeAnimatorController = _overrideController;
+            IsTurningZombie = false;
+        }
 
         public void EndDeath()
-            => DeathEvent?.Invoke();
+        {
+            DeathEvent?.Invoke();
+
+            IsDeading = false;
+        }
     }
 }

@@ -37,24 +37,13 @@ namespace Root
             {
                 hasZombieMode,
                 isNotLife,
-                BuildZombieOptions()
+                BuildZombieProcess()
             });
 
         }
 
-        private SelectorNode BuildZombieOptions()
+        private SequenceNode BuildZombieProcess()
         {
-            return new SelectorNode(new List<ABTNode>
-            {
-                BuildTurnZombieProcess(),
-                BuildActiveZombie()
-            });
-        }
-
-        private SequenceNode BuildTurnZombieProcess()
-        {
-            var isNotZombie = new ConditionNode(() => !_agent.ZombieMode.IsZombie);
-
             var isNotActiveAnimation = new ConditionNode(() => !_agent.Animator.IsTurningZombie);
 
             var activeAnimation = new ActionNode(() =>
@@ -64,14 +53,48 @@ namespace Root
                 return NodeStatus.SUCCESS;
             });
 
+
+            var addListenerToBeZombieEvent = new ActionNode(() =>
+            {
+                _agent.Animator.BeZombieEvent += HandlerBeZombie;
+
+                Debug.Log("Конец Запуска Становления Зомби!");
+
+                return NodeStatus.SUCCESS;
+            });
+
             return new SequenceNode(new List<ABTNode>
             {
-                isNotZombie,
                 isNotActiveAnimation,
-                activeAnimation
+                activeAnimation,
+                addListenerToBeZombieEvent
             });
         }
 
+        private void HandlerBeZombie()
+        {
+            Debug.Log("--------------------MELEE BE ZOMBIE--------------------");
+
+            _agent.Motion.SetMotionLock(false);
+
+            _agent.Eyes.IsFreeze = false;
+
+            _agent.Attacker.IsFreeze = false;
+
+            _agent.Motion.UpdateConfig(true);
+
+            _agent.Resurrection();
+
+            _agent.Animator.BeZombieEvent -= HandlerBeZombie;
+        }
+
+
+        /// <summary>
+        /// 
+        /// TODO: Delete
+        /// 
+        /// Legacy 
+        /// </summary>
         private SequenceNode BuildActiveZombie()
         {
             var isZombie = new ConditionNode(() => _agent.ZombieMode.IsZombie);
