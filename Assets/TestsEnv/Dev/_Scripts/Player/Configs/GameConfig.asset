@@ -19,5 +19,6 @@ MonoBehaviour:
   _mouseSensivity: 1
   _maxHealth: 10
   _ultiDamage: 1
+  _audioClip: {fileID: 8300000, guid: e7dde8e3d7c1e4a40925616306ace911, type: 3}
   ShieldDuration: 15
   ShieldCooldown: 10

@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour, IEntityAttacked, IHealth , IPosition
     private float _currentHealth;
     private AudioSource _audioSource;
 
+
+
     private void Awake()
     {
         _currentHealth = _config.PlayerMaxHealth;
@@ -41,6 +43,7 @@ public class PlayerHealth : MonoBehaviour, IEntityAttacked, IHealth , IPosition
         CapsuleCollider capsuleCollider = GetComponentInChildren<CapsuleCollider>();
         capsuleCollider.enabled = false;
         EventManager.Instance.TriggerInputLock();
+        _audioSource.PlayOneShot(_config.DeathClip);
     }
 
     private void OnGUI()
