@@ -165,7 +165,7 @@ MonoBehaviour:
   transmissionHigh: 1
   maxTransmissionSurfaces: 1
   directMixLevel: 1
-  reflections: 1
+  reflections: 0
   reflectionsType: 0
   useDistanceCurveForReflections: 1
   currentBakedSource: {fileID: 0}
@@ -597,6 +597,10 @@ PrefabInstance:
       propertyPath: _lightSource
       value: 
       objectReference: {fileID: 3531802912223720196}
+    - target: {fileID: 6141473748068460156, guid: 1eb341a9d580bdd4f9c2da4ecf7468b5, type: 3}
+      propertyPath: _enemyLayer.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8487131569436136719, guid: 1eb341a9d580bdd4f9c2da4ecf7468b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.03

@@ -3347,17 +3347,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1203817783}
     m_Modifications:
-    - target: {fileID: 1349653148200351508, guid: c21163ab00751904fbf94da0b240cb98, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3703537782001555506, guid: c21163ab00751904fbf94da0b240cb98, type: 3}
       propertyPath: m_Name
       value: CharNikitaActual
-      objectReference: {fileID: 0}
-    - target: {fileID: 4763734042356789883, guid: c21163ab00751904fbf94da0b240cb98, type: 3}
-      propertyPath: _enemyLayer.m_Bits
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4813887666755384936, guid: c21163ab00751904fbf94da0b240cb98, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3399,14 +3391,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5719211460137564702, guid: c21163ab00751904fbf94da0b240cb98, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7880437995413662547, guid: c21163ab00751904fbf94da0b240cb98, type: 3}
-      propertyPath: reflections
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 5017257042057849056, guid: c21163ab00751904fbf94da0b240cb98, type: 3}
+      propertyPath: _clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a52f69e857a661458a9b179267f7a8d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

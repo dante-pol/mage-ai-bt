@@ -14,6 +14,8 @@ public class InputHandlerAdapter : MonoBehaviour, IUltUse
     private float _minPitch = 0.8f;
     private float _maxPitch = 1.2f;
 
+    [SerializeField] private AudioClip _clip;
+
 
     public void Setup(Transform shootPoint, InputHandler inputHandler, MovementHandler movementHandler, LightBeamController lightBeam)
     {
@@ -39,6 +41,7 @@ public class InputHandlerAdapter : MonoBehaviour, IUltUse
 
     public void CallJump()
     {
+        _audioSource.PlayOneShot(_clip);
         _movementHandler.TriggerJump();
     }
 
