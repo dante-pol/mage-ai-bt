@@ -50,7 +50,7 @@ namespace Root
         {
             _animator.SetConfigForZombie();
 
-            //HasActiveZombieMode = false;
+            HasActiveZombieMode = false;
 
             IsZombie = true;
         }
