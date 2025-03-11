@@ -223,6 +223,8 @@ namespace Root
             {
                 _agent.Animator.DeathEvent += HandlerDeathEvent;
 
+                Debug.Log("Конец Запуска смерти!");
+
                 return NodeStatus.SUCCESS;
             });
 
@@ -234,8 +236,8 @@ namespace Root
                 lockMotion,
                 lockEyes,
                 lockAttacker,
-                deathAnimationActiveAction
-
+                deathAnimationActiveAction,
+                addListenerToDeathEvent
             });
         }
 
@@ -245,7 +247,9 @@ namespace Root
 
             _agent.IsDeath = true;
 
-            if (!_agent.ZombieMode.IsZombie) return;
+            if (_agent.ZombieMode.IsZombie) return;
+
+            Debug.Log("--------------------ZOBIE ????---------------------");
 
             _agent.ZombieMode.TryBeZombie();
         }

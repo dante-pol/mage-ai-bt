@@ -24,5 +24,10 @@ namespace Root
 
             _agent.ZombieMode.HandlerEndTurningIntoZombie();
         }
+
+        public void OnDeath()
+        {
+            _agent.Animator.EndDeath();
+        }
     }
 }
