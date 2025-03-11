@@ -1,4 +1,5 @@
 ﻿using Root.Core.BT;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace Root
             {
                 BuildLifeScenario(),
                 BuildDeathScenario(),
-                BuildZombieProcessScenario()
+                BuildZombieScenario()
             });
 
         }
@@ -26,10 +27,112 @@ namespace Root
         public void Update()
             => _root.Tick();
 
+        private SequenceNode BuildZombieScenario()
+        {
+            var hasZombieMode = new ConditionNode(() => _agent.ZombieMode.HasActiveZombieMode);
 
+            var isNotLife = new ConditionNode(() => !_agent.IsLife);
+
+            return new SequenceNode(new List<ABTNode>
+            {
+                hasZombieMode,
+                isNotLife,
+                BuildZombieOptions()
+            });
+
+        }
+
+        private SelectorNode BuildZombieOptions()
+        {
+            return new SelectorNode(new List<ABTNode>
+            {
+                BuildTurnZombieProcess(),
+                BuildActiveZombie()
+            });
+        }
+
+        private SequenceNode BuildTurnZombieProcess()
+        {
+            var isNotZombie = new ConditionNode(() => !_agent.ZombieMode.IsZombie);
+
+            var isNotActiveAnimation = new ConditionNode(() => !_agent.Animator.IsTurningZombie);
+
+            var activeAnimation = new ActionNode(() =>
+            {
+                _agent.Animator.SetTurnIntoZombie();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            return new SequenceNode(new List<ABTNode>
+            {
+                isNotZombie,
+                isNotActiveAnimation,
+                activeAnimation
+            });
+        }
+
+        private SequenceNode BuildActiveZombie()
+        {
+            var isZombie = new ConditionNode(() => _agent.ZombieMode.IsZombie);
+
+            var unLockMotion = new ActionNode(() =>
+            {
+                _agent.Motion.SetMotionLock(false);
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var unLockEyes = new ActionNode(() =>
+            {
+                _agent.Eyes.IsFreeze = false;
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var unLockAttacker = new ActionNode(() =>
+            {
+                _agent.Attacker.IsFreeze = false;
+
+                return NodeStatus.SUCCESS;
+            });
+
+
+            var updateMotionForZombieAction = new ActionNode(() =>
+            {
+                _agent.Motion.UpdateConfig(true);
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var toDoAlive = new ActionNode(() =>
+            {
+                _agent.Resurrection();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            return new SequenceNode(new List<ABTNode>
+            {
+                isZombie, 
+                unLockMotion,
+                unLockEyes,
+                unLockAttacker,
+                updateMotionForZombieAction,
+                toDoAlive
+            });
+        }
+
+
+        /// <summary>
+        /// 
+        /// TODO: Delete
+        /// Legacy Zombie Scenario
+        /// 
+        /// </summary>
         private SequenceNode BuildZombieProcessScenario()
         {
-            var hasTurningZombieCondition = new ConditionNode(() => _agent.ZombieMode.IsStartingProcessZombie);
+            var hasTurningZombieCondition = new ConditionNode(() => _agent.ZombieMode.HasActiveZombieMode);
 
             var isNotActiveZombieProcessAnimCondition = new ConditionNode(() => !_agent.Animator.IsTurningZombie);
 

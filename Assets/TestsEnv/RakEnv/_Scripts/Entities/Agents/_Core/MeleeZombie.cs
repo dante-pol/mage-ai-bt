@@ -6,7 +6,7 @@ namespace Root
     {
         public bool IsZombie { get; private set; }
 
-        public bool IsStartingProcessZombie { get; private set; }
+        public bool HasActiveZombieMode { get; private set; }
 
         public readonly MeleeAnimator _animator;
         
@@ -26,7 +26,7 @@ namespace Root
 
             IsZombie = false;
 
-            IsStartingProcessZombie = false;
+            HasActiveZombieMode = false;
 
             _maxLimit = 100;
 
@@ -41,7 +41,7 @@ namespace Root
 
             if (!CheckChanceBeZombie(probability)) return;
             
-            IsStartingProcessZombie = true;
+            HasActiveZombieMode = true;
 
             Debug.Log("I am Zombie!!!!");
         }
@@ -50,11 +50,9 @@ namespace Root
         {
             _animator.SetConfigForZombie();
 
-            IsStartingProcessZombie = false;
+            //HasActiveZombieMode = false;
 
             IsZombie = true;
-
-            _agent.Resurrection();
         }
 
         private float CalculateProbabilityBeZombie() 
