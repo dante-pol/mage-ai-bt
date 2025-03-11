@@ -27,6 +27,7 @@ namespace Root
 
         public void OnDeath()
         {
+            _agent.Animator.EndAttack();
             _agent.Animator.EndDeath();
         }
     }
