@@ -17,8 +17,8 @@ namespace Root
             _root = new SelectorNode(new List<ABTNode>
             {
                 BuildLifeScenario(),
-                BuildDeathScenario(),
-                BuildZombieProcessScenario()
+                BuildZombieScenario(),
+                BuildDeathScenario()
             });
 
         }
@@ -26,106 +26,157 @@ namespace Root
         public void Update()
             => _root.Tick();
 
-
-        private SequenceNode BuildZombieProcessScenario()
+        private SequenceNode BuildZombieScenario()
         {
-            var hasTurningZombieCondition = new ConditionNode(() => _agent.ZombieMode.IsStartingProcessZombie);
+            var hasZombieMode = new ConditionNode(() => _agent.ZombieMode.HasActiveZombieMode);
 
-            var isNotActiveZombieProcessAnimCondition = new ConditionNode(() => !_agent.Animator.IsTurningZombie);
+            var isNotLife = new ConditionNode(() => !_agent.IsLife);
 
-            var zombieProcessAnimActive = new ActionNode(() =>
+            return new SequenceNode(new List<ABTNode>
+            {
+                hasZombieMode,
+                isNotLife,
+                BuildZombieProcess()
+            });
+
+        }
+
+        private SequenceNode BuildZombieProcess()
+        {
+            var isNotActiveAnimation = new ConditionNode(() => !_agent.Animator.IsTurningZombie);
+
+            var activeAnimation = new ActionNode(() =>
             {
                 _agent.Animator.SetTurnIntoZombie();
 
                 return NodeStatus.SUCCESS;
             });
 
-            var unLockEyeAction = new ActionNode(() =>
-            {
-                _agent.Eyes.IsFreeze = false;
 
-                return NodeStatus.SUCCESS;
-            });
-
-            var updateMotionForZombieAction = new ActionNode(() =>
+            var addListenerToBeZombieEvent = new ActionNode(() =>
             {
-                _agent.Motion.UpdateConfig(true);
+                _agent.Animator.BeZombieEvent += HandlerBeZombie;
+
+                Debug.Log("Конец Запуска Становления Зомби!");
 
                 return NodeStatus.SUCCESS;
             });
 
             return new SequenceNode(new List<ABTNode>
             {
-                hasTurningZombieCondition,
-                isNotActiveZombieProcessAnimCondition,
-                zombieProcessAnimActive,
-                unLockEyeAction,
-                updateMotionForZombieAction
+                isNotActiveAnimation,
+                activeAnimation,
+                addListenerToBeZombieEvent
             });
         }
 
+        private void HandlerBeZombie()
+        {
+            Debug.Log("--------------------MELEE BE ZOMBIE--------------------");
+
+            _agent.Motion.SetMotionLock(false);
+
+            _agent.Eyes.IsFreeze = false;
+
+            _agent.Attacker.IsFreeze = false;
+
+            _agent.Motion.UpdateConfig(true);
+
+            _agent.Resurrection();
+
+            _agent.Animator.BeZombieEvent -= HandlerBeZombie;
+        }
 
         private SequenceNode BuildDeathScenario()
         {
-            var isDeathCondition = new ConditionNode(() =>  !_agent.IsLife);
+            var isNotLife = new ConditionNode(() => !_agent.IsLife);
+            var isNotDeath = new ConditionNode(() => !_agent.IsDeath);
 
-            var hasNotDeadYet = new ConditionNode(() => !_agent.HasDeadYet);
+            return new SequenceNode(new List<ABTNode>
+            {
+                isNotLife,
+                isNotDeath,
+                BuildDeathAction()
+            });
+        }
 
-            var motionBlockAction = new ActionNode(() =>
+        private SequenceNode BuildDeathAction()
+        {
+            var hasNotDeading = new ConditionNode(() => !_agent.Animator.IsDeading);
+
+            var resetAnimation = new ActionNode(() =>
+            {
+                _agent.Animator.SetIdle();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var lockMotion = new ActionNode(() =>
             {
                 _agent.Motion.SetMotionLock(true);
 
                 return NodeStatus.SUCCESS;
             });
 
-            var visionBlockAction = new ActionNode(() =>
+            var lockEyes = new ActionNode(() =>
             {
                 _agent.Eyes.IsFreeze = true;
 
                 return NodeStatus.SUCCESS;
             });
 
+            var lockAttacker = new ActionNode(() =>
+            {
+                _agent.Attacker.IsFreeze = true;
+
+                return NodeStatus.SUCCESS;
+            });
+
             var deathAnimationActiveAction = new ActionNode(() =>
             {
-                _agent.Animator.SetIdle();
-
                 _agent.Animator.SetDeath();
 
                 return NodeStatus.SUCCESS;
             });
 
-            var beDeathAction = new ActionNode(() =>
+            var addListenerToDeathEvent = new ActionNode(() =>
             {
-                _agent.HasDeadYet = true;
+                _agent.Animator.DeathEvent += HandlerDeathEvent;
+
+                Debug.Log("Конец Запуска смерти!");
 
                 return NodeStatus.SUCCESS;
             });
 
-            var canBeZombieCondition = new ConditionNode(() => !_agent.ZombieMode.IsZombie);
-
-            var tryBeZombieAction = new ActionNode(() =>
-            {
-                     _agent.ZombieMode.TryBeZombie();
-
-                return NodeStatus.SUCCESS;
-            });
 
             return new SequenceNode(new List<ABTNode>
             {
-                isDeathCondition,
-                hasNotDeadYet,
-                motionBlockAction,
-                visionBlockAction,
+                hasNotDeading,
+                resetAnimation,
+                lockMotion,
+                lockEyes,
+                lockAttacker,
                 deathAnimationActiveAction,
-                beDeathAction,
-                canBeZombieCondition,
-                tryBeZombieAction
+                addListenerToDeathEvent
             });
+        }
+
+        private void HandlerDeathEvent()
+        {
+            Debug.Log("--------------------MELEE DEATH---------------------");
+
+            _agent.IsDeath = true;
+
+            if (_agent.ZombieMode.IsZombie) return;
+
+            Debug.Log("--------------------ZOBIE ????---------------------");
+
+            _agent.ZombieMode.TryBeZombie();
         }
 
         public SequenceNode BuildRetreatScenario()
         {
-            var isAloneAgentCondition = new ConditionNode(() => _agent.IsAlone);
+            var isAloneAgentCondition = new ConditionNode(() => _agent.IsAlone || _agent.Player.IsActiveUlt);
 
             var retreatScenario = new SequenceNode(new List<ABTNode>
             {
@@ -264,7 +315,7 @@ namespace Root
 
             var goToPlayerAction = new ActionNode(GoToPlayer);
 
-            var isPlayerBeatenCondition = new ConditionNode(() => _agent.HeatPoint <= 50);
+            var isPlayerBeatenCondition = new ConditionNode(() => _agent.Player.HeatPoints <= 50);
 
             var isNotZombieCondition = new ConditionNode(() => !_agent.ZombieMode.IsZombie);
 
@@ -335,7 +386,7 @@ namespace Root
 
         private NodeStatus GoToPlayer()
         {
-            _agent.Motion.SetTarget(_agent.Player);
+            _agent.Motion.SetTarget(_agent.PlayerTarget);
 
             _agent.Animator.SetWalk();
 

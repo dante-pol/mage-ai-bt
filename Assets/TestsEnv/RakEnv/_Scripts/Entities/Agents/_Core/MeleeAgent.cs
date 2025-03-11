@@ -11,7 +11,7 @@ namespace Root
     {
         public bool IsLife { get; private set; }
 
-        public bool HasDeadYet { get; set; }
+        public bool IsDeath { get; set; }
 
         public float HeatPoint { get; private set; }
 
@@ -48,7 +48,8 @@ namespace Root
         [SerializeField] private AnimatorOverrideController _overrideController;
         [SerializeField] private Teams _teamID;
         
-        public Transform Player;
+        public ICharacterTarget Player;
+        public Transform PlayerTarget;
 
         public void Construct(ICommandCenter commandCenter, MeleeConfig config)
         {
@@ -60,9 +61,11 @@ namespace Root
 
             InitComponents();
 
-            Player = GameObject.FindGameObjectWithTag("Player").transform;
+            Player = GameObject.FindGameObjectWithTag("Player").GetComponent<ICharacterTarget>();
 
-            Eyes.SetSearchTarget(Player);
+            PlayerTarget = GameObject.FindGameObjectWithTag("Player").transform;
+
+            Eyes.SetSearchTarget(PlayerTarget); // TODO: Нужно через интерфейс ITarget
 
         }
 
@@ -80,7 +83,7 @@ namespace Root
         {
             IsLife = _config.IsLifeDefault;
 
-            HasDeadYet = false;
+            IsDeath = false;
 
             HeatPoint = _config.HeatPoint;
 
@@ -134,7 +137,7 @@ namespace Root
         public void Resurrection()
         {
             IsLife = true;
-            HasDeadYet = false;
+            IsDeath = false;
         }
     }
 }

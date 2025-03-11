@@ -2,6 +2,7 @@
 
 namespace Root
 {
+
     public class AgentCommandCenter : MonoBehaviour
     {
         public MeleeAgent FirstAgent;
