@@ -176,7 +176,7 @@ namespace Root
 
         public SequenceNode BuildRetreatScenario()
         {
-            var isAloneAgentCondition = new ConditionNode(() => _agent.IsAlone);
+            var isAloneAgentCondition = new ConditionNode(() => _agent.IsAlone || _agent.Player.IsActiveUlt);
 
             var retreatScenario = new SequenceNode(new List<ABTNode>
             {
