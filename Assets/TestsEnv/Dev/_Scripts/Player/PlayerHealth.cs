@@ -33,7 +33,14 @@ public class PlayerHealth : MonoBehaviour, IEntityAttacked, IHealthAndPosition
 
     private void Die()
     {
+        EventManager.Instance.TriggerPlayerDeath();
         Debug.Log("Игрок умер!");
+        EventManager.Instance.TriggerMovementLock();
+        CharacterController characterController = GetComponent<CharacterController>();
+        characterController.enabled = false;
+        CapsuleCollider capsuleCollider = GetComponentInChildren<CapsuleCollider>();
+        capsuleCollider.enabled = false;
+        EventManager.Instance.TriggerInputLock();
     }
 
     private void OnGUI()

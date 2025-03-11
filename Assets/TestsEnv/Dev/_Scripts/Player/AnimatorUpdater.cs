@@ -14,7 +14,7 @@ public class AnimatorUpdater : IAnimatorUpdater
     private float _savedDirection;
     private const float SpeedSmoothTime = 0.3f;
     private const float DirectionSmoothTime = 0.1f;
-
+    private bool _isDead;
     private float _idleTimer = 0f;
     private const float IdleTimeThreshold = 10f;
 
@@ -23,6 +23,8 @@ public class AnimatorUpdater : IAnimatorUpdater
         _animator = animator;
         _movementHandler = movementHandler;
         _inputHandler = inputHandler;
+
+        EventManager.Instance.OnPlayerDeath += HandlePlayerDeath;
     }
 
     public void UpdateAnimator()
@@ -33,6 +35,7 @@ public class AnimatorUpdater : IAnimatorUpdater
     private void UpdateBaseLayer()
     {
         if (_animator == null) return;
+        if (_isDead) return;
 
         float targetSpeed = CalculateTargetSpeed();
         _smoothSpeed = Mathf.SmoothDamp(_smoothSpeed, targetSpeed, ref _speedVelocity, SpeedSmoothTime);
@@ -81,6 +84,12 @@ public class AnimatorUpdater : IAnimatorUpdater
                _inputHandler.IsAttacking || 
                _inputHandler.IsUlti ||
                _animator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
+    }
+    private void HandlePlayerDeath()
+    {
+        _isDead = true;
+        _animator.SetTrigger("Death");
+        _animator.applyRootMotion = true;
     }
 
     private void UpdateIdleState(bool isActive)

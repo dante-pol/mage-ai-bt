@@ -13,10 +13,15 @@ public class EventManager : MonoBehaviour
     public event Action OnMovementUnlock;
     public event Action OnEnemyHit;
     public event Action OnShieldActivation;
-
-    
+    public event Action OnPlayerDeath;
+    public event Action OnInputLock;
     private bool _isSuperAbilityAvailable = false;
 
+
+    public void TriggerPlayerDeath()
+    {
+        OnPlayerDeath?.Invoke();
+    }
     private void Awake()
     {
         if (Instance == null)
@@ -80,5 +85,10 @@ public class EventManager : MonoBehaviour
     public void TriggerShieldActivation()
     {
         OnShieldActivation?.Invoke();
+    }
+
+    public void TriggerInputLock()
+    {
+        OnInputLock?.Invoke();
     }
 }
