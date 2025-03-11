@@ -315,7 +315,7 @@ namespace Root
 
             var goToPlayerAction = new ActionNode(GoToPlayer);
 
-            var isPlayerBeatenCondition = new ConditionNode(() => _agent.HeatPoint <= 50);
+            var isPlayerBeatenCondition = new ConditionNode(() => _agent.Player.HeatPoints <= 50);
 
             var isNotZombieCondition = new ConditionNode(() => !_agent.ZombieMode.IsZombie);
 
@@ -386,7 +386,7 @@ namespace Root
 
         private NodeStatus GoToPlayer()
         {
-            _agent.Motion.SetTarget(_agent.Player);
+            _agent.Motion.SetTarget(_agent.PlayerTarget);
 
             _agent.Animator.SetWalk();
 

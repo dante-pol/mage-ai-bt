@@ -48,7 +48,8 @@ namespace Root
         [SerializeField] private AnimatorOverrideController _overrideController;
         [SerializeField] private Teams _teamID;
         
-        public Transform Player;
+        public ICharacterTarget Player;
+        public Transform PlayerTarget;
 
         public void Construct(ICommandCenter commandCenter, MeleeConfig config)
         {
@@ -60,9 +61,11 @@ namespace Root
 
             InitComponents();
 
-            Player = GameObject.FindGameObjectWithTag("Player").transform;
+            Player = GameObject.FindGameObjectWithTag("Player").GetComponent<ICharacterTarget>();
 
-            Eyes.SetSearchTarget(Player);
+            PlayerTarget = GameObject.FindGameObjectWithTag("Player").transform;
+
+            Eyes.SetSearchTarget(PlayerTarget); // TODO: Нужно через интерфейс ITarget
 
         }
 
