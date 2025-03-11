@@ -18,8 +18,8 @@ namespace Root
             _root = new SelectorNode(new List<ABTNode>
             {
                 BuildLifeScenario(),
-                BuildDeathScenario(),
-                BuildZombieScenario()
+                BuildZombieScenario(),
+                BuildDeathScenario2()
             });
 
         }
@@ -167,12 +167,101 @@ namespace Root
             });
         }
 
+        private SequenceNode BuildDeathScenario2()
+        {
+            var isNotLife = new ConditionNode(() => !_agent.IsLife);
+            var isNotDeath = new ConditionNode(() => !_agent.IsDeath);
 
+            return new SequenceNode(new List<ABTNode>
+            {
+                isNotLife,
+                isNotDeath,
+                BuildDeathAction()
+            });
+        }
+
+        private SequenceNode BuildDeathAction()
+        {
+            var hasNotDeading = new ConditionNode(() => !_agent.Animator.IsDeading);
+
+            var resetAnimation = new ActionNode(() =>
+            {
+                _agent.Animator.SetIdle();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var lockMotion = new ActionNode(() =>
+            {
+                _agent.Motion.SetMotionLock(true);
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var lockEyes = new ActionNode(() =>
+            {
+                _agent.Eyes.IsFreeze = true;
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var lockAttacker = new ActionNode(() =>
+            {
+                _agent.Attacker.IsFreeze = true;
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var deathAnimationActiveAction = new ActionNode(() =>
+            {
+                _agent.Animator.SetDeath();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var addListenerToDeathEvent = new ActionNode(() =>
+            {
+                _agent.Animator.DeathEvent += HandlerDeathEvent;
+
+                return NodeStatus.SUCCESS;
+            });
+
+
+            return new SequenceNode(new List<ABTNode>
+            {
+                hasNotDeading,
+                resetAnimation,
+                lockMotion,
+                lockEyes,
+                lockAttacker,
+                deathAnimationActiveAction
+
+            });
+        }
+
+        private void HandlerDeathEvent()
+        {
+            Debug.Log("--------------------MELEE DEATH---------------------");
+
+            _agent.IsDeath = true;
+
+            if (!_agent.ZombieMode.IsZombie) return;
+
+            _agent.ZombieMode.TryBeZombie();
+        }
+
+        /// <summary>
+        /// 
+        /// TODO: Delete
+        /// 
+        /// Legacy Death Scenario
+        /// 
+        /// </summary
         private SequenceNode BuildDeathScenario()
         {
             var isDeathCondition = new ConditionNode(() =>  !_agent.IsLife);
 
-            var hasNotDeadYet = new ConditionNode(() => !_agent.HasDeadYet);
+            var hasNotDeadYet = new ConditionNode(() => !_agent.IsDeath);
 
             var motionBlockAction = new ActionNode(() =>
             {
@@ -199,7 +288,7 @@ namespace Root
 
             var beDeathAction = new ActionNode(() =>
             {
-                _agent.HasDeadYet = true;
+                _agent.IsDeath = true;
 
                 return NodeStatus.SUCCESS;
             });

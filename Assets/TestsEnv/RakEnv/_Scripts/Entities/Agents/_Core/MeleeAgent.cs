@@ -11,7 +11,7 @@ namespace Root
     {
         public bool IsLife { get; private set; }
 
-        public bool HasDeadYet { get; set; }
+        public bool IsDeath { get; set; }
 
         public float HeatPoint { get; private set; }
 
@@ -80,7 +80,7 @@ namespace Root
         {
             IsLife = _config.IsLifeDefault;
 
-            HasDeadYet = false;
+            IsDeath = false;
 
             HeatPoint = _config.HeatPoint;
 
@@ -134,7 +134,7 @@ namespace Root
         public void Resurrection()
         {
             IsLife = true;
-            HasDeadYet = false;
+            IsDeath = false;
         }
     }
 }

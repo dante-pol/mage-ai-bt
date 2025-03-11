@@ -1,11 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Root
 {
     public class MeleeAnimator
     {
+        public event Action DeathEvent;
+
         public bool IsAttacking { get; private set; } = false;
         public bool IsTurningZombie { get; private set; } = false;
+        public bool IsDeading{ get; private set; } = false;
 
         private readonly int SpeedHash = Animator.StringToHash("Speed");
         private readonly int DeathHash = Animator.StringToHash("Death");
@@ -31,7 +35,11 @@ namespace Root
             => _stateMachine.SetFloat(SpeedHash, 2.5f);
 
         public void SetDeath()
-            => _stateMachine.SetTrigger(DeathHash);
+        {
+            IsDeading = true;
+
+            _stateMachine.SetTrigger(DeathHash);
+        }
 
         public void SetBaseAttack()
         {
@@ -55,5 +63,8 @@ namespace Root
 
         public void SetConfigForZombie()
             => _stateMachine.runtimeAnimatorController = _overrideController;
+
+        public void EndDeath()
+            => DeathEvent?.Invoke();
     }
 }
