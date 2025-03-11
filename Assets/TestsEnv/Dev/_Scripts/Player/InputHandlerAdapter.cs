@@ -1,7 +1,9 @@
 using UnityEngine;
+using Root;
 
-public class InputHandlerAdapter : MonoBehaviour
+public class InputHandlerAdapter : MonoBehaviour, IUltUse
 {
+    public bool IsUltUse => _inputHandler.IsUlti;
     private Transform _shootPoint;
     private InputHandler _inputHandler;
     private MovementHandler _movementHandler;
@@ -11,6 +13,7 @@ public class InputHandlerAdapter : MonoBehaviour
     private float _pitchRange = 0.2f;
     private float _minPitch = 0.8f;
     private float _maxPitch = 1.2f;
+
 
     public void Setup(Transform shootPoint, InputHandler inputHandler, MovementHandler movementHandler, LightBeamController lightBeam)
     {
@@ -41,6 +44,7 @@ public class InputHandlerAdapter : MonoBehaviour
 
     public void TriggerBeamActivation()
     {
+        
         _lightBeamController.ActivateBeam();
     }
 

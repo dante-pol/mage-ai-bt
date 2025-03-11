@@ -1,7 +1,7 @@
 using UnityEngine;
 using Root;
 
-public class PlayerHealth : MonoBehaviour, IEntityAttacked, IHealthAndPosition
+public class PlayerHealth : MonoBehaviour, IEntityAttacked, IHealth , IPosition
 {
     public Teams TeamID => _teamID;
     public float CurrentHealth => _currentHealth;
