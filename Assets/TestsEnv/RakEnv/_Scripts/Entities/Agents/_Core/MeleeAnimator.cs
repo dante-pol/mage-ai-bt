@@ -17,6 +17,7 @@ namespace Root
         private readonly int DeathHash = Animator.StringToHash("Death");
         private readonly int BaseAttackHash = Animator.StringToHash("BaseAttack");
         private readonly int BeZombieHash = Animator.StringToHash("BeZombie");
+        private readonly int EscapeHash = Animator.StringToHash("HasEscape");
 
         private readonly Animator _stateMachine;
         private readonly AnimatorOverrideController _overrideController;
@@ -38,6 +39,9 @@ namespace Root
 
         public void SetRun()
             => _stateMachine.SetFloat(SpeedHash, 2.5f);
+
+        public void SetEscape() 
+            => _stateMachine.SetTrigger(EscapeHash);
 
         public void SetDeath()
         {

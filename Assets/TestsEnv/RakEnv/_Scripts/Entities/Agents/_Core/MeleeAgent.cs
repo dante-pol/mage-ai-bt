@@ -102,7 +102,7 @@ namespace Root
 
             Animator = new MeleeAnimator(animator, _overrideController);
 
-            Escape = new MeleeEscape(Motion);
+            Escape = new MeleeEscape();
 
             ZombieMode = new MeleeZombie(this, Animator);
 

@@ -176,7 +176,7 @@ namespace Root
 
         public SequenceNode BuildRetreatScenario()
         {
-            var isAloneAgentCondition = new ConditionNode(() => _agent.IsAlone || _agent.Player.IsActiveUlt);
+            var isAloneAgentCondition = new ConditionNode(() => (_agent.IsAlone || _agent.Player.IsActiveUlt) && !_agent.ZombieMode.IsZombie);
 
             var retreatScenario = new SequenceNode(new List<ABTNode>
             {
@@ -199,14 +199,36 @@ namespace Root
 
         public SequenceNode BuildChoosRescuePoint()
         {
+            var goToRescuePointAction = new ActionNode(() =>
+            {
+                _agent.Motion.SetTarget(_agent.Escape.GetEscapePoint());
+
+                _agent.Motion.SetActiveRun(true);
+
+                _agent.Motion.SetMotionLock(false);
+
+                _agent.Animator.SetRun();
+
+                return _agent.Motion.HasReachedTarget ? NodeStatus.SUCCESS : NodeStatus.RUNNING;
+            });
+
             return new SequenceNode(new List<ABTNode>
             {
                 new ConditionNode(() => ! _agent.Escape.IsSelect),
+
                 new ActionNode(() =>
                 {
                     _agent.Escape.ChooseEscapePoint();
+                    return NodeStatus.SUCCESS;
+                }),
 
-                    Debug.Log("Choose Escape Point");
+                goToRescuePointAction,
+
+                new ConditionNode(() => _agent.IsAlone),
+
+                new ActionNode(() =>
+                {
+                    //TODO: Нельзя стать зомби
 
                     return NodeStatus.SUCCESS;
                 })
@@ -221,17 +243,6 @@ namespace Root
 
             var hasNotEscapeCondition = new ConditionNode(() => !_agent.Escape.HasEscape);
 
-            var goToRescuePointAction = new ActionNode(() => 
-            {
-                _agent.Escape.Run();
-
-                _agent.Motion.SetMotionLock(false);
-
-                _agent.Animator.SetRun();
-
-                return _agent.Motion.HasReachedTarget ? NodeStatus.SUCCESS : NodeStatus.RUNNING;
-            });
-
             var hasReachedRescuePointCondition = new ConditionNode(() => _agent.Motion.HasReachedTarget);
 
             var stopNearRescuePointAction = new ActionNode(() =>
@@ -242,9 +253,31 @@ namespace Root
 
                 _agent.Motion.SetMotionLock(true);
 
-                _agent.Animator.SetDeath();
+                _agent.Animator.SetEscape();
 
                 return NodeStatus.SUCCESS;
+            });
+
+            var escapeTypes = new SelectorNode(new List<ABTNode>
+            {
+                new SequenceNode(new List<ABTNode>
+                {
+                    new ConditionNode(() => _agent.IsAlone),
+                    stopNearRescuePointAction
+                }),
+
+                new SequenceNode(new List<ABTNode>
+                {
+                    new ConditionNode(() => !_agent.IsAlone),
+                    new ActionNode(() =>
+                    {
+                        _agent.Animator.SetIdle();
+
+                        _agent.Motion.ClearTarget();
+
+                        return NodeStatus.SUCCESS;
+                    })
+                })
             });
 
             return new SequenceNode(new List<ABTNode>
@@ -252,9 +285,8 @@ namespace Root
                 isNotAttackingCondition,
                 isSelectEscapePoint,
                 hasNotEscapeCondition,
-                goToRescuePointAction,
                 hasReachedRescuePointCondition,
-                stopNearRescuePointAction
+                escapeTypes,
             });
         }
 
@@ -265,7 +297,12 @@ namespace Root
                 BuildRetreatScenario(),
                 new SequenceNode(new List<ABTNode>
                 {
-                    new ConditionNode(() => !_agent.IsAlone),
+                    new ConditionNode(() => (!_agent.IsAlone && !_agent.Player.IsActiveUlt) || _agent.ZombieMode.IsZombie),
+                    new ActionNode(() =>
+                    {
+                        _agent.Escape.Reset();
+                        return NodeStatus.SUCCESS;
+                    }),
                     BuildActiveLifeScenario(),
                 })
             });
