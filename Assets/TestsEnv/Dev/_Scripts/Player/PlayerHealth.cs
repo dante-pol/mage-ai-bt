@@ -1,22 +1,26 @@
 using UnityEngine;
 using Root;
 
-public class PlayerHealth : MonoBehaviour, IEntityAttacked, IHealth , IPosition
+public class PlayerHealth : MonoBehaviour, IEntityAttacked, IEntityInfo
 {
     public Teams TeamID => _teamID;
     public float CurrentHealth => _currentHealth;
     public Vector3 Position => transform.position;
+    public bool IsUltUse => _inputHandler.IsUlti;
     
     [SerializeField] private Teams _teamID;
-    [SerializeField] private GameConfig _config;
-    
+    private GameConfig _config;
+    private InputHandler _inputHandler;
     private float _currentHealth;
     private AudioSource _audioSource;
 
 
 
-    private void Awake()
+
+    public void Initialize(GameConfig gameConfig, InputHandler inputHandler)
     {
+        _config = gameConfig;
+        _inputHandler = inputHandler;
         _currentHealth = _config.PlayerMaxHealth;
         _audioSource = GetComponent<AudioSource>();
     }

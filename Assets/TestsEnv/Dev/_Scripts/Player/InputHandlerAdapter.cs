@@ -1,9 +1,8 @@
 using UnityEngine;
 using Root;
 
-public class InputHandlerAdapter : MonoBehaviour, IUltUse
+public class InputHandlerAdapter : MonoBehaviour
 {
-    public bool IsUltUse => _inputHandler.IsUlti;
     private Transform _shootPoint;
     private InputHandler _inputHandler;
     private MovementHandler _movementHandler;

@@ -8,6 +8,7 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private GameConfig _gameConfig;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private ShieldController _shieldController;
+    [SerializeField] private PlayerHealth _playerHealth;
 
     private int _hitCount = 0;
     private const int RequiredHitsForSuperAbility = 10;
@@ -54,6 +55,7 @@ public class GameInitializer : MonoBehaviour
 
         ShieldController shieldController = playerController.GetComponentInChildren<ShieldController>();
         shieldController.Initialize(_gameConfig, (InputHandler)inputHandler);
+        _playerHealth.Initialize(_gameConfig, (InputHandler)inputHandler);
 
         _inputHandler = inputHandler;
     }
