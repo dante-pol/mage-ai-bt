@@ -202,11 +202,18 @@ namespace Root
             return new SequenceNode(new List<ABTNode>
             {
                 new ConditionNode(() => ! _agent.Escape.IsSelect),
+
                 new ActionNode(() =>
                 {
                     _agent.Escape.ChooseEscapePoint();
+                    return NodeStatus.SUCCESS;
+                }),
 
-                    Debug.Log("Choose Escape Point");
+                new ConditionNode(() => _agent.IsAlone),
+
+                new ActionNode(() =>
+                {
+                    //TODO: Нельзя стать зомби
 
                     return NodeStatus.SUCCESS;
                 })
@@ -223,7 +230,9 @@ namespace Root
 
             var goToRescuePointAction = new ActionNode(() => 
             {
-                _agent.Escape.Run();
+                _agent.Motion.SetTarget(_agent.Escape.GetEscapePoint());
+
+                _agent.Motion.SetActiveRun(true);
 
                 _agent.Motion.SetMotionLock(false);
 
@@ -234,6 +243,7 @@ namespace Root
 
             var hasReachedRescuePointCondition = new ConditionNode(() => _agent.Motion.HasReachedTarget);
 
+            
             var stopNearRescuePointAction = new ActionNode(() =>
             {
                 _agent.Eyes.IsFreeze = true;
@@ -242,9 +252,31 @@ namespace Root
 
                 _agent.Motion.SetMotionLock(true);
 
-                _agent.Animator.SetDeath();
+                _agent.Animator.SetEscape();
 
                 return NodeStatus.SUCCESS;
+            });
+
+            var escapeTypes = new SelectorNode(new List<ABTNode>
+            {
+                new SequenceNode(new List<ABTNode>
+                {
+                    new ConditionNode(() => _agent.IsAlone),
+                    stopNearRescuePointAction
+                }),
+
+                new SequenceNode(new List<ABTNode>
+                {
+                    new ConditionNode(() => !_agent.IsAlone),
+                    new ActionNode(() =>
+                    {
+                        _agent.Animator.SetIdle();
+
+                        _agent.Motion.ClearTarget();
+
+                        return NodeStatus.SUCCESS;
+                    })
+                })
             });
 
             return new SequenceNode(new List<ABTNode>
@@ -254,7 +286,7 @@ namespace Root
                 hasNotEscapeCondition,
                 goToRescuePointAction,
                 hasReachedRescuePointCondition,
-                stopNearRescuePointAction
+                escapeTypes,
             });
         }
 

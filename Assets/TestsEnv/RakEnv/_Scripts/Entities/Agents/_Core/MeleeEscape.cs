@@ -30,10 +30,8 @@ namespace Root
             HasEscape = false;
         }
 
-        public void Run()
-        {
-            _motion.SetTarget(_escapePoint);
-        }
+        public Transform GetEscapePoint() 
+            => _escapePoint;
 
         public void ChooseEscapePoint()
         {
