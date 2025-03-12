@@ -3,22 +3,23 @@ using UnityEngine;
 namespace Root.Tests
 {
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerControllerTests : MonoBehaviour, ICharacterTarget
+    public class PlayerControllerTests : MonoBehaviour, IEntityInfo
     {
         [SerializeField] [Range(0, 100)] private int _heatPoint = 100;
         
         [Range(0, 20)]
         public float SpeedMove = 5;
 
+        [SerializeField] private bool _isActiveUlt = false;
+
         private CharacterController _controller;
         
-        [SerializeField] private bool _isActiveUlt = false;
 
         public Vector3 Position => transform.position;
 
-        public int HeatPoints => _heatPoint;
+        public float CurrentHealth => _heatPoint;
 
-        public bool IsActiveUlt => _isActiveUlt;
+        public bool IsUltUse => _isActiveUlt;
 
         private void Start()
         {
