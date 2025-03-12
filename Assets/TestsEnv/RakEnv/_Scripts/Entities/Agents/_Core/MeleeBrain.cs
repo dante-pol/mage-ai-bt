@@ -352,7 +352,7 @@ namespace Root
 
             var goToPlayerAction = new ActionNode(GoToPlayer);
 
-            var isPlayerBeatenCondition = new ConditionNode(() => _agent.Player.CurrentHealth <= 50);
+            var isPlayerBeatenCondition = new ConditionNode(() => _agent.Player.CurrentHealth <= _agent.Player.CurrentHealth / 2);
 
             var isNotZombieCondition = new ConditionNode(() => !_agent.ZombieMode.IsZombie);
 
