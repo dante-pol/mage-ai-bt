@@ -199,6 +199,19 @@ namespace Root
 
         public SequenceNode BuildChoosRescuePoint()
         {
+            var goToRescuePointAction = new ActionNode(() =>
+            {
+                _agent.Motion.SetTarget(_agent.Escape.GetEscapePoint());
+
+                _agent.Motion.SetActiveRun(true);
+
+                _agent.Motion.SetMotionLock(false);
+
+                _agent.Animator.SetRun();
+
+                return _agent.Motion.HasReachedTarget ? NodeStatus.SUCCESS : NodeStatus.RUNNING;
+            });
+
             return new SequenceNode(new List<ABTNode>
             {
                 new ConditionNode(() => ! _agent.Escape.IsSelect),
@@ -208,6 +221,8 @@ namespace Root
                     _agent.Escape.ChooseEscapePoint();
                     return NodeStatus.SUCCESS;
                 }),
+
+                goToRescuePointAction,
 
                 new ConditionNode(() => _agent.IsAlone),
 
@@ -228,22 +243,8 @@ namespace Root
 
             var hasNotEscapeCondition = new ConditionNode(() => !_agent.Escape.HasEscape);
 
-            var goToRescuePointAction = new ActionNode(() => 
-            {
-                _agent.Motion.SetTarget(_agent.Escape.GetEscapePoint());
-
-                _agent.Motion.SetActiveRun(true);
-
-                _agent.Motion.SetMotionLock(false);
-
-                _agent.Animator.SetRun();
-
-                return _agent.Motion.HasReachedTarget ? NodeStatus.SUCCESS : NodeStatus.RUNNING;
-            });
-
             var hasReachedRescuePointCondition = new ConditionNode(() => _agent.Motion.HasReachedTarget);
 
-            
             var stopNearRescuePointAction = new ActionNode(() =>
             {
                 _agent.Eyes.IsFreeze = true;
@@ -284,7 +285,6 @@ namespace Root
                 isNotAttackingCondition,
                 isSelectEscapePoint,
                 hasNotEscapeCondition,
-                goToRescuePointAction,
                 hasReachedRescuePointCondition,
                 escapeTypes,
             });
@@ -297,7 +297,7 @@ namespace Root
                 BuildRetreatScenario(),
                 new SequenceNode(new List<ABTNode>
                 {
-                    new ConditionNode(() => !_agent.IsAlone),
+                    new ConditionNode(() => (!_agent.IsAlone && !_agent.Player.IsActiveUlt) || _agent.ZombieMode.IsZombie),
                     BuildActiveLifeScenario(),
                 })
             });
