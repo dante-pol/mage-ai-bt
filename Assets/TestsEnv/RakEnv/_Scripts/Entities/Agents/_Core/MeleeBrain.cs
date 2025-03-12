@@ -298,6 +298,11 @@ namespace Root
                 new SequenceNode(new List<ABTNode>
                 {
                     new ConditionNode(() => (!_agent.IsAlone && !_agent.Player.IsActiveUlt) || _agent.ZombieMode.IsZombie),
+                    new ActionNode(() =>
+                    {
+                        _agent.Escape.Reset();
+                        return NodeStatus.SUCCESS;
+                    }),
                     BuildActiveLifeScenario(),
                 })
             });

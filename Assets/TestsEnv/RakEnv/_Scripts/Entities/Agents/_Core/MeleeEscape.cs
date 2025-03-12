@@ -8,16 +8,12 @@ namespace Root
 
         public bool HasEscape { get; set; }
 
-        private MeleeMotion _motion;
-
         public Transform[] _points;
 
         private Transform _escapePoint;
 
-        public MeleeEscape(MeleeMotion motion)
+        public MeleeEscape()
         {
-            _motion = motion;
-
             var result = GameObject.FindGameObjectsWithTag("Point");
 
             _points = new Transform[result.Length];
@@ -40,6 +36,11 @@ namespace Root
             _escapePoint = _points[indexRandom];
 
             IsSelect = true;
+        }
+
+        public void Reset()
+        {
+            IsSelect = false;
         }
     }
 }
