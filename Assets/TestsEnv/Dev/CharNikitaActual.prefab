@@ -165,7 +165,7 @@ MonoBehaviour:
   transmissionHigh: 1
   maxTransmissionSurfaces: 1
   directMixLevel: 1
-  reflections: 1
+  reflections: 0
   reflectionsType: 0
   useDistanceCurveForReflections: 1
   currentBakedSource: {fileID: 0}
@@ -593,10 +593,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4813887666755384936}
     m_Modifications:
+    - target: {fileID: 5946488429456014567, guid: 1eb341a9d580bdd4f9c2da4ecf7468b5, type: 3}
+      propertyPath: _clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a52f69e857a661458a9b179267f7a8d, type: 3}
     - target: {fileID: 6141473748068460156, guid: 1eb341a9d580bdd4f9c2da4ecf7468b5, type: 3}
       propertyPath: _lightSource
       value: 
       objectReference: {fileID: 3531802912223720196}
+    - target: {fileID: 6141473748068460156, guid: 1eb341a9d580bdd4f9c2da4ecf7468b5, type: 3}
+      propertyPath: _enemyLayer.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8487131569436136719, guid: 1eb341a9d580bdd4f9c2da4ecf7468b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.03

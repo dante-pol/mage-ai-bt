@@ -11,6 +11,7 @@ public class InputHandler : IInputHandler
     private float _lastAttackTime = -Mathf.Infinity;
     private float _attackCooldown = 0.5f;
     private bool _isShielding;
+    private bool _isDead;
     private float _lastShieldTime = -Mathf.Infinity;
     private const float ShieldCooldown = 10f;
     private GameConfig _config;
@@ -21,10 +22,19 @@ public class InputHandler : IInputHandler
     {
         _animator = animator;
         _config = config;
+
+        EventManager.Instance.OnInputLock += LockInput;
+    }
+    public void LockInput()
+    {
+        _isDead = true;
     }
 
     public void HandleInput()
     {
+        if(_isDead) return;
+
+
         if (Input.GetKeyDown(KeyCode.V))
         {
             EventManager.Instance.ToggleCamera();

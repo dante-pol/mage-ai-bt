@@ -1,7 +1,7 @@
 using UnityEngine;
 using Root;
 
-public class PlayerHealth : MonoBehaviour, IEntityAttacked, IHealthAndPosition
+public class PlayerHealth : MonoBehaviour, IEntityAttacked, IHealth , IPosition
 {
     public Teams TeamID => _teamID;
     public float CurrentHealth => _currentHealth;
@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour, IEntityAttacked, IHealthAndPosition
     
     private float _currentHealth;
     private AudioSource _audioSource;
+
+
 
     private void Awake()
     {
@@ -33,7 +35,15 @@ public class PlayerHealth : MonoBehaviour, IEntityAttacked, IHealthAndPosition
 
     private void Die()
     {
+        EventManager.Instance.TriggerPlayerDeath();
         Debug.Log("Игрок умер!");
+        EventManager.Instance.TriggerMovementLock();
+        CharacterController characterController = GetComponent<CharacterController>();
+        characterController.enabled = false;
+        CapsuleCollider capsuleCollider = GetComponentInChildren<CapsuleCollider>();
+        capsuleCollider.enabled = false;
+        EventManager.Instance.TriggerInputLock();
+        _audioSource.PlayOneShot(_config.DeathClip);
     }
 
     private void OnGUI()

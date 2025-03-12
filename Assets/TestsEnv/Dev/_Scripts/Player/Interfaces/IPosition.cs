@@ -2,9 +2,8 @@ using UnityEngine;
 
 namespace Root
 {
-    public interface IHealthAndPosition
+    public interface IPosition
     {
-        float CurrentHealth { get; }
         Vector3 Position { get; }
     }
 }

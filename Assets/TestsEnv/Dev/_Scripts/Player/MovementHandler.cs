@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class MovementHandler : IMovementHandler
 {
     private CharacterController _characterController;
