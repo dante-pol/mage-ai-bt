@@ -16,7 +16,7 @@ namespace Root.Core.Entities.Agents.Range
 
         private float _damage;
 
-        private Color _colorAttack;
+        private int _attackLevel;
 
 
         public RangeSpellBallFactory()
@@ -25,16 +25,16 @@ namespace Root.Core.Entities.Agents.Range
 
             _damage = 0;
 
-            _colorAttack = Color.white;
+            _attackLevel = 0;
         }
 
-        public void UpdateConfig(Teams teamID, int damage, Color color)
+        public void UpdateConfig(Teams teamID, int damage, int attackLevel)
         {
             _teamID = teamID;
 
             _damage = damage;
 
-            _colorAttack = color;
+            _attackLevel = attackLevel;
         }
 
         public override Object Create()
@@ -43,7 +43,7 @@ namespace Root.Core.Entities.Agents.Range
 
             SpellBall ball = Instantiate(_prefabBall);
 
-            ball.Construct(_teamID, _damage, _colorAttack);
+            ball.Construct(_teamID, _damage, _attackLevel);
 
             return ball;
         }
@@ -52,7 +52,7 @@ namespace Root.Core.Entities.Agents.Range
         {
             SpellBall ball = Instantiate(_prefabBall, position, orientation);
 
-            ball.Construct(_teamID, _damage, _colorAttack);
+            ball.Construct(_teamID, _damage, _attackLevel);
 
             return ball;
         }
