@@ -67,11 +67,11 @@ namespace Root.Core.Entities.Agents.Range
         {
             IEntityAttacked entity = other.GetComponent<IEntityAttacked>();
 
-            if (entity == null) return;
-
-            if (_teamID == entity.TeamID) return;
-
-            entity.TakeAttack(new AttackProcess(_damage));
+            if (entity != null)
+            {
+                if (_teamID != entity.TeamID)
+                    entity.TakeAttack(new AttackProcess(_damage));
+            }
 
             Deactivate();
         }
