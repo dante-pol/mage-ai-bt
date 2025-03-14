@@ -7,6 +7,7 @@ public class CameraRotationHandler : ICameraRotationHandler
     private float _rotationX = 0f;
     private GameConfig _gameConfig;
     private bool _blockVerticalRotation = false;
+    private bool _isDead = false;
 
 
     public CameraRotationHandler(Transform playerTransform, Transform cameraPivot, GameConfig gameConfig)
@@ -19,10 +20,14 @@ public class CameraRotationHandler : ICameraRotationHandler
 
         EventManager.Instance.OnSuperAbilityUse += () => _blockVerticalRotation = true;
         EventManager.Instance.OnSuperAbilityEnd += () => _blockVerticalRotation = false;
+        EventManager.Instance.OnPlayerDeath += () => _isDead = true;
+
     }
 
     public void HandleCameraRotation()
     {
+        if(_isDead) return;
+
         float mouseX = Input.GetAxis("Mouse X") * _gameConfig.MouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * _gameConfig.MouseSensitivity;
 
