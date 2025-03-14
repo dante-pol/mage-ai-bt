@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Root.Core.Entities.Agents.Range
 {
+
     [RequireComponent(typeof(Rigidbody))]
     public class SpellBall : MonoBehaviour, IObjectPool
     {
@@ -14,13 +15,19 @@ namespace Root.Core.Entities.Agents.Range
 
         [SerializeField] private GameObject[] _meshes;
 
+        [SerializeField] private ParticleSystem _explosiveParticle;
+
         private Rigidbody _rigidbody;
 
         private AudioSource _audioSource;
 
+        private ExplosiveMechanism _explosiveSystem;
+
         private Teams _teamID;
 
         private float _damage;
+        
+        private GameObject _currentMesh;
 
         public void Construct()
         {
@@ -28,7 +35,9 @@ namespace Root.Core.Entities.Agents.Range
 
             _rigidbody.useGravity = false;
 
-            _audioSource = GetComponent<AudioSource>();        
+            _audioSource = GetComponent<AudioSource>();
+
+            _explosiveSystem = new ExplosiveMechanism(_explosiveParticle);
         }
 
         public void Initialize(Teams teamId, float damage, int attackLevel, Vector3 position)
@@ -60,7 +69,9 @@ namespace Root.Core.Entities.Agents.Range
         {
             if (attackLevel >= _meshes.Length) throw new UnityException("Attack level of bounds...");
 
-            _meshes[attackLevel].gameObject.SetActive(true);
+            _currentMesh = _meshes[attackLevel];
+            
+            _currentMesh.gameObject.SetActive(true);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -73,6 +84,7 @@ namespace Root.Core.Entities.Agents.Range
                     entity.TakeAttack(new AttackProcess(_damage));
             }
 
+            Debug.LogWarning($"Spell Ball Trigger -------------{other.name}---------------");
             Deactivate();
         }
 
@@ -85,6 +97,10 @@ namespace Root.Core.Entities.Agents.Range
 
         public void ResetForPool()
         {
+            _currentMesh.SetActive(false);
+
+            _explosiveSystem.Play();
+
             gameObject.SetActive(false);
 
             _rigidbody.velocity = Vector3.zero;
@@ -98,7 +114,12 @@ namespace Root.Core.Entities.Agents.Range
             List<GameObject> _objects = new List<GameObject>();
 
             foreach (Transform child in transform)
-                _objects.Add(child.gameObject);
+            {
+                if (child.GetComponent<ParticleSystem>() == null)
+                    _objects.Add(child.gameObject);
+
+                _explosiveParticle = child.GetComponent<ParticleSystem>();
+            }
 
             _meshes = _objects.ToArray();
         }
