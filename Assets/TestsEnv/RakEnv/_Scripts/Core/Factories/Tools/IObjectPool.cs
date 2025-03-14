@@ -1,4 +1,11 @@
-﻿namespace Root.Core.Factories.Tools
+﻿using System;
+
+namespace Root.Core.Factories.Tools
 {
-    public interface IObjectPool { }
+    public interface IObjectPool
+    {
+        event Action<IObjectPool> ReturnToPoolEvent;
+
+        void ResetForPool();
+    }
 }
