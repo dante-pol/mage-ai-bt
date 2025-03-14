@@ -102,9 +102,9 @@ namespace Root.Core.Entities.Agents.Range
 
             var config = _config.AttackConfigs[_levelAttack];
 
-            Animator.UpdateEffectMagicBall(config.ColorAttack);
+            Animator.UpdateEffectMagicBall(config.AttackLevel);
 
-            Attacker.UpdateConfigAttacker(_teamID, config.Damage, config.Cooldown, config.ColorAttack);
+            Attacker.UpdateConfigAttacker(_teamID, config.Damage, config.Cooldown, config.AttackLevel);
         }
     }
 }

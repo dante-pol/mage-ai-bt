@@ -28,11 +28,11 @@ namespace Root.Core.Entities.Agents.Range
         {
             public int Damage => _damage;
             public float Cooldown => _cooldown;
-            public Color ColorAttack => _colorAttack;
+            public int AttackLevel => _attackLevel;
 
             [SerializeField] private int _damage;
             [SerializeField] private float _cooldown;
-            [SerializeField] private Color _colorAttack;
+            [SerializeField] private int _attackLevel;
         }
 
         [Serializable]

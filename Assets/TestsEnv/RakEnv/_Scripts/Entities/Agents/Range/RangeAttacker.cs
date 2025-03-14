@@ -36,9 +36,9 @@ namespace Root.Core.Entities.Agents.Range
             _cooldownTime = 0;
         }
 
-        public void UpdateConfigAttacker(Teams teamID, int damage, float cooldown, Color color)
+        public void UpdateConfigAttacker(Teams teamID, int damage, float cooldown, int attackLevel)
         {
-            _ballFactory.UpdateConfig(teamID, damage, color);
+            _ballFactory.UpdateConfig(teamID, damage, attackLevel);
 
             _cooldownTime = cooldown;
         }

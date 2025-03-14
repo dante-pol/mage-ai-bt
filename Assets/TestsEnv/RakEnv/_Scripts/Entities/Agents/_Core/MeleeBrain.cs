@@ -176,7 +176,7 @@ namespace Root
 
         public SequenceNode BuildRetreatScenario()
         {
-            var isAloneAgentCondition = new ConditionNode(() => (_agent.IsAlone || _agent.Player.IsActiveUlt) && !_agent.ZombieMode.IsZombie);
+            var isAloneAgentCondition = new ConditionNode(() => (_agent.IsAlone || _agent.Player.IsUltUse) && !_agent.ZombieMode.IsZombie);
 
             var retreatScenario = new SequenceNode(new List<ABTNode>
             {
@@ -297,7 +297,7 @@ namespace Root
                 BuildRetreatScenario(),
                 new SequenceNode(new List<ABTNode>
                 {
-                    new ConditionNode(() => (!_agent.IsAlone && !_agent.Player.IsActiveUlt) || _agent.ZombieMode.IsZombie),
+                    new ConditionNode(() => (!_agent.IsAlone && !_agent.Player.IsUltUse) || _agent.ZombieMode.IsZombie),
                     new ActionNode(() =>
                     {
                         _agent.Escape.Reset();
@@ -352,7 +352,7 @@ namespace Root
 
             var goToPlayerAction = new ActionNode(GoToPlayer);
 
-            var isPlayerBeatenCondition = new ConditionNode(() => _agent.Player.HeatPoints <= 50);
+            var isPlayerBeatenCondition = new ConditionNode(() => _agent.Player.CurrentHealth <= _agent.Player.CurrentHealth / 2);
 
             var isNotZombieCondition = new ConditionNode(() => !_agent.ZombieMode.IsZombie);
 

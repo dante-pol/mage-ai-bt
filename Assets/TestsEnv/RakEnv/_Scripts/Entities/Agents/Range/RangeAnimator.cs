@@ -15,14 +15,12 @@ namespace Root.Core.Entities.Agents.Range
             _agent = agent;
 
             _magicBall = magicBall;
-
-            _magicBallMaterial = _magicBall.GetComponent<MeshRenderer>().material;
         }
 
-        public void SetIdle()
-            => UpdateEffectMagicBall(Color.blue);
+        // Legacy. TODO: ReCode
+        public void SetIdle() { }
 
-        public void UpdateEffectMagicBall(Color color) 
-            => _magicBallMaterial.color = color;
+        // Legacy. TODO: ReCode
+        public void UpdateEffectMagicBall(int attackLevel) { }
     }
 }
