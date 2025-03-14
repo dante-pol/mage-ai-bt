@@ -27,6 +27,8 @@ public class PlayerHealth : MonoBehaviour, IEntityAttacked, IEntityInfo
 
     public void TakeAttack(IAttackProcess attackProcess)
     {
+        if(_inputHandler.IsUlti) return;
+        
         _currentHealth -= attackProcess.Damage;
         _audioSource.Play();
         Debug.Log($"Урон: {attackProcess.Damage}. Осталось: {_currentHealth}");
