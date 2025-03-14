@@ -18,15 +18,13 @@ namespace Root.Core.Entities.Agents.Range
         [SerializeField] private ParticleSystem _explosiveParticle;
 
         private Rigidbody _rigidbody;
-
         private AudioSource _audioSource;
-
         private ExplosiveMechanism _explosiveSystem;
-
-        private Teams _teamID;
-
-        private float _damage;
+        private Collider _collision;
         
+        private Teams _teamID;
+        private float _damage;
+
         private GameObject _currentMesh;
 
         public void Construct()
@@ -38,6 +36,8 @@ namespace Root.Core.Entities.Agents.Range
             _audioSource = GetComponent<AudioSource>();
 
             _explosiveSystem = new ExplosiveMechanism(_explosiveParticle);
+
+            _collision = GetComponent<Collider>();
         }
 
         public void Initialize(Teams teamId, float damage, int attackLevel, Vector3 position)
@@ -45,6 +45,8 @@ namespace Root.Core.Entities.Agents.Range
             Initialize(teamId, damage, attackLevel);
 
             transform.position = position;
+
+            _collision.enabled = true;
         }
 
         public void Initialize(Teams teamId, float damage, int attackLevel)
@@ -97,11 +99,11 @@ namespace Root.Core.Entities.Agents.Range
 
         public void ResetForPool()
         {
+            _collision.enabled = false; 
+
             _currentMesh.SetActive(false);
 
             _explosiveSystem.Play();
-
-            gameObject.SetActive(false);
 
             _rigidbody.velocity = Vector3.zero;
         }
