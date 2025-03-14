@@ -35,32 +35,6 @@ namespace Root.Core.Entities.Agents.Range
 
             _cooldownTime = 0;
         }
-
-        public void UpdateConfigAttacker(Teams teamID, int damage, float cooldown, int attackLevel)
-        {
-            _ballFactory.UpdateConfig(teamID, damage, attackLevel);
-
-            _cooldownTime = cooldown;
-        }
-
-        public void Attack()
-        {
-            Debug.Log("Attack;");
-
-            SpellBall ball = _ballFactory.Create(_spawnPoint.position, _spawnPoint.rotation) as SpellBall;
-
-            Vector3 toTarget = CalculateDirectionToTarget();
-
-            ball.PushIt(toTarget);
-
-            HasCooldownPassed = false;
-
-            _currentCooldown = _cooldownTime;
-        }
-
-        private Vector3 CalculateDirectionToTarget()
-            => (_target.position - _me.position).normalized;
-
         public void Update()
         {
             if (HasCooldownPassed) return;
@@ -73,6 +47,34 @@ namespace Root.Core.Entities.Agents.Range
 
                 _currentCooldown = 0;
             }
+        }
+
+        public void UpdateConfigAttacker(Teams teamID, int damage, float cooldown, int attackLevel)
+        {
+            _ballFactory.UpdateConfig(teamID, damage, attackLevel);
+
+            _cooldownTime = cooldown;
+        }
+
+        public void Attack()
+        {
+            SpellBall ball = _ballFactory.Create(_spawnPoint.position, _spawnPoint.rotation) as SpellBall;
+
+            Vector3 toTarget = CalculateDirectionToTarget();
+
+            ball.PushIt(toTarget);
+
+            ResetCooldown();
+        }
+
+        private Vector3 CalculateDirectionToTarget()
+            => (_target.position - _me.position).normalized;
+
+        private void ResetCooldown()
+        {
+            HasCooldownPassed = false;
+
+            _currentCooldown = _cooldownTime;
         }
     }
 }

@@ -6,6 +6,8 @@ namespace Root.Core.Entities.Agents.Range
     public class RangeAgent : MonoBehaviour, IEntityAttacked
     {
         public event UnityAction DeathEvent;
+        
+        public float HealthPoint { get; private set; }
 
         public bool IsLife { get; private set; }
 
@@ -31,7 +33,6 @@ namespace Root.Core.Entities.Agents.Range
 
         private Transform _player;
         
-        private float _heatPoint = 2;
 
         [SerializeField] GameObject _spellBall;
 
@@ -45,10 +46,6 @@ namespace Root.Core.Entities.Agents.Range
 
             _player = GameObject.FindGameObjectWithTag("Player").transform;
 
-            IsLife = true;
-
-            IsDeath = false;
-
             Eyes = new AgentEyes(transform);
 
             Animator = new RangeAnimator(gameObject, _spellBall);
@@ -61,7 +58,7 @@ namespace Root.Core.Entities.Agents.Range
 
             _brain = new RangeBrain(this);
 
-            _levelAttack = -1;
+            InitializeConfig();
 
             UpdateProgress();
         }
@@ -75,15 +72,26 @@ namespace Root.Core.Entities.Agents.Range
             Eyes.Update();
         }
 
+        private void InitializeConfig()
+        {
+            HealthPoint = _config.HeatPoint;
+
+            IsLife = true;
+
+            IsDeath = false;
+
+            _levelAttack = -1;
+        }
+
         public void TakeAttack(IAttackProcess attackProcess)
         {
             Sounds.PlayTakeDamage();
 
-            _heatPoint -= attackProcess.Damage;
+            HealthPoint -= attackProcess.Damage;
 
-            if (_heatPoint <= 0)
+            if (HealthPoint <= 0)
             {
-                _heatPoint = 0;
+                HealthPoint = 0;
 
                 IsLife = false;
             }
