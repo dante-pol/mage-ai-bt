@@ -1,6 +1,6 @@
 ﻿using Root.Core.Factories.Tools;
+using System;
 using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 namespace Root.Core.Entities.Agents.Range
@@ -8,6 +8,8 @@ namespace Root.Core.Entities.Agents.Range
     [RequireComponent(typeof(Rigidbody))]
     public class SpellBall : MonoBehaviour, IObjectPool
     {
+        public event Action<IObjectPool> ReturnToPoolEvent;
+
         [SerializeField] private float _speed;
 
         [SerializeField] private GameObject[] _meshes;
@@ -20,17 +22,29 @@ namespace Root.Core.Entities.Agents.Range
 
         private float _damage;
 
-        public void Construct(Teams teamId, float damage, int attackLevel)
+        public void Construct()
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+
+            _rigidbody.useGravity = false;
+
+            _audioSource = GetComponent<AudioSource>();        
+        }
+
+        public void Initialize(Teams teamId, float damage, int attackLevel, Vector3 position)
+        {
+            Initialize(teamId, damage, attackLevel);
+
+            transform.position = position;
+        }
+
+        public void Initialize(Teams teamId, float damage, int attackLevel)
         {
             _teamID = teamId;
 
             _damage = damage;
 
-            _rigidbody = GetComponent<Rigidbody>();
-
-            _rigidbody.useGravity = false;
-
-            _audioSource = GetComponent<AudioSource>();
+            gameObject.SetActive(true);
 
             SelectMeshByAttackLevel(attackLevel);
         }
@@ -38,6 +52,7 @@ namespace Root.Core.Entities.Agents.Range
         public void PushIt(Vector3 direction)
         {
             _audioSource.Play();
+
             _rigidbody.velocity = direction * _speed;
         }
 
@@ -58,7 +73,21 @@ namespace Root.Core.Entities.Agents.Range
 
             entity.TakeAttack(new AttackProcess(_damage));
 
+            Deactivate();
+        }
+
+        private void Deactivate()
+        {
+            ResetForPool();
+
+            ReturnToPoolEvent?.Invoke(this);
+        }
+
+        public void ResetForPool()
+        {
             gameObject.SetActive(false);
+
+            _rigidbody.velocity = Vector3.zero;
         }
 
 #if UNITY_EDITOR

@@ -10,7 +10,7 @@ namespace Root.Core.Entities.Agents.Range
 
         private readonly SpellBall _prefabBall;
 
-        private readonly Pool<SpellBall> _pool;
+        private readonly Pool _pool;
         
         private Teams _teamID;
 
@@ -18,10 +18,11 @@ namespace Root.Core.Entities.Agents.Range
 
         private int _attackLevel;
 
-
         public RangeSpellBallFactory()
         {
             _prefabBall = AssetsProvider.Load<SpellBall>(PATH_TO_PREFAB);
+
+            _pool = new Pool();
 
             _damage = 0;
 
@@ -39,20 +40,42 @@ namespace Root.Core.Entities.Agents.Range
 
         public override Object Create()
         {
-            //TODO: Configs...
+            SpellBall ball = _pool.Request() as SpellBall;
 
-            SpellBall ball = Instantiate(_prefabBall);
+            if (ball == null)
+            {
+                ball = Instantiate(_prefabBall);
 
-            ball.Construct(_teamID, _damage, _attackLevel);
+                ball.Construct();
+
+                _pool.RegisterObject(ball);
+
+                ball.ReturnToPoolEvent += _pool.Return;
+            }
+
+            ball.Initialize(_teamID, _damage, _attackLevel);
 
             return ball;
         }
 
         public override Object Create(Vector3 position, Quaternion orientation)
         {
-            SpellBall ball = Instantiate(_prefabBall, position, orientation);
+            SpellBall ball = _pool.Request() as SpellBall;
 
-            ball.Construct(_teamID, _damage, _attackLevel);
+            if (ball == null)
+            {
+                ball = Instantiate(_prefabBall, position, orientation);
+
+                ball.Construct();
+
+                _pool.RegisterObject(ball);
+
+                ball.ReturnToPoolEvent += _pool.Return;
+
+                ball.Initialize(_teamID, _damage, _attackLevel);
+            }
+
+            ball.Initialize(_teamID, _damage, _attackLevel, position);
 
             return ball;
         }
