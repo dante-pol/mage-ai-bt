@@ -1,24 +1,41 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Root.Core.Entities.Agents.Range
 {
     public class ExplosiveMechanism
     {
-        private readonly ParticleSystem _system;
+        private readonly ParticleSystem[] _system;
 
-        public ExplosiveMechanism(ParticleSystem system)
+        private ParticleSystem _currentSystem;
+
+        public ExplosiveMechanism(ParticleSystem[] system)
         {
             _system = system;
 
-            var main = _system.main;
+            _currentSystem = _system[0];
+
+            var main = _currentSystem.main;
 
             main.loop = false;
             main.playOnAwake = false;
 
-            _system.gameObject.SetActive(true);
+            _currentSystem.gameObject.SetActive(true);
         }
 
         public void Play() 
-            => _system.Play();
+            => _currentSystem.Play();
+
+        public void UpdateEffect(int attackLevel)
+        {
+            _currentSystem = _system[attackLevel];
+
+            var main = _currentSystem.main;
+
+            main.loop = false;
+            main.playOnAwake = false;
+
+            _currentSystem.gameObject.SetActive(true);
+        }
     }
 }

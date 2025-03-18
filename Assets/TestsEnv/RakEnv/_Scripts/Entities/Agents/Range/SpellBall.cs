@@ -15,7 +15,7 @@ namespace Root.Core.Entities.Agents.Range
 
         [SerializeField] private GameObject[] _meshes;
 
-        [SerializeField] private ParticleSystem _explosiveParticle;
+        [SerializeField] private ParticleSystem[] _explosives;
 
         private Rigidbody _rigidbody;
         private AudioSource _audioSource;
@@ -35,7 +35,7 @@ namespace Root.Core.Entities.Agents.Range
 
             _audioSource = GetComponent<AudioSource>();
 
-            _explosiveSystem = new ExplosiveMechanism(_explosiveParticle);
+            _explosiveSystem = new ExplosiveMechanism(_explosives);
 
             _collision = GetComponent<Collider>();
         }
@@ -57,7 +57,16 @@ namespace Root.Core.Entities.Agents.Range
 
             gameObject.SetActive(true);
 
+            SelectEffectExplosive(attackLevel);
+
             SelectMeshByAttackLevel(attackLevel);
+        }
+
+        private void SelectEffectExplosive(int attackLevel)
+        {
+            if (attackLevel >= _explosives.Length) throw new UnityException("Attack level of bounds...");
+
+            _explosiveSystem.UpdateEffect(attackLevel);
         }
 
         public void PushIt(Vector3 direction)
@@ -119,8 +128,6 @@ namespace Root.Core.Entities.Agents.Range
             {
                 if (child.GetComponent<ParticleSystem>() == null)
                     _objects.Add(child.gameObject);
-
-                _explosiveParticle = child.GetComponent<ParticleSystem>();
             }
 
             _meshes = _objects.ToArray();

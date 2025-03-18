@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3317722a085d24199038958a1ecfb1, type: 3}
   m_Name: RangeConfig
   m_EditorClassIdentifier: 
-  _heatPoint: 10
+  _heatPoint: 2
   _idleColor: {r: 0, g: 0, b: 1, a: 0}
   _attackConfigs:
   - _damage: 1
