@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
-  _maxDistance: 10
+  _maxDistance: 20
   _audioClip: {fileID: 8300000, guid: 728b80cfb9a8a6c4fa7879e3d61f8f30, type: 3}
 --- !u!114 &3458946761985691060
 MonoBehaviour:
