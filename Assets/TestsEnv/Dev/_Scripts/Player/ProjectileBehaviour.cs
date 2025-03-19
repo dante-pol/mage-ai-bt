@@ -10,6 +10,8 @@ public class ProjectileBehaviour : MonoBehaviour
     [SerializeField] private GameObject _mesh;
     [SerializeField] private ParticleSystem _explosionEffect;
 
+    private Collider _collider;
+
     private float traveledDistance = 0f;
     private Vector3 startingPosition;
     private ObjectPool objectPool;
@@ -29,9 +31,9 @@ public class ProjectileBehaviour : MonoBehaviour
         startingPosition = transform.position;
         _audioSource = GetComponent<AudioSource>();
 
-        _explosionSystem = new SpellBallExplosion(_explosionEffect, _mesh, this);
+        _collider = GetComponent<Collider>();
 
-        _isActive = true;
+        _explosionSystem = new SpellBallExplosion(_explosionEffect, _mesh, this);
     }
 
     private void Update()
@@ -65,6 +67,8 @@ public class ProjectileBehaviour : MonoBehaviour
         _isActive = true;
 
         _explosionSystem.Reset();
+
+        _collider.enabled = true;
     }
 
     public void Play()
@@ -74,6 +78,8 @@ public class ProjectileBehaviour : MonoBehaviour
 
     private void ReturnToPool()
     {
+        _collider.enabled = false;
+
         _isActive = false;
 
         _explosionSystem.ActiveExplosion(() =>
