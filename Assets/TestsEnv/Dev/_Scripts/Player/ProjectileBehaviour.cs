@@ -6,12 +6,18 @@ public class ProjectileBehaviour : MonoBehaviour
     [SerializeField] private float _maxDistance = 100f;
     [SerializeField] private AudioClip _audioClip;
 
+    [Header("Skin")]
+    [SerializeField] private GameObject _mesh;
+    [SerializeField] private ParticleSystem _explosionEffect;
+
     private float traveledDistance = 0f;
     private Vector3 startingPosition;
     private ObjectPool objectPool;
     private AudioSource _audioSource;
     private AudioClip _currentSource;
 
+    private SpellBallExplosion _explosionSystem;
+    private bool _isActive;
 
     public void SetObjectPool(ObjectPool pool)
     {
@@ -22,6 +28,10 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         startingPosition = transform.position;
         _audioSource = GetComponent<AudioSource>();
+
+        _explosionSystem = new SpellBallExplosion(_explosionEffect, _mesh, this);
+
+        _isActive = true;
     }
 
     private void Update()
@@ -29,7 +39,7 @@ public class ProjectileBehaviour : MonoBehaviour
         transform.Translate(Vector3.forward * _speed * Time.deltaTime);
         traveledDistance += _speed * Time.deltaTime;
 
-        if (traveledDistance >= _maxDistance)
+        if (traveledDistance >= _maxDistance && _isActive)
         {
             ReturnToPool();
         }
@@ -51,6 +61,10 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         traveledDistance = 0f;
         startingPosition = transform.position;
+
+        _isActive = true;
+
+        _explosionSystem.Reset();
     }
 
     public void Play()
@@ -60,6 +74,11 @@ public class ProjectileBehaviour : MonoBehaviour
 
     private void ReturnToPool()
     {
-        objectPool.ReturnObject(gameObject);
+        _isActive = false;
+
+        _explosionSystem.ActiveExplosion(() =>
+        {
+            objectPool.ReturnObject(gameObject);
+        });
     }
 }

@@ -16,8 +16,6 @@ namespace Root.Tests
             Debug.Log(other.gameObject.name);
 
             entity.TakeAttack(new AttackProcess(_damage));
-
-            gameObject.SetActive(false);
         }
     }
 }
