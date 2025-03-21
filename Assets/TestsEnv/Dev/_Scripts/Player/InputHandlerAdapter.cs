@@ -29,14 +29,25 @@ public class InputHandlerAdapter : MonoBehaviour
 
     public void CallHandleAnimationAttack()
     {
-        if (_shootPoint != null)
-        {
-            Camera mainCamera = Camera.main;
-            Vector3 direction = mainCamera.transform.forward + (mainCamera.transform.right * -_leftOffset);
-            direction.Normalize();
-            EventManager.Instance.TriggerAttack(_shootPoint.position, direction);
-        }
+        if (_shootPoint == null) return;
+
+        Camera mainCamera = Camera.main;
+        if (mainCamera == null) return;
+
+        Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f));
+        
+        Vector3 targetPoint;
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+            targetPoint = hit.point;
+        else
+            targetPoint = ray.GetPoint(100f);
+
+        Vector3 direction = (targetPoint - _shootPoint.position).normalized;
+
+        EventManager.Instance.TriggerAttack(_shootPoint.position, direction);
     }
+
 
     public void CallJump()
     {
