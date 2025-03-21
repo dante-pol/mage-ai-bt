@@ -87,16 +87,19 @@ namespace Root.Core.Entities.Agents.Range
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.GetComponent<SpellBall>()) return;
+
+            if (other.CompareTag("Wall")) { Deactivate(); return; }
+
             IEntityAttacked entity = other.GetComponent<IEntityAttacked>();
 
             if (entity != null)
             {
                 if (_teamID != entity.TeamID)
                     entity.TakeAttack(new AttackProcess(_damage));
-            }
 
-            Debug.LogWarning($"Spell Ball Trigger -------------{other.name}---------------");
-            Deactivate();
+                Deactivate();
+            }    
         }
 
         private void Deactivate()

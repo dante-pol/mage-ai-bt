@@ -10,6 +10,7 @@ TagManager:
   - MeleeS
   - Range
   - Melee
+  - Wall
   layers:
   - Default
   - TransparentFX
