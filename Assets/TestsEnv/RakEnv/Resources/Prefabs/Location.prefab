@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 4436794798332516538}
   m_Layer: 0
   m_Name: brick wall.001 (28)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 4626219206647979448}
   m_Layer: 0
   m_Name: brick wall.001 (12)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 5649600342903658202}
   m_Layer: 0
   m_Name: brick wall.001 (28)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 6699617455086428849}
   m_Layer: 0
   m_Name: brick wall.001 (43)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -857,7 +857,7 @@ GameObject:
   - component: {fileID: 7445723077076872954}
   m_Layer: 0
   m_Name: brick wall.001 (5)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -963,7 +963,7 @@ GameObject:
   - component: {fileID: 5254139551832647194}
   m_Layer: 0
   m_Name: brick wall.001 (06)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1122,7 +1122,7 @@ GameObject:
   - component: {fileID: 7278401876433195795}
   m_Layer: 0
   m_Name: brick wall.001 (15)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1263,7 +1263,7 @@ GameObject:
   - component: {fileID: 78802680018625579}
   m_Layer: 0
   m_Name: brick wall.001 (17)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1369,7 +1369,7 @@ GameObject:
   - component: {fileID: 6122417051843563830}
   m_Layer: 0
   m_Name: brick wall.001 (9)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1475,7 +1475,7 @@ GameObject:
   - component: {fileID: 6983122935147783157}
   m_Layer: 0
   m_Name: brick wall.001 (35)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1665,7 +1665,7 @@ GameObject:
   - component: {fileID: 6502703068990497100}
   m_Layer: 0
   m_Name: brick wall.001 (31)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1771,7 +1771,7 @@ GameObject:
   - component: {fileID: 8005298920621447910}
   m_Layer: 0
   m_Name: brick wall.001 (49)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2043,7 +2043,7 @@ GameObject:
   - component: {fileID: 7935987500928711051}
   m_Layer: 0
   m_Name: brick wall.001 (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2149,7 +2149,7 @@ GameObject:
   - component: {fileID: 3157525616527438700}
   m_Layer: 0
   m_Name: brick wall.001 (39)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2255,7 +2255,7 @@ GameObject:
   - component: {fileID: 7023378868840265920}
   m_Layer: 0
   m_Name: brick wall.001 (23)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2361,7 +2361,7 @@ GameObject:
   - component: {fileID: 7662386417618593908}
   m_Layer: 0
   m_Name: brick wall.001 (7)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2467,7 +2467,7 @@ GameObject:
   - component: {fileID: 1278833292583698763}
   m_Layer: 0
   m_Name: brick wall.001 (40)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2573,7 +2573,7 @@ GameObject:
   - component: {fileID: 5167437638483940578}
   m_Layer: 0
   m_Name: brick wall.001 (29)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2679,7 +2679,7 @@ GameObject:
   - component: {fileID: 6803426552653650848}
   m_Layer: 0
   m_Name: brick wall.001 (08)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2785,7 +2785,7 @@ GameObject:
   - component: {fileID: 6435628664253884932}
   m_Layer: 0
   m_Name: brick wall.001 (27)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2891,7 +2891,7 @@ GameObject:
   - component: {fileID: 6108290806611206228}
   m_Layer: 0
   m_Name: pillar (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2996,7 +2996,7 @@ GameObject:
   - component: {fileID: 3005617571869371611}
   m_Layer: 0
   m_Name: brick wall.001 (41)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3185,7 +3185,7 @@ GameObject:
   - component: {fileID: 8093136631529212272}
   m_Layer: 0
   m_Name: brick wall.001 (02)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3291,7 +3291,7 @@ GameObject:
   - component: {fileID: 8924953187545279016}
   m_Layer: 0
   m_Name: brick wall.001 (07)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3442,7 +3442,7 @@ GameObject:
   - component: {fileID: 8720745232569854465}
   m_Layer: 0
   m_Name: brick wall.001 (46)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3631,9 +3631,10 @@ GameObject:
   - component: {fileID: 336916523027069457}
   - component: {fileID: 6188192757134608274}
   - component: {fileID: 6803381761603196105}
+  - component: {fileID: 3145159394882922394}
   m_Layer: 0
   m_Name: Box1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3648,7 +3649,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -24.125416, y: 0.59, z: 34.989}
-  m_LocalScale: {x: 4.1767, y: 1.2548789, z: 2.0900867}
+  m_LocalScale: {x: 4.1767, y: 1.2548789, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3755131146057624576}
@@ -3739,6 +3740,21 @@ MonoBehaviour:
   material: {fileID: 11400000, guid: 5272c55b882edd34a9d80b11bd6f240c, type: 2}
   exportAllChildren: 0
   terrainSimplificationLevel: 0
+--- !u!114 &3145159394882922394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340514861154598069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 11400000, guid: 5272c55b882edd34a9d80b11bd6f240c, type: 2}
+  exportAllChildren: 0
+  terrainSimplificationLevel: 0
 --- !u!1 &1352549536133337166
 GameObject:
   m_ObjectHideFlags: 0
@@ -3753,7 +3769,7 @@ GameObject:
   - component: {fileID: 9100165375049933540}
   m_Layer: 0
   m_Name: brick wall.001 (54)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3859,7 +3875,7 @@ GameObject:
   - component: {fileID: 3848178091759454737}
   m_Layer: 0
   m_Name: brick wall.001 (23)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3965,7 +3981,7 @@ GameObject:
   - component: {fileID: 1788949335806637816}
   m_Layer: 0
   m_Name: brick wall.001 (18)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -4071,7 +4087,7 @@ GameObject:
   - component: {fileID: 1428506180286882157}
   m_Layer: 0
   m_Name: brick wall.001 (11)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -4388,7 +4404,7 @@ GameObject:
   - component: {fileID: 6346568046657213189}
   m_Layer: 0
   m_Name: brick wall.001 (10)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -4494,7 +4510,7 @@ GameObject:
   - component: {fileID: 3100641532611297085}
   m_Layer: 0
   m_Name: brick wall.001 (32)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -4600,7 +4616,7 @@ GameObject:
   - component: {fileID: 3271476667570702308}
   m_Layer: 0
   m_Name: brick wall.001 (24)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -4790,7 +4806,7 @@ GameObject:
   - component: {fileID: 321831605430797099}
   m_Layer: 0
   m_Name: brick wall.001 (17)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -4945,6 +4961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5550284550389913917}
   - component: {fileID: 9023917629604037509}
+  - component: {fileID: 3035852295931959607}
   m_Layer: 0
   m_Name: ZoneOut
   m_TagString: Untagged
@@ -4978,6 +4995,21 @@ Transform:
   m_Father: {fileID: 3755131146057624576}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9023917629604037509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775409008621224507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 11400000, guid: ed65b244617a3154ba34ebdb722855a9, type: 2}
+  exportAllChildren: 1
+  terrainSimplificationLevel: 0
+--- !u!114 &3035852295931959607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5142,7 +5174,7 @@ GameObject:
   - component: {fileID: 4086216624854229075}
   m_Layer: 0
   m_Name: brick wall.001 (53)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -5332,7 +5364,7 @@ GameObject:
   - component: {fileID: 4668428548350344215}
   m_Layer: 0
   m_Name: brick wall.001 (30)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -5438,7 +5470,7 @@ GameObject:
   - component: {fileID: 5113649999660213605}
   m_Layer: 0
   m_Name: brick wall.001 (44)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -5544,7 +5576,7 @@ GameObject:
   - component: {fileID: 7549030511242150765}
   m_Layer: 0
   m_Name: brick wall.001 (35)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -5650,7 +5682,7 @@ GameObject:
   - component: {fileID: 3229691809362940615}
   m_Layer: 0
   m_Name: pillar (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5755,7 +5787,7 @@ GameObject:
   - component: {fileID: 8947034901189186336}
   m_Layer: 0
   m_Name: brick wall.001 (38)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -5861,7 +5893,7 @@ GameObject:
   - component: {fileID: 8215399412424525001}
   m_Layer: 0
   m_Name: brick wall.001 (38)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -5967,7 +5999,7 @@ GameObject:
   - component: {fileID: 6338672628778839175}
   m_Layer: 0
   m_Name: brick wall.001 (25)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -6156,6 +6188,7 @@ GameObject:
   - component: {fileID: 6691491419651529786}
   - component: {fileID: 9095219184952822532}
   - component: {fileID: 6012682164300508443}
+  - component: {fileID: 7009854006296728162}
   m_Layer: 0
   m_Name: wooden box (1)
   m_TagString: Untagged
@@ -6250,6 +6283,21 @@ BoxCollider:
   m_Size: {x: 0.0054558935, y: 0.0054558925, z: 0.0054558925}
   m_Center: {x: -2.3283064e-10, y: -2.328306e-10, z: 0.0000000024447213}
 --- !u!114 &6012682164300508443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2249222310838799578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 11400000, guid: 5272c55b882edd34a9d80b11bd6f240c, type: 2}
+  exportAllChildren: 0
+  terrainSimplificationLevel: 0
+--- !u!114 &7009854006296728162
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6423,6 +6471,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2027286485940235666}
+  - {fileID: 3805949451094680045}
   m_Father: {fileID: 3398871594870837645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2345575061702356484
@@ -6439,7 +6488,7 @@ GameObject:
   - component: {fileID: 3308881314861363001}
   m_Layer: 0
   m_Name: brick wall.001 (09)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -6545,7 +6594,7 @@ GameObject:
   - component: {fileID: 6861631687838595054}
   m_Layer: 0
   m_Name: brick wall.001 (34)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -6734,7 +6783,7 @@ GameObject:
   - component: {fileID: 2577082540926686549}
   m_Layer: 0
   m_Name: brick wall.001 (35)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -6836,6 +6885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6916734353422005706}
   - component: {fileID: 8260094934081742967}
+  - component: {fileID: 5228609363005292583}
   m_Layer: 0
   m_Name: LeftPillar
   m_TagString: Untagged
@@ -6876,6 +6926,21 @@ MonoBehaviour:
   material: {fileID: 11400000, guid: ed65b244617a3154ba34ebdb722855a9, type: 2}
   exportAllChildren: 0
   terrainSimplificationLevel: 0
+--- !u!114 &5228609363005292583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2455088758137929970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 11400000, guid: ed65b244617a3154ba34ebdb722855a9, type: 2}
+  exportAllChildren: 0
+  terrainSimplificationLevel: 0
 --- !u!1 &2463355687165926927
 GameObject:
   m_ObjectHideFlags: 0
@@ -6890,7 +6955,7 @@ GameObject:
   - component: {fileID: 9209831822145497814}
   m_Layer: 0
   m_Name: brick wall.001 (04)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -6996,7 +7061,7 @@ GameObject:
   - component: {fileID: 1114375546706650865}
   m_Layer: 0
   m_Name: brick wall.001 (36)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -7102,7 +7167,7 @@ GameObject:
   - component: {fileID: 7237046046972953739}
   m_Layer: 0
   m_Name: brick wall.001 (14)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -7208,7 +7273,7 @@ GameObject:
   - component: {fileID: 6123029461485070406}
   m_Layer: 0
   m_Name: brick wall.001 (16)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -7314,7 +7379,7 @@ GameObject:
   - component: {fileID: 4964262372448566612}
   m_Layer: 0
   m_Name: brick wall.001 (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -7587,7 +7652,7 @@ GameObject:
   - component: {fileID: 8566244563605957293}
   m_Layer: 0
   m_Name: brick wall.001 (20)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -7860,7 +7925,7 @@ GameObject:
   - component: {fileID: 8013685626112033116}
   m_Layer: 0
   m_Name: brick wall.001 (27)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -8050,7 +8115,7 @@ GameObject:
   - component: {fileID: 4333225558043961831}
   m_Layer: 0
   m_Name: brick wall.001 (31)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -8156,7 +8221,7 @@ GameObject:
   - component: {fileID: 6094406906155015485}
   m_Layer: 0
   m_Name: brick wall.001 (7)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -8262,7 +8327,7 @@ GameObject:
   - component: {fileID: 1596107697422803931}
   m_Layer: 0
   m_Name: brick wall.001 (22)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -8368,7 +8433,7 @@ GameObject:
   - component: {fileID: 1344698627434619074}
   m_Layer: 0
   m_Name: brick wall.001 (30)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -8460,6 +8525,39 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.021061957, y: 0.004069864, z: 0.030626217}
   m_Center: {x: -0.010535024, y: 0.00006671016, z: 0.015313107}
+--- !u!1 &3113154085834650876
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3805949451094680045}
+  m_Layer: 0
+  m_Name: Bridges
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3805949451094680045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3113154085834650876}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1309185796886084138}
+  - {fileID: 65052089830217560}
+  m_Father: {fileID: 7251411847293089991}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3127953251252321598
 GameObject:
   m_ObjectHideFlags: 0
@@ -8474,7 +8572,7 @@ GameObject:
   - component: {fileID: 8312842102564444696}
   m_Layer: 0
   m_Name: brick wall.001 (48)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -8580,7 +8678,7 @@ GameObject:
   - component: {fileID: 4763317117505718356}
   m_Layer: 0
   m_Name: brick wall.001 (57)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9044,7 +9142,7 @@ GameObject:
   - component: {fileID: 3014859189716846035}
   m_Layer: 0
   m_Name: brick wall.001 (31)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9195,7 +9293,7 @@ GameObject:
   - component: {fileID: 7371698640652523013}
   m_Layer: 0
   m_Name: brick wall.001 (39)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9301,7 +9399,7 @@ GameObject:
   - component: {fileID: 5088704220031766962}
   m_Layer: 0
   m_Name: brick wall.001 (19)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9407,7 +9505,7 @@ GameObject:
   - component: {fileID: 2331978770897136343}
   m_Layer: 0
   m_Name: brick wall.001 (21)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9513,7 +9611,7 @@ GameObject:
   - component: {fileID: 2248298232501316478}
   m_Layer: 0
   m_Name: brick wall.001 (06)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9619,7 +9717,7 @@ GameObject:
   - component: {fileID: 7935548711576896453}
   m_Layer: 0
   m_Name: brick wall.001 (26)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9725,7 +9823,7 @@ GameObject:
   - component: {fileID: 902368635822468061}
   m_Layer: 0
   m_Name: brick wall.001 (14)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9914,7 +10012,7 @@ GameObject:
   - component: {fileID: 8160241608813064040}
   m_Layer: 0
   m_Name: brick wall.001 (13)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -10020,7 +10118,7 @@ GameObject:
   - component: {fileID: 5125102700471775296}
   m_Layer: 0
   m_Name: brick wall.001 (22)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -10209,7 +10307,7 @@ GameObject:
   - component: {fileID: 4121617621020194034}
   m_Layer: 0
   m_Name: brick wall.001 (12)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -10398,7 +10496,7 @@ GameObject:
   - component: {fileID: 3674387899675751924}
   m_Layer: 0
   m_Name: brick wall.001 (29)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -10504,7 +10602,7 @@ GameObject:
   - component: {fileID: 4821236694876038329}
   m_Layer: 0
   m_Name: brick wall.001 (38)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -10610,7 +10708,7 @@ GameObject:
   - component: {fileID: 1903525614130210428}
   m_Layer: 0
   m_Name: brick wall.001 (37)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -10883,7 +10981,7 @@ GameObject:
   - component: {fileID: 8292706156328695863}
   m_Layer: 0
   m_Name: brick wall.001 (28)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11286,7 +11384,7 @@ GameObject:
   - component: {fileID: 8554482401997604978}
   m_Layer: 0
   m_Name: brick wall.001 (12)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11520,7 +11618,7 @@ GameObject:
   - component: {fileID: 5385165442890668917}
   m_Layer: 0
   m_Name: brick wall.001 (21)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11709,7 +11807,7 @@ GameObject:
   - component: {fileID: 684877804694403691}
   m_Layer: 0
   m_Name: brick wall.001 (23)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11814,9 +11912,10 @@ GameObject:
   - component: {fileID: 3974223412496747117}
   - component: {fileID: 3355908049126110644}
   - component: {fileID: 7818788938012062720}
+  - component: {fileID: 8577605920761325875}
   m_Layer: 0
   m_Name: Box2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11831,7 +11930,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.852, y: 0.59, z: 34.989}
-  m_LocalScale: {x: 4.1767, y: 1.2548789, z: 2.0900867}
+  m_LocalScale: {x: 4.1767, y: 1.2548789, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3755131146057624576}
@@ -11922,6 +12021,21 @@ MonoBehaviour:
   material: {fileID: 11400000, guid: 5272c55b882edd34a9d80b11bd6f240c, type: 2}
   exportAllChildren: 0
   terrainSimplificationLevel: 0
+--- !u!114 &8577605920761325875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4221574709048219184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 11400000, guid: 5272c55b882edd34a9d80b11bd6f240c, type: 2}
+  exportAllChildren: 0
+  terrainSimplificationLevel: 0
 --- !u!1 &4271943050339810354
 GameObject:
   m_ObjectHideFlags: 0
@@ -11936,7 +12050,7 @@ GameObject:
   - component: {fileID: 2339300706610134651}
   m_Layer: 0
   m_Name: brick wall.001 (9)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -12042,7 +12156,7 @@ GameObject:
   - component: {fileID: 7234250214677309941}
   m_Layer: 0
   m_Name: brick wall.001 (11)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -12232,7 +12346,7 @@ GameObject:
   - component: {fileID: 4828068634199363451}
   m_Layer: 0
   m_Name: brick wall.001 (19)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -12422,7 +12536,7 @@ GameObject:
   - component: {fileID: 4174120058279678358}
   m_Layer: 0
   m_Name: brick wall.001 (55)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -12528,7 +12642,7 @@ GameObject:
   - component: {fileID: 7466061441720595618}
   m_Layer: 0
   m_Name: brick wall.001 (5)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -12718,7 +12832,7 @@ GameObject:
   - component: {fileID: 789654875909398057}
   m_Layer: 0
   m_Name: brick wall.001 (06)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -12820,9 +12934,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4622853817448192}
   - component: {fileID: 9003867215518614221}
+  - component: {fileID: 3204026356477065582}
   m_Layer: 0
   m_Name: BottomRightWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -12875,6 +12990,21 @@ Transform:
   m_Father: {fileID: 3755131146057624576}
   m_LocalEulerAnglesHint: {x: 0, y: -179.416, z: 0}
 --- !u!114 &9003867215518614221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4734866598908511773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 11400000, guid: ed65b244617a3154ba34ebdb722855a9, type: 2}
+  exportAllChildren: 1
+  terrainSimplificationLevel: 0
+--- !u!114 &3204026356477065582
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12986,7 +13116,7 @@ GameObject:
   - component: {fileID: 7190106264563679517}
   m_Layer: 0
   m_Name: brick wall.001 (51)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -13092,7 +13222,7 @@ GameObject:
   - component: {fileID: 3941415738658689604}
   m_Layer: 0
   m_Name: brick wall.001 (25)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -13198,7 +13328,7 @@ GameObject:
   - component: {fileID: 6651805426635052645}
   m_Layer: 0
   m_Name: brick wall.001 (27)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -13304,7 +13434,7 @@ GameObject:
   - component: {fileID: 7384051567480786415}
   m_Layer: 0
   m_Name: brick wall.001 (08)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -13410,7 +13540,7 @@ GameObject:
   - component: {fileID: 5060402832442085156}
   m_Layer: 0
   m_Name: brick wall.001 (32)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -13516,7 +13646,7 @@ GameObject:
   - component: {fileID: 7860878710705760011}
   m_Layer: 0
   m_Name: brick wall.001 (40)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -13622,7 +13752,7 @@ GameObject:
   - component: {fileID: 1820830254158789575}
   m_Layer: 0
   m_Name: brick wall.001 (36)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -13728,7 +13858,7 @@ GameObject:
   - component: {fileID: 6244847336708719122}
   m_Layer: 0
   m_Name: brick wall.001 (33)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -14002,7 +14132,7 @@ GameObject:
   - component: {fileID: 4598002430597957436}
   m_Layer: 0
   m_Name: brick wall.001 (7)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -14108,7 +14238,7 @@ GameObject:
   - component: {fileID: 714400519547894727}
   m_Layer: 0
   m_Name: brick wall.001 (29)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -14214,7 +14344,7 @@ GameObject:
   - component: {fileID: 6947163970370521294}
   m_Layer: 0
   m_Name: brick wall.001 (58)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -14488,7 +14618,7 @@ GameObject:
   - component: {fileID: 8942409737067805612}
   m_Layer: 0
   m_Name: brick wall.001 (10)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -14594,7 +14724,7 @@ GameObject:
   - component: {fileID: 7780898697032102851}
   m_Layer: 0
   m_Name: pillar (4)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14744,7 +14874,7 @@ GameObject:
   - component: {fileID: 5160460490358515988}
   m_Layer: 0
   m_Name: brick wall.001 (26)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -14849,6 +14979,7 @@ GameObject:
   - component: {fileID: 1806761462613421487}
   - component: {fileID: 8363720073563983673}
   - component: {fileID: 8277356891007911571}
+  - component: {fileID: 3007643308252289185}
   m_Layer: 0
   m_Name: wooden box (2)
   m_TagString: Untagged
@@ -14957,6 +15088,21 @@ MonoBehaviour:
   material: {fileID: 11400000, guid: 5272c55b882edd34a9d80b11bd6f240c, type: 2}
   exportAllChildren: 0
   terrainSimplificationLevel: 0
+--- !u!114 &3007643308252289185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522414370597184635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 11400000, guid: 5272c55b882edd34a9d80b11bd6f240c, type: 2}
+  exportAllChildren: 0
+  terrainSimplificationLevel: 0
 --- !u!1 &5551235078473306095
 GameObject:
   m_ObjectHideFlags: 0
@@ -14967,6 +15113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3965809464903671460}
   - component: {fileID: 2788935160930687176}
+  - component: {fileID: 6892726062638893139}
   m_Layer: 0
   m_Name: TopRightWall
   m_TagString: Untagged
@@ -15030,6 +15177,21 @@ Transform:
   m_Father: {fileID: 3755131146057624576}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2788935160930687176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5551235078473306095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 11400000, guid: ed65b244617a3154ba34ebdb722855a9, type: 2}
+  exportAllChildren: 1
+  terrainSimplificationLevel: 0
+--- !u!114 &6892726062638893139
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15111,7 +15273,7 @@ GameObject:
   - component: {fileID: 9173415672839138487}
   m_Layer: 0
   m_Name: pillar (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15216,7 +15378,7 @@ GameObject:
   - component: {fileID: 995744008913938603}
   m_Layer: 0
   m_Name: brick wall.001 (08)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -15322,7 +15484,7 @@ GameObject:
   - component: {fileID: 4845755781642009990}
   m_Layer: 0
   m_Name: brick wall.001 (40)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -15428,7 +15590,7 @@ GameObject:
   - component: {fileID: 375397984727818499}
   m_Layer: 0
   m_Name: brick wall.001 (20)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -15534,7 +15696,7 @@ GameObject:
   - component: {fileID: 3270251478980067731}
   m_Layer: 0
   m_Name: brick wall.001 (10)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -15640,7 +15802,7 @@ GameObject:
   - component: {fileID: 4639839365531501432}
   m_Layer: 0
   m_Name: brick wall.001 (30)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -15746,7 +15908,7 @@ GameObject:
   - component: {fileID: 1054057298680309158}
   m_Layer: 0
   m_Name: brick wall.001 (45)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -16018,7 +16180,7 @@ GameObject:
   - component: {fileID: 9066438193879268300}
   m_Layer: 0
   m_Name: brick wall.001 (33)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -16177,7 +16339,7 @@ GameObject:
   - component: {fileID: 6214709798067198707}
   m_Layer: 0
   m_Name: brick wall.001 (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -16324,6 +16486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 955483687755043511}
   - component: {fileID: 8106510806082007236}
+  - component: {fileID: 8427151731750990789}
   m_Layer: 0
   m_Name: 'BottomLeftWall '
   m_TagString: Untagged
@@ -16401,6 +16564,21 @@ MonoBehaviour:
   material: {fileID: 11400000, guid: ed65b244617a3154ba34ebdb722855a9, type: 2}
   exportAllChildren: 1
   terrainSimplificationLevel: 0
+--- !u!114 &8427151731750990789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861123389761302754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 11400000, guid: ed65b244617a3154ba34ebdb722855a9, type: 2}
+  exportAllChildren: 1
+  terrainSimplificationLevel: 0
 --- !u!1 &5919989121721422052
 GameObject:
   m_ObjectHideFlags: 0
@@ -16411,6 +16589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8183331510819000248}
   - component: {fileID: 7631335920190105282}
+  - component: {fileID: 7878029556277721089}
   m_Layer: 0
   m_Name: RightPillar
   m_TagString: Untagged
@@ -16451,6 +16630,21 @@ MonoBehaviour:
   material: {fileID: 11400000, guid: ed65b244617a3154ba34ebdb722855a9, type: 2}
   exportAllChildren: 0
   terrainSimplificationLevel: 0
+--- !u!114 &7878029556277721089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5919989121721422052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 11400000, guid: ed65b244617a3154ba34ebdb722855a9, type: 2}
+  exportAllChildren: 0
+  terrainSimplificationLevel: 0
 --- !u!1 &5945970920160633558
 GameObject:
   m_ObjectHideFlags: 0
@@ -16465,7 +16659,7 @@ GameObject:
   - component: {fileID: 3066909595845626628}
   m_Layer: 0
   m_Name: brick wall.001 (19)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -16571,7 +16765,7 @@ GameObject:
   - component: {fileID: 6432049913542969788}
   m_Layer: 0
   m_Name: brick wall.001 (20)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -16677,7 +16871,7 @@ GameObject:
   - component: {fileID: 3306534777654786376}
   m_Layer: 0
   m_Name: brick wall.001 (16)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -16783,7 +16977,7 @@ GameObject:
   - component: {fileID: 2982944459803803072}
   m_Layer: 0
   m_Name: brick wall.001 (17)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -16889,7 +17083,7 @@ GameObject:
   - component: {fileID: 5698978432895152012}
   m_Layer: 0
   m_Name: brick wall.001 (6)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -16995,9 +17189,10 @@ GameObject:
   - component: {fileID: 2399340559580870682}
   - component: {fileID: 4962012425859913364}
   - component: {fileID: 9120263483514888403}
+  - component: {fileID: 8781450383762234465}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -17116,11 +17311,26 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.13333334
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 7b5f3aa574f5d624d9c8bd58c0200efe, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 278e85d2771dfec41aa48e7224dcc365, type: 2}
   m_BuildHeightMesh: 0
 --- !u!114 &9120263483514888403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6126149556901060292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 11400000, guid: 5c0320d65bcecce4abf2efe02ff313aa, type: 2}
+  exportAllChildren: 0
+  terrainSimplificationLevel: 0
+--- !u!114 &8781450383762234465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17232,7 +17442,7 @@ GameObject:
   - component: {fileID: 6621486996296681922}
   m_Layer: 0
   m_Name: brick wall.001 (22)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -17421,7 +17631,7 @@ GameObject:
   - component: {fileID: 5510163694392966069}
   m_Layer: 0
   m_Name: brick wall.001 (15)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -17716,7 +17926,7 @@ GameObject:
   - component: {fileID: 9082283230858083524}
   m_Layer: 0
   m_Name: brick wall.001 (47)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -17898,6 +18108,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _color: {r: 0, g: 1, b: 0.15109777, a: 1}
+--- !u!1 &6476203565464242472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 65052089830217560}
+  - component: {fileID: 3118064840790204218}
+  m_Layer: 0
+  m_Name: Bridge2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &65052089830217560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476203565464242472}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -2.055, y: 1.2174395, z: 34.990295}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3805949451094680045}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &3118064840790204218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476203565464242472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_StartPoint: {x: -0.12179052, y: -1.217439, z: 0.21916623}
+  m_EndPoint: {x: 0, y: 0, z: 2.5}
+  m_Width: 1
+  m_CostModifier: 1
+  m_Bidirectional: 1
+  m_AutoUpdatePosition: 0
+  m_Area: 0
 --- !u!1 &6562958574152084889
 GameObject:
   m_ObjectHideFlags: 0
@@ -17912,7 +18174,7 @@ GameObject:
   - component: {fileID: 9024826771510605807}
   m_Layer: 0
   m_Name: brick wall.001 (18)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -18018,7 +18280,7 @@ GameObject:
   - component: {fileID: 3206508571611481161}
   m_Layer: 0
   m_Name: brick wall.001 (04)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -18253,7 +18515,7 @@ GameObject:
   - component: {fileID: 8669805744574419109}
   m_Layer: 0
   m_Name: brick wall.001 (34)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -18412,7 +18674,7 @@ GameObject:
   - component: {fileID: 2389164138548275493}
   m_Layer: 0
   m_Name: brick wall.001 (9)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -18518,7 +18780,7 @@ GameObject:
   - component: {fileID: 2299275425264026737}
   m_Layer: 0
   m_Name: brick wall.001 (34)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -18874,7 +19136,7 @@ GameObject:
   - component: {fileID: 883519096315496571}
   m_Layer: 0
   m_Name: brick wall.001 (33)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -19050,6 +19312,58 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7133839212969978239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1309185796886084138}
+  - component: {fileID: 2334695384347839607}
+  m_Layer: 0
+  m_Name: Bridge1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1309185796886084138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7133839212969978239}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -27.778, y: 1.2174395, z: 34.990295}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3805949451094680045}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &2334695384347839607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7133839212969978239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_StartPoint: {x: -0.12179052, y: -1.217439, z: 0.21916623}
+  m_EndPoint: {x: 0, y: 0, z: 2.5}
+  m_Width: 1
+  m_CostModifier: 1
+  m_Bidirectional: 1
+  m_AutoUpdatePosition: 0
+  m_Area: 0
 --- !u!1 &7188902834409919024
 GameObject:
   m_ObjectHideFlags: 0
@@ -19064,7 +19378,7 @@ GameObject:
   - component: {fileID: 7100055204572376733}
   m_Layer: 0
   m_Name: brick wall.001 (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -19170,7 +19484,7 @@ GameObject:
   - component: {fileID: 1619792200423298833}
   m_Layer: 0
   m_Name: brick wall.001 (15)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -19276,7 +19590,7 @@ GameObject:
   - component: {fileID: 8153556810432073114}
   m_Layer: 0
   m_Name: brick wall.001 (25)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -19466,7 +19780,7 @@ GameObject:
   - component: {fileID: 5596916547265382229}
   m_Layer: 0
   m_Name: brick wall.001 (24)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -19572,7 +19886,7 @@ GameObject:
   - component: {fileID: 715459911365122242}
   m_Layer: 0
   m_Name: brick wall.001 (24)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -19756,7 +20070,7 @@ GameObject:
   - component: {fileID: 2912107836516278889}
   m_Layer: 0
   m_Name: brick wall.001 (18)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -19945,7 +20259,7 @@ GameObject:
   - component: {fileID: 5212171227579475130}
   m_Layer: 0
   m_Name: brick wall.001 (42)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -20095,7 +20409,7 @@ GameObject:
   - component: {fileID: 7813581619128152483}
   m_Layer: 0
   m_Name: pillar (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20200,7 +20514,7 @@ GameObject:
   - component: {fileID: 4984112930742732929}
   m_Layer: 0
   m_Name: brick wall.001 (13)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -20306,7 +20620,7 @@ GameObject:
   - component: {fileID: 8888087071626127895}
   m_Layer: 0
   m_Name: brick wall.001 (5)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -20412,7 +20726,7 @@ GameObject:
   - component: {fileID: 6596074759529313365}
   m_Layer: 0
   m_Name: brick wall.001 (56)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -20518,7 +20832,7 @@ GameObject:
   - component: {fileID: 1602150658261356616}
   m_Layer: 0
   m_Name: brick wall.001 (16)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -20624,7 +20938,7 @@ GameObject:
   - component: {fileID: 6695019593823258723}
   m_Layer: 0
   m_Name: brick wall.001 (26)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -20814,7 +21128,7 @@ GameObject:
   - component: {fileID: 542898023100624096}
   m_Layer: 0
   m_Name: brick wall.001 (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -21010,7 +21324,7 @@ GameObject:
   - component: {fileID: 184596816317443023}
   m_Layer: 0
   m_Name: brick wall.001 (14)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -21284,7 +21598,7 @@ GameObject:
   - component: {fileID: 3497318578777103268}
   m_Layer: 0
   m_Name: brick wall.001 (52)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -21390,7 +21704,7 @@ GameObject:
   - component: {fileID: 4644777304879946526}
   m_Layer: 0
   m_Name: brick wall.001 (8)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -21496,7 +21810,7 @@ GameObject:
   - component: {fileID: 5360289297178241918}
   m_Layer: 0
   m_Name: brick wall.001 (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -21655,7 +21969,7 @@ GameObject:
   - component: {fileID: 2392033246622625998}
   m_Layer: 0
   m_Name: brick wall.001 (21)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -21761,7 +22075,7 @@ GameObject:
   - component: {fileID: 1185952449653731788}
   m_Layer: 0
   m_Name: brick wall.001 (37)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -21951,7 +22265,7 @@ GameObject:
   - component: {fileID: 7776730874338570850}
   m_Layer: 0
   m_Name: brick wall.001 (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -22102,7 +22416,7 @@ GameObject:
   - component: {fileID: 170577348425593886}
   m_Layer: 0
   m_Name: brick wall.001 (36)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -22208,7 +22522,7 @@ GameObject:
   - component: {fileID: 6349225428878025178}
   m_Layer: 0
   m_Name: pillar (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22313,7 +22627,7 @@ GameObject:
   - component: {fileID: 6593913034295421241}
   m_Layer: 0
   m_Name: brick wall.001 (32)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -22419,7 +22733,7 @@ GameObject:
   - component: {fileID: 6021034263190173578}
   m_Layer: 0
   m_Name: brick wall.001 (37)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -22609,7 +22923,7 @@ GameObject:
   - component: {fileID: 2099894198284768713}
   m_Layer: 0
   m_Name: brick wall.001 (50)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -22833,7 +23147,7 @@ GameObject:
   - component: {fileID: 4863333491361303157}
   m_Layer: 0
   m_Name: brick wall.001 (11)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -23106,7 +23420,7 @@ GameObject:
   - component: {fileID: 6277866547993268032}
   m_Layer: 0
   m_Name: brick wall.001 (13)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -23212,7 +23526,7 @@ GameObject:
   - component: {fileID: 2495180871450896935}
   m_Layer: 0
   m_Name: brick wall.001 (4)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -23402,7 +23716,7 @@ GameObject:
   - component: {fileID: 6424168264772063966}
   m_Layer: 0
   m_Name: brick wall.001 (02)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -23504,6 +23818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4558086613889934324}
   - component: {fileID: 5312234103467229607}
+  - component: {fileID: 6501836976879403234}
   m_Layer: 0
   m_Name: TopLeftWall
   m_TagString: Untagged
@@ -23571,6 +23886,21 @@ MonoBehaviour:
   material: {fileID: 11400000, guid: ed65b244617a3154ba34ebdb722855a9, type: 2}
   exportAllChildren: 1
   terrainSimplificationLevel: 0
+--- !u!114 &6501836976879403234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121249499407076448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 11400000, guid: ed65b244617a3154ba34ebdb722855a9, type: 2}
+  exportAllChildren: 1
+  terrainSimplificationLevel: 0
 --- !u!1 &9154072219054614809
 GameObject:
   m_ObjectHideFlags: 0
@@ -23585,7 +23915,7 @@ GameObject:
   - component: {fileID: 1846687672892310895}
   m_Layer: 0
   m_Name: brick wall.001 (39)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

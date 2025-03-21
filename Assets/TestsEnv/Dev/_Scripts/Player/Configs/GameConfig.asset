@@ -17,7 +17,7 @@ MonoBehaviour:
   _jumpForce: 5
   _gravity: -15
   _mouseSensivity: 1
-  _maxHealth: 10
+  _maxHealth: 1000
   _ultiDamage: 1
   _audioClip: {fileID: 8300000, guid: e7dde8e3d7c1e4a40925616306ace911, type: 3}
   ShieldDuration: 15
