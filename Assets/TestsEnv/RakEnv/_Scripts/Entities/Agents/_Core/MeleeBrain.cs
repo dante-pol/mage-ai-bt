@@ -1,4 +1,5 @@
 ﻿using Root.Core.BT;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -314,6 +315,7 @@ namespace Root
         {
             var activeLifeScenario = new SelectorNode(new List<ABTNode>
             {
+                BuildDanceScenario(),
                 BuildIdleScenario(),
                 BuildGoToPlayerScenario(),
                 BuildAttackToPlayerScenario(),
@@ -321,6 +323,24 @@ namespace Root
             });
 
             return activeLifeScenario;
+        }
+
+        private SequenceNode BuildDanceScenario()
+        {
+            var playerIsDead = new ConditionNode(() => _agent.Player.CurrentHealth <= 0);
+
+            var activeDance = new ActionNode(() =>
+            {
+                _agent.Animator.ActiveDance();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            return new SequenceNode(new List<ABTNode>
+            {
+                playerIsDead,
+                activeDance
+            });
         }
 
         public SequenceNode BuildIdleScenario()
